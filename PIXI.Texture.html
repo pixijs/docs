@@ -1,0 +1,2296 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>PIXI Class: Texture</title>
+
+	<!--[if lt IE 9]>
+	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<link type="text/css" rel="stylesheet" href="styles/sunlight.default.css">
+
+	<link type="text/css" rel="stylesheet" href="styles/site.cerulean.css">
+
+</head>
+
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top navbar-inverse">
+<div class="container">
+	<div class="navbar-header">
+		<a class="navbar-brand" href="index.html">PIXI</a>
+	</div>
+	<div class="navbar-collapse">
+		<ul class="nav navbar-nav">
+			
+			<li class="dropdown">
+				<a href="namespaces.list.html" class="dropdown-toggle" data-toggle="dropdown">Namespaces<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="PIXI.html">PIXI</a></li><li><a href="PIXI.extras.html">PIXI.extras</a></li><li><a href="PIXI.filters.html">PIXI.filters</a></li><li><a href="PIXI.interaction.html">PIXI.interaction</a></li><li><a href="PIXI.loaders.html">PIXI.loaders</a></li><li><a href="PIXI.mesh.html">PIXI.mesh</a></li><li><a href="PIXI.spine.html">PIXI.spine</a></li><li><a href="PIXI.utils.html">PIXI.utils</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="classes.list.html" class="dropdown-toggle" data-toggle="dropdown">Classes<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="PIXI.AbstractFilter.html">PIXI.AbstractFilter</a></li><li><a href="PIXI.AssetLoader.html">PIXI.AssetLoader</a></li><li><a href="PIXI.BaseTexture.html">PIXI.BaseTexture</a></li><li><a href="PIXI.BlendModeManager.html">PIXI.BlendModeManager</a></li><li><a href="PIXI.CanvasBuffer.html">PIXI.CanvasBuffer</a></li><li><a href="PIXI.CanvasMaskManager.html">PIXI.CanvasMaskManager</a></li><li><a href="PIXI.CanvasRenderer.html">PIXI.CanvasRenderer</a></li><li><a href="PIXI.Circle.html">PIXI.Circle</a></li><li><a href="PIXI.ComplexPrimitiveShader.html">PIXI.ComplexPrimitiveShader</a></li><li><a href="PIXI.Container.html">PIXI.Container</a></li><li><a href="PIXI.DisplayObject.html">PIXI.DisplayObject</a></li><li><a href="PIXI.DisplayObjectContainer.html">PIXI.DisplayObjectContainer</a></li><li><a href="PIXI.Ellipse.html">PIXI.Ellipse</a></li><li><a href="PIXI.extras.BitmapText.html">PIXI.extras.BitmapText</a></li><li><a href="PIXI.extras.MovieClip.html">PIXI.extras.MovieClip</a></li><li><a href="PIXI.extras.Ticker.html">PIXI.extras.Ticker</a></li><li><a href="PIXI.extras.TilingSprite.html">PIXI.extras.TilingSprite</a></li><li><a href="PIXI.FilterManager.html">PIXI.FilterManager</a></li><li><a href="PIXI.filters.AsciiFilter.html">PIXI.filters.AsciiFilter</a></li><li><a href="PIXI.filters.BloomFilter.html">PIXI.filters.BloomFilter</a></li><li><a href="PIXI.filters.BlurFilter.html">PIXI.filters.BlurFilter</a></li><li><a href="PIXI.filters.BlurXFilter.html">PIXI.filters.BlurXFilter</a></li><li><a href="PIXI.filters.BlurYFilter.html">PIXI.filters.BlurYFilter</a></li><li><a href="PIXI.filters.BlurYTintFilter.html">PIXI.filters.BlurYTintFilter</a></li><li><a href="PIXI.filters.ColorMatrixFilter.html">PIXI.filters.ColorMatrixFilter</a></li><li><a href="PIXI.filters.ColorStepFilter.html">PIXI.filters.ColorStepFilter</a></li><li><a href="PIXI.filters.ConvolutionFilter.html">PIXI.filters.ConvolutionFilter</a></li><li><a href="PIXI.filters.CrossHatchFilter.html">PIXI.filters.CrossHatchFilter</a></li><li><a href="PIXI.filters.DotScreenFilter.html">PIXI.filters.DotScreenFilter</a></li><li><a href="PIXI.filters.DropShadowFilter.html">PIXI.filters.DropShadowFilter</a></li><li><a href="PIXI.filters.GrayFilter.html">PIXI.filters.GrayFilter</a></li><li><a href="PIXI.filters.InvertFilter.html">PIXI.filters.InvertFilter</a></li><li><a href="PIXI.filters.NoiseFilter.html">PIXI.filters.NoiseFilter</a></li><li><a href="PIXI.filters.NormalMapFilter.html">PIXI.filters.NormalMapFilter</a></li><li><a href="PIXI.filters.PixelateFilter.html">PIXI.filters.PixelateFilter</a></li><li><a href="PIXI.filters.SepiaFilter.html">PIXI.filters.SepiaFilter</a></li><li><a href="PIXI.filters.ShockwaveFilter.html">PIXI.filters.ShockwaveFilter</a></li><li><a href="PIXI.filters.SmartBlurFilter.html">PIXI.filters.SmartBlurFilter</a></li><li><a href="PIXI.filters.TiltShiftAxisFilter.html">PIXI.filters.TiltShiftAxisFilter</a></li><li><a href="PIXI.filters.TiltShiftFilter.html">PIXI.filters.TiltShiftFilter</a></li><li><a href="PIXI.filters.TiltShiftXFilter.html">PIXI.filters.TiltShiftXFilter</a></li><li><a href="PIXI.filters.TiltShiftYFilter.html">PIXI.filters.TiltShiftYFilter</a></li><li><a href="PIXI.filters.TwistFilter.html">PIXI.filters.TwistFilter</a></li><li><a href="PIXI.FXAAFilter.html">PIXI.FXAAFilter</a></li><li><a href="PIXI.Graphics.html">PIXI.Graphics</a></li><li><a href="PIXI.GraphicsData.html">PIXI.GraphicsData</a></li><li><a href="PIXI.interaction.InteractionData.html">PIXI.interaction.InteractionData</a></li><li><a href="PIXI.interaction.InteractionManager.html">PIXI.interaction.InteractionManager</a></li><li><a href="PIXI.loaders.Loader.html">PIXI.loaders.Loader</a></li><li><a href="PIXI.MaskManager.html">PIXI.MaskManager</a></li><li><a href="PIXI.Matrix.html">PIXI.Matrix</a></li><li><a href="PIXI.mesh.Mesh.html">PIXI.mesh.Mesh</a></li><li><a href="PIXI.mesh.Rope.html">PIXI.mesh.Rope</a></li><li><a href="PIXI.mesh.StripShader.html">PIXI.mesh.StripShader</a></li><li><a href="PIXI.ObjectRenderer.html">PIXI.ObjectRenderer</a></li><li><a href="PIXI.ParticleContainer.html">PIXI.ParticleContainer</a></li><li><a href="PIXI.ParticleShader.html">PIXI.ParticleShader</a></li><li><a href="PIXI.Point.html">PIXI.Point</a></li><li><a href="PIXI.Polygon.html">PIXI.Polygon</a></li><li><a href="PIXI.PrimitiveShader.html">PIXI.PrimitiveShader</a></li><li><a href="PIXI.Quad.html">PIXI.Quad</a></li><li><a href="PIXI.Rectangle.html">PIXI.Rectangle</a></li><li><a href="PIXI.RenderTarget.html">PIXI.RenderTarget</a></li><li><a href="PIXI.RenderTexture.html">PIXI.RenderTexture</a></li><li><a href="PIXI.RoundedRectangle.html">PIXI.RoundedRectangle</a></li><li><a href="PIXI.Shader.html">PIXI.Shader</a></li><li><a href="PIXI.ShaderManager.html">PIXI.ShaderManager</a></li><li><a href="PIXI.spine.Spine.html">PIXI.spine.Spine</a></li><li><a href="PIXI.Sprite.html">PIXI.Sprite</a></li><li><a href="PIXI.SpriteBatch.html">PIXI.SpriteBatch</a></li><li><a href="PIXI.SpriteMaskFilter.html">PIXI.SpriteMaskFilter</a></li><li><a href="PIXI.Stage.html">PIXI.Stage</a></li><li><a href="PIXI.StencilMaskStack.html">PIXI.StencilMaskStack</a></li><li><a href="PIXI.Strip.html">PIXI.Strip</a></li><li><a href="PIXI.SystemRenderer.html">PIXI.SystemRenderer</a></li><li><a href="PIXI.Text.html">PIXI.Text</a></li><li><a href="PIXI.Texture.html">PIXI.Texture</a></li><li><a href="PIXI.TextureShader.html">PIXI.TextureShader</a></li><li><a href="PIXI.VideoBaseTexture.html">PIXI.VideoBaseTexture</a></li><li><a href="PIXI.WebGLManager.html">PIXI.WebGLManager</a></li><li><a href="PIXI.WebGLMaskManager.html">PIXI.WebGLMaskManager</a></li><li><a href="PIXI.WebGLRenderer.html">PIXI.WebGLRenderer</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="mixins.list.html" class="dropdown-toggle" data-toggle="dropdown">Mixins<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="PIXI.interaction.module.exports.html">PIXI.interaction.module.exports</a></li><li><a href="PIXI.utils.pluginTarget.html">PIXI.utils.pluginTarget</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="events.list.html" class="dropdown-toggle" data-toggle="dropdown">Events<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="BaseTexture.html#event:error">BaseTexture#event:error</a></li><li><a href="BaseTexture.html#event:loaded">BaseTexture#event:loaded</a></li><li><a href="PIXI.VideoBaseTexture.html#event:error">PIXI.VideoBaseTexture#event:error</a></li><li><a href="PIXI.VideoBaseTexture.html#event:loaded">PIXI.VideoBaseTexture#event:loaded</a></li>
+				</ul>
+			</li>
+			
+		</ul>
+	</div>
+</div>
+</div>
+
+
+<div class="container">
+<div class="row">
+
+	
+	<div class="col-md-8">
+	
+		<div id="main">
+    		
+
+	<h1 class="page-title">Class: Texture</h1>
+<section>
+
+<header>
+    
+        <h2>
+            <span class="ancestors"><a href="PIXI.html">PIXI</a>.</span>
+        
+        Texture
+        </h2>
+        
+    
+</header>
+
+
+<article>
+    <div class="container-overview">
+    
+        
+<dt>
+    <h4 class="name" id="Texture">new .Texture(baseTexture, <span class="optional">frame</span>, <span class="optional">crop</span>, <span class="optional">trim</span>, <span class="optional">rotate</span>)</h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>A texture stores the information that represents an image or part of an image. It cannot be added
+to the display list directly. Instead use it as the texture for a Sprite. If no frame is provided then the whole image is used.</p>
+<p>You can directly create a texture from an image and then reuse it multiple times like this :</p>
+<pre class="prettyprint source lang-js"><code>var texture = PIXI.Texture.fromImage('assets/image.png');
+var sprite1 = new PIXI.Sprite(texture);
+var sprite2 = new PIXI.Sprite(texture);</code></pre>
+    </div>
+    
+
+    
+
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+		<th>Argument</th>
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>baseTexture</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="BaseTexture.html">BaseTexture</a></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The base texture source to create the texture from</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>frame</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Rectangle</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The rectangle frame of the texture to show</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>crop</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Rectangle</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The area of original texture</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>trim</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Rectangle</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Trimmed texture rectangle</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>rotate</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>indicates whether the texture should be rotated by 90 degrees ( used by texture packer )</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+
+    
+    
+    
+
+    
+    
+    
+</dd>
+
+    
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Members</h3>
+
+        <dl>
+            
+<dt class="name" id="baseTexture">
+    <h4>#baseTexture</h4>
+
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        <p>The base texture that this texture uses.</p>
+    </div>
+    
+
+    
+        <h5>Type: 
+<span class="param-type"><a href="BaseTexture.html">BaseTexture</a></span>
+
+</h5>
+    
+
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+</dd>
+
+        
+            
+<dt class="name" id="crop">
+    <h4>#crop</h4>
+
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        <p>This is the area of the BaseTexture image to actually copy to the Canvas / WebGL when rendering,
+irrespective of the actual frame size or placement (which can be influenced by trimmed texture atlases)</p>
+    </div>
+    
+
+    
+        <h5>Type: 
+<span class="param-type">Rectangle</span>
+
+</h5>
+    
+
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+</dd>
+
+        
+            
+<dt class="name" id="height">
+    <h4>#height</h4>
+
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        <p>The height of the Texture in pixels.</p>
+    </div>
+    
+
+    
+        <h5>Type: 
+<span class="param-type">number</span>
+
+</h5>
+    
+
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+</dd>
+
+        
+            
+<dt class="name" id="noFrame">
+    <h4>#noFrame</h4>
+
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        <p>Does this Texture have any frame data assigned to it?</p>
+    </div>
+    
+
+    
+        <h5>Type: 
+<span class="param-type">boolean</span>
+
+</h5>
+    
+
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+</dd>
+
+        
+            
+<dt class="name" id="requiresUpdate">
+    <h4>#requiresUpdate</h4>
+
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        <p>This will let a renderer know that a texture has been updated (used mainly for webGL uv updates)</p>
+    </div>
+    
+
+    
+        <h5>Type: 
+<span class="param-type">boolean</span>
+
+</h5>
+    
+
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+</dd>
+
+        
+            
+<dt class="name" id="trim">
+    <h4>#trim</h4>
+
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        <p>The texture trim data.</p>
+    </div>
+    
+
+    
+        <h5>Type: 
+<span class="param-type">Rectangle</span>
+
+</h5>
+    
+
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+</dd>
+
+        
+            
+<dt class="name" id="valid">
+    <h4>#valid</h4>
+
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        <p>This will let the renderer know if the texture is valid. If it's not then it cannot be rendered.</p>
+    </div>
+    
+
+    
+        <h5>Type: 
+<span class="param-type">boolean</span>
+
+</h5>
+    
+
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+</dd>
+
+        
+            
+<dt class="name" id="width">
+    <h4>#width</h4>
+
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        <p>The width of the Texture in pixels.</p>
+    </div>
+    
+
+    
+        <h5>Type: 
+<span class="param-type">number</span>
+
+</h5>
+    
+
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+</dd>
+
+        </dl>
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        <dl>
+            
+<dt>
+    <h4 class="name" id=".addTextureToCache">.addTextureToCache(texture, id)</h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Adds a texture to the global utils.TextureCache. This cache is shared across the whole PIXI object.</p>
+    </div>
+    
+
+    
+
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>texture</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Texture</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The Texture to add to the cache.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The id that the texture will be stored against.</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+
+    
+    
+    
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id=".fromCanvas">.fromCanvas(canvas, scaleMode)</h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Helper function that creates a new Texture based on the given canvas element.</p>
+    </div>
+    
+
+    
+
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>canvas</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Canvas</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The canvas element source of the texture</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>scaleMode</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>See {{#crossLink &quot;PIXI/scaleModes:property&quot;}}scaleModes{{/crossLink}} for possible values</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+
+    
+    
+    
+
+    
+    
+<h5>Returns: 
+<span class="param-type">Texture</span>
+
+</h5>
+    
+            
+
+        
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id=".fromFrame">.fromFrame(frameId)</h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Helper function that creates a sprite that will contain a texture from the TextureCache based on the frameId
+The frame ids are created when a Texture packer file has been loaded</p>
+    </div>
+    
+
+    
+
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>frameId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The frame Id of the texture in the cache</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+
+    
+    
+    
+
+    
+    
+<h5>Returns: 
+<span class="param-type">Texture</span>
+
+</h5>
+    
+            <div class="param-desc">
+    		<p>The newly created texture</p>
+	</div>
+
+        
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id=".fromImage">.fromImage(imageUrl, crossorigin, scaleMode)</h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Helper function that creates a Texture object from the given image url.
+If the image is not in the texture cache it will be  created and loaded.</p>
+    </div>
+    
+
+    
+
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>imageUrl</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The image url of the texture</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>crossorigin</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Whether requests should be treated as crossorigin</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>scaleMode</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>See {{#crossLink &quot;PIXI/scaleModes:property&quot;}}scaleModes{{/crossLink}} for possible values</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+
+    
+    
+    
+
+    
+    
+<h5>Returns: 
+<span class="param-type">Texture</span>
+
+</h5>
+    
+            <div class="param-desc">
+    		<p>The newly created texture</p>
+	</div>
+
+        
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id=".fromVideo">.fromVideo(video, scaleMode)</h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Helper function that creates a new Texture based on the given video element.</p>
+    </div>
+    
+
+    
+
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>video</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">HTMLVideoElement</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>scaleMode</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>See {{#crossLink &quot;PIXI/scaleModes:property&quot;}}scaleModes{{/crossLink}} for possible values</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+
+    
+    
+    
+
+    
+    
+<h5>Returns: 
+<span class="param-type">Texture</span>
+
+</h5>
+    
+            <div class="param-desc">
+    		<p>A Texture</p>
+	</div>
+
+        
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id=".fromVideoUrl">.fromVideoUrl(videoUrl, scaleMode)</h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Helper function that creates a new Texture based on the video url.</p>
+    </div>
+    
+
+    
+
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>videoUrl</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>scaleMode</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>See {SCALE_MODES} for possible values</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+
+    
+    
+    
+
+    
+    
+<h5>Returns: 
+<span class="param-type">Texture</span>
+
+</h5>
+    
+            <div class="param-desc">
+    		<p>A Texture</p>
+	</div>
+
+        
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id=".removeTextureFromCache">.removeTextureFromCache(id)</h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Remove a texture from the global utils.TextureCache.</p>
+    </div>
+    
+
+    
+
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The id of the texture to be removed</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+
+    
+    
+    
+
+    
+    
+<h5>Returns: 
+<span class="param-type">Texture</span>
+
+</h5>
+    
+            <div class="param-desc">
+    		<p>The texture that was removed</p>
+	</div>
+
+        
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="destroy">#destroy(destroyBase)</h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Destroys this texture</p>
+    </div>
+    
+
+    
+
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>destroyBase</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Whether to destroy the base texture as well</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+
+    
+    
+    
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="update">#update()</h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Updates this texture on the gpu.</p>
+    </div>
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+
+    
+    
+    
+
+    
+    
+    
+</dd>
+
+        </dl>
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+		</div>
+	</div>
+
+	<div class="clearfix"></div>
+
+	
+		<div class="col-md-3">
+			<div id="toc" class="col-md-3"></div>
+		</div>
+	
+
+</div>
+</div>
+
+
+<footer>
+
+	Made with ♥ by <a href='http://goodboydigital.com'>Goodboy Digital</a>
+
+
+	<span class="copyright">
+	PIXI Copyright © 2013-2015 Mat Groves.
+	</span>
+
+<span class="jsdoc-message">
+	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-beta2</a>
+	on 2015-03-24T07:37:15-07:00 using the <a
+	href="https://github.com/terryweiss/docstrap">DocStrap template</a>.
+</span>
+</footer>
+
+<!--<script src="scripts/sunlight.js"></script>-->
+<script src="scripts/docstrap.lib.js"></script>
+<script src="scripts/bootstrap-dropdown.js"></script>
+<script src="scripts/toc.js"></script>
+
+<script>
+$( function () {
+	$( "[id*='$']" ).each( function () {
+		var $this = $( this );
+
+		$this.attr( "id", $this.attr( "id" ).replace( "$", "__" ) );
+	} );
+
+	$( "#toc" ).toc( {
+		anchorName  : function ( i, heading, prefix ) {
+			return $( heading ).attr( "id" ) || ( prefix + i );
+		},
+		selectors   : "h1,h2,h3,h4",
+		showAndHide : false,
+		scrollTo    : "100px"
+	} );
+
+	$( "#toc>ul" ).addClass( "nav nav-pills nav-stacked" );
+	$( "#main span[id^='toc']" ).addClass( "toc-shim" );
+	$( '.dropdown-toggle' ).dropdown();
+	//			$( ".tutorial-section pre, .readme-section pre" ).addClass( "sunlight-highlight-javascript" ).addClass( "linenums" );
+
+	$( ".tutorial-section pre, .readme-section pre" ).each( function () {
+		var $this = $( this );
+
+		var example = $this.find( "code" );
+		exampleText = example.html();
+		var lang = /{@lang (.*?)}/.exec( exampleText );
+		if ( lang && lang[1] ) {
+			exampleText = exampleText.replace( lang[0], "" );
+			example.html( exampleText );
+			lang = lang[1];
+		} else {
+			lang = "javascript";
+		}
+
+		if ( lang ) {
+
+			$this
+			.addClass( "sunlight-highlight-" + lang )
+			.addClass( "linenums" )
+			.html( example.html() );
+
+		}
+	} );
+
+	Sunlight.highlightAll( {
+		lineNumbers : true,
+		showMenu : true,
+		enableDoclinks : true
+	} );
+} );
+</script>
+
+
+
+<!--Navigation and Symbol Display-->
+
+
+<!--Google Analytics-->
+
+
+</body>
+</html>

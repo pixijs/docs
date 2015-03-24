@@ -1,0 +1,3002 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>PIXI Namespace: PIXI</title>
+
+	<!--[if lt IE 9]>
+	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<link type="text/css" rel="stylesheet" href="styles/sunlight.default.css">
+
+	<link type="text/css" rel="stylesheet" href="styles/site.cerulean.css">
+
+</head>
+
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top navbar-inverse">
+<div class="container">
+	<div class="navbar-header">
+		<a class="navbar-brand" href="index.html">PIXI</a>
+	</div>
+	<div class="navbar-collapse">
+		<ul class="nav navbar-nav">
+			
+			<li class="dropdown">
+				<a href="namespaces.list.html" class="dropdown-toggle" data-toggle="dropdown">Namespaces<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="PIXI.html">PIXI</a></li><li><a href="PIXI.extras.html">PIXI.extras</a></li><li><a href="PIXI.filters.html">PIXI.filters</a></li><li><a href="PIXI.interaction.html">PIXI.interaction</a></li><li><a href="PIXI.loaders.html">PIXI.loaders</a></li><li><a href="PIXI.mesh.html">PIXI.mesh</a></li><li><a href="PIXI.spine.html">PIXI.spine</a></li><li><a href="PIXI.utils.html">PIXI.utils</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="classes.list.html" class="dropdown-toggle" data-toggle="dropdown">Classes<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="PIXI.AbstractFilter.html">PIXI.AbstractFilter</a></li><li><a href="PIXI.AssetLoader.html">PIXI.AssetLoader</a></li><li><a href="PIXI.BaseTexture.html">PIXI.BaseTexture</a></li><li><a href="PIXI.BlendModeManager.html">PIXI.BlendModeManager</a></li><li><a href="PIXI.CanvasBuffer.html">PIXI.CanvasBuffer</a></li><li><a href="PIXI.CanvasMaskManager.html">PIXI.CanvasMaskManager</a></li><li><a href="PIXI.CanvasRenderer.html">PIXI.CanvasRenderer</a></li><li><a href="PIXI.Circle.html">PIXI.Circle</a></li><li><a href="PIXI.ComplexPrimitiveShader.html">PIXI.ComplexPrimitiveShader</a></li><li><a href="PIXI.Container.html">PIXI.Container</a></li><li><a href="PIXI.DisplayObject.html">PIXI.DisplayObject</a></li><li><a href="PIXI.DisplayObjectContainer.html">PIXI.DisplayObjectContainer</a></li><li><a href="PIXI.Ellipse.html">PIXI.Ellipse</a></li><li><a href="PIXI.extras.BitmapText.html">PIXI.extras.BitmapText</a></li><li><a href="PIXI.extras.MovieClip.html">PIXI.extras.MovieClip</a></li><li><a href="PIXI.extras.Ticker.html">PIXI.extras.Ticker</a></li><li><a href="PIXI.extras.TilingSprite.html">PIXI.extras.TilingSprite</a></li><li><a href="PIXI.FilterManager.html">PIXI.FilterManager</a></li><li><a href="PIXI.filters.AsciiFilter.html">PIXI.filters.AsciiFilter</a></li><li><a href="PIXI.filters.BloomFilter.html">PIXI.filters.BloomFilter</a></li><li><a href="PIXI.filters.BlurFilter.html">PIXI.filters.BlurFilter</a></li><li><a href="PIXI.filters.BlurXFilter.html">PIXI.filters.BlurXFilter</a></li><li><a href="PIXI.filters.BlurYFilter.html">PIXI.filters.BlurYFilter</a></li><li><a href="PIXI.filters.BlurYTintFilter.html">PIXI.filters.BlurYTintFilter</a></li><li><a href="PIXI.filters.ColorMatrixFilter.html">PIXI.filters.ColorMatrixFilter</a></li><li><a href="PIXI.filters.ColorStepFilter.html">PIXI.filters.ColorStepFilter</a></li><li><a href="PIXI.filters.ConvolutionFilter.html">PIXI.filters.ConvolutionFilter</a></li><li><a href="PIXI.filters.CrossHatchFilter.html">PIXI.filters.CrossHatchFilter</a></li><li><a href="PIXI.filters.DotScreenFilter.html">PIXI.filters.DotScreenFilter</a></li><li><a href="PIXI.filters.DropShadowFilter.html">PIXI.filters.DropShadowFilter</a></li><li><a href="PIXI.filters.GrayFilter.html">PIXI.filters.GrayFilter</a></li><li><a href="PIXI.filters.InvertFilter.html">PIXI.filters.InvertFilter</a></li><li><a href="PIXI.filters.NoiseFilter.html">PIXI.filters.NoiseFilter</a></li><li><a href="PIXI.filters.NormalMapFilter.html">PIXI.filters.NormalMapFilter</a></li><li><a href="PIXI.filters.PixelateFilter.html">PIXI.filters.PixelateFilter</a></li><li><a href="PIXI.filters.SepiaFilter.html">PIXI.filters.SepiaFilter</a></li><li><a href="PIXI.filters.ShockwaveFilter.html">PIXI.filters.ShockwaveFilter</a></li><li><a href="PIXI.filters.SmartBlurFilter.html">PIXI.filters.SmartBlurFilter</a></li><li><a href="PIXI.filters.TiltShiftAxisFilter.html">PIXI.filters.TiltShiftAxisFilter</a></li><li><a href="PIXI.filters.TiltShiftFilter.html">PIXI.filters.TiltShiftFilter</a></li><li><a href="PIXI.filters.TiltShiftXFilter.html">PIXI.filters.TiltShiftXFilter</a></li><li><a href="PIXI.filters.TiltShiftYFilter.html">PIXI.filters.TiltShiftYFilter</a></li><li><a href="PIXI.filters.TwistFilter.html">PIXI.filters.TwistFilter</a></li><li><a href="PIXI.FXAAFilter.html">PIXI.FXAAFilter</a></li><li><a href="PIXI.Graphics.html">PIXI.Graphics</a></li><li><a href="PIXI.GraphicsData.html">PIXI.GraphicsData</a></li><li><a href="PIXI.interaction.InteractionData.html">PIXI.interaction.InteractionData</a></li><li><a href="PIXI.interaction.InteractionManager.html">PIXI.interaction.InteractionManager</a></li><li><a href="PIXI.loaders.Loader.html">PIXI.loaders.Loader</a></li><li><a href="PIXI.MaskManager.html">PIXI.MaskManager</a></li><li><a href="PIXI.Matrix.html">PIXI.Matrix</a></li><li><a href="PIXI.mesh.Mesh.html">PIXI.mesh.Mesh</a></li><li><a href="PIXI.mesh.Rope.html">PIXI.mesh.Rope</a></li><li><a href="PIXI.mesh.StripShader.html">PIXI.mesh.StripShader</a></li><li><a href="PIXI.ObjectRenderer.html">PIXI.ObjectRenderer</a></li><li><a href="PIXI.ParticleContainer.html">PIXI.ParticleContainer</a></li><li><a href="PIXI.ParticleShader.html">PIXI.ParticleShader</a></li><li><a href="PIXI.Point.html">PIXI.Point</a></li><li><a href="PIXI.Polygon.html">PIXI.Polygon</a></li><li><a href="PIXI.PrimitiveShader.html">PIXI.PrimitiveShader</a></li><li><a href="PIXI.Quad.html">PIXI.Quad</a></li><li><a href="PIXI.Rectangle.html">PIXI.Rectangle</a></li><li><a href="PIXI.RenderTarget.html">PIXI.RenderTarget</a></li><li><a href="PIXI.RenderTexture.html">PIXI.RenderTexture</a></li><li><a href="PIXI.RoundedRectangle.html">PIXI.RoundedRectangle</a></li><li><a href="PIXI.Shader.html">PIXI.Shader</a></li><li><a href="PIXI.ShaderManager.html">PIXI.ShaderManager</a></li><li><a href="PIXI.spine.Spine.html">PIXI.spine.Spine</a></li><li><a href="PIXI.Sprite.html">PIXI.Sprite</a></li><li><a href="PIXI.SpriteBatch.html">PIXI.SpriteBatch</a></li><li><a href="PIXI.SpriteMaskFilter.html">PIXI.SpriteMaskFilter</a></li><li><a href="PIXI.Stage.html">PIXI.Stage</a></li><li><a href="PIXI.StencilMaskStack.html">PIXI.StencilMaskStack</a></li><li><a href="PIXI.Strip.html">PIXI.Strip</a></li><li><a href="PIXI.SystemRenderer.html">PIXI.SystemRenderer</a></li><li><a href="PIXI.Text.html">PIXI.Text</a></li><li><a href="PIXI.Texture.html">PIXI.Texture</a></li><li><a href="PIXI.TextureShader.html">PIXI.TextureShader</a></li><li><a href="PIXI.VideoBaseTexture.html">PIXI.VideoBaseTexture</a></li><li><a href="PIXI.WebGLManager.html">PIXI.WebGLManager</a></li><li><a href="PIXI.WebGLMaskManager.html">PIXI.WebGLMaskManager</a></li><li><a href="PIXI.WebGLRenderer.html">PIXI.WebGLRenderer</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="mixins.list.html" class="dropdown-toggle" data-toggle="dropdown">Mixins<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="PIXI.interaction.module.exports.html">PIXI.interaction.module.exports</a></li><li><a href="PIXI.utils.pluginTarget.html">PIXI.utils.pluginTarget</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="events.list.html" class="dropdown-toggle" data-toggle="dropdown">Events<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="BaseTexture.html#event:error">BaseTexture#event:error</a></li><li><a href="BaseTexture.html#event:loaded">BaseTexture#event:loaded</a></li><li><a href="PIXI.VideoBaseTexture.html#event:error">PIXI.VideoBaseTexture#event:error</a></li><li><a href="PIXI.VideoBaseTexture.html#event:loaded">PIXI.VideoBaseTexture#event:loaded</a></li>
+				</ul>
+			</li>
+			
+		</ul>
+	</div>
+</div>
+</div>
+
+
+<div class="container">
+<div class="row">
+
+	
+	<div class="col-md-8">
+	
+		<div id="main">
+    		
+
+	<h1 class="page-title">Namespace: PIXI</h1>
+<section>
+
+<header>
+    
+        <h2>
+        PIXI
+        </h2>
+        
+    
+</header>
+
+
+<article>
+    <div class="container-overview">
+    
+        
+
+        
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+        
+    
+    </div>
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Classes</h3>
+
+        <dl>
+            <dt><a href="PIXI.AbstractFilter.html">AbstractFilter</a></dt>
+            <dd></dd>
+        
+            <dt><a href="PIXI.AssetLoader.html">AssetLoader</a></dt>
+            <dd></dd>
+        
+            <dt><a href="PIXI.BaseTexture.html">BaseTexture</a></dt>
+            <dd></dd>
+        
+            <dt><a href="PIXI.BlendModeManager.html">BlendModeManager</a></dt>
+            <dd></dd>
+        
+            <dt><a href="PIXI.CanvasBuffer.html">CanvasBuffer</a></dt>
+            <dd></dd>
+        
+            <dt><a href="PIXI.CanvasMaskManager.html">CanvasMaskManager</a></dt>
+            <dd></dd>
+        
+            <dt><a href="PIXI.CanvasRenderer.html">CanvasRenderer</a></dt>
+            <dd></dd>
+        
+            <dt><a href="PIXI.Circle.html">Circle</a></dt>
+            <dd></dd>
+        
+            <dt><a href="PIXI.ComplexPrimitiveShader.html">ComplexPrimitiveShader</a></dt>
+            <dd></dd>
+        
+            <dt><a href="PIXI.Container.html">Container</a></dt>
+            <dd></dd>
+        
+            <dt><a href="PIXI.DisplayObject.html">DisplayObject</a></dt>
+            <dd></dd>
+        
+            <dt><a href="PIXI.DisplayObjectContainer.html">DisplayObjectContainer</a></dt>
+            <dd></dd>
+        
+            <dt><a href="PIXI.Ellipse.html">Ellipse</a></dt>
+            <dd></dd>
+        
+            <dt><a href="PIXI.FilterManager.html">FilterManager</a></dt>
+            <dd></dd>
+        
+            <dt><a href="PIXI.FXAAFilter.html">FXAAFilter</a></dt>
+            <dd></dd>
+        
+            <dt><a href="PIXI.Graphics.html">Graphics</a></dt>
+            <dd></dd>
+        
+            <dt><a href="PIXI.GraphicsData.html">GraphicsData</a></dt>
+            <dd></dd>
+        
+            <dt><a href="PIXI.MaskManager.html">MaskManager</a></dt>
+            <dd></dd>
+        
+            <dt><a href="PIXI.Matrix.html">Matrix</a></dt>
+            <dd></dd>
+        
+            <dt><a href="PIXI.ObjectRenderer.html">ObjectRenderer</a></dt>
+            <dd></dd>
+        
+            <dt><a href="PIXI.ParticleContainer.html">ParticleContainer</a></dt>
+            <dd></dd>
+        
+            <dt><a href="PIXI.ParticleShader.html">ParticleShader</a></dt>
+            <dd></dd>
+        
+            <dt><a href="PIXI.Point.html">Point</a></dt>
+            <dd></dd>
+        
+            <dt><a href="PIXI.Polygon.html">Polygon</a></dt>
+            <dd></dd>
+        
+            <dt><a href="PIXI.PrimitiveShader.html">PrimitiveShader</a></dt>
+            <dd></dd>
+        
+            <dt><a href="PIXI.Quad.html">Quad</a></dt>
+            <dd></dd>
+        
+            <dt><a href="PIXI.Rectangle.html">Rectangle</a></dt>
+            <dd></dd>
+        
+            <dt><a href="PIXI.RenderTarget.html">RenderTarget</a></dt>
+            <dd></dd>
+        
+            <dt><a href="PIXI.RenderTexture.html">RenderTexture</a></dt>
+            <dd></dd>
+        
+            <dt><a href="PIXI.RoundedRectangle.html">RoundedRectangle</a></dt>
+            <dd></dd>
+        
+            <dt><a href="PIXI.Shader.html">Shader</a></dt>
+            <dd></dd>
+        
+            <dt><a href="PIXI.ShaderManager.html">ShaderManager</a></dt>
+            <dd></dd>
+        
+            <dt><a href="PIXI.Sprite.html">Sprite</a></dt>
+            <dd></dd>
+        
+            <dt><a href="PIXI.SpriteBatch.html">SpriteBatch</a></dt>
+            <dd></dd>
+        
+            <dt><a href="PIXI.SpriteMaskFilter.html">SpriteMaskFilter</a></dt>
+            <dd></dd>
+        
+            <dt><a href="PIXI.Stage.html">Stage</a></dt>
+            <dd></dd>
+        
+            <dt><a href="PIXI.StencilMaskStack.html">StencilMaskStack</a></dt>
+            <dd></dd>
+        
+            <dt><a href="PIXI.Strip.html">Strip</a></dt>
+            <dd></dd>
+        
+            <dt><a href="PIXI.SystemRenderer.html">SystemRenderer</a></dt>
+            <dd></dd>
+        
+            <dt><a href="PIXI.Text.html">Text</a></dt>
+            <dd></dd>
+        
+            <dt><a href="PIXI.Texture.html">Texture</a></dt>
+            <dd></dd>
+        
+            <dt><a href="PIXI.TextureShader.html">TextureShader</a></dt>
+            <dd></dd>
+        
+            <dt><a href="PIXI.VideoBaseTexture.html">VideoBaseTexture</a></dt>
+            <dd></dd>
+        
+            <dt><a href="PIXI.WebGLManager.html">WebGLManager</a></dt>
+            <dd></dd>
+        
+            <dt><a href="PIXI.WebGLMaskManager.html">WebGLMaskManager</a></dt>
+            <dd></dd>
+        
+            <dt><a href="PIXI.WebGLRenderer.html">WebGLRenderer</a></dt>
+            <dd></dd>
+        </dl>
+    
+
+    
+
+    
+        <h3 class="subsection-title">Namespaces</h3>
+
+        <dl>
+            <dt><a href="namespaces.html#PIXI.extras"><a href="PIXI.extras.html">extras</a></a></dt>
+            <dd></dd>
+        
+            <dt><a href="namespaces.html#PIXI.filters"><a href="PIXI.filters.html">filters</a></a></dt>
+            <dd></dd>
+        
+            <dt><a href="namespaces.html#PIXI.interaction"><a href="PIXI.interaction.html">interaction</a></a></dt>
+            <dd></dd>
+        
+            <dt><a href="namespaces.html#PIXI.loaders"><a href="PIXI.loaders.html">loaders</a></a></dt>
+            <dd></dd>
+        
+            <dt><a href="namespaces.html#PIXI.mesh"><a href="PIXI.mesh.html">mesh</a></a></dt>
+            <dd></dd>
+        
+            <dt><a href="namespaces.html#PIXI.spine"><a href="PIXI.spine.html">spine</a></a></dt>
+            <dd></dd>
+        
+            <dt><a href="namespaces.html#PIXI.utils"><a href="PIXI.utils.html">utils</a></a></dt>
+            <dd></dd>
+        </dl>
+    
+
+    
+        <h3 class="subsection-title">Members</h3>
+
+        <dl>
+            
+<dt class="name" id=".CanvasGraphics">
+    <h4>.CanvasGraphics</h4>
+
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        <p>A set of functions used by the canvas renderer to draw the primitive graphics data.</p>
+    </div>
+    
+
+    
+
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+</dd>
+
+        
+            
+<dt class="name" id=".CanvasTinter">
+    <h4>.CanvasTinter</h4>
+
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        <p>Utility methods for Sprite/Texture tinting.</p>
+    </div>
+    
+
+    
+
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+</dd>
+
+        
+            
+<dt class="name" id=".module.exports">
+    <h4>.module.exports</h4>
+
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        <p>Constant values used in pixi</p>
+    </div>
+    
+
+    
+
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+</dd>
+
+        </dl>
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        <dl>
+            
+<dt>
+    <h4 class="name" id=".autoDetectRenderer">.autoDetectRenderer(width, height, <span class="optional">options</span>, <span class="optional">noWebGL</span>)</h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>This helper function will automatically detect which renderer you should be using.
+WebGL is the preferred renderer as it is a lot faster. If webGL is not supported by
+the browser then this function will return a canvas renderer</p>
+    </div>
+    
+
+    
+
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+		<th>Argument</th>
+		
+
+		
+		<th>Default</th>
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>width</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    800
+                
+                </td>
+            
+
+            <td class="description last"><p>the width of the renderers view</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>height</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    600
+                
+                </td>
+            
+
+            <td class="description last"><p>the height of the renderers view</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>options</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last"><p>The optional renderer parameters</p>
+                <h6 class="method-params-label method-subparams-label">Properties</h6>
+                
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+		<th>Argument</th>
+		
+
+		
+		<th>Default</th>
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>view</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">HTMLCanvasElement</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last"><p>the canvas to use as a view, optional</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>transparent</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    false
+                
+                </td>
+            
+
+            <td class="description last"><p>If the render view is transparent, default false</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>antialias</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    false
+                
+                </td>
+            
+
+            <td class="description last"><p>sets antialias (only applicable in chrome at the moment)</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>preserveDrawingBuffer</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    false
+                
+                </td>
+            
+
+            <td class="description last"><p>enables drawing buffer preservation, enable this if you
+     need to call toDataUrl on the webgl context</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>resolution</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    1
+                
+                </td>
+            
+
+            <td class="description last"><p>the resolution of the renderer, retina would be 2</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+            </td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>noWebGL</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    false
+                
+                </td>
+            
+
+            <td class="description last"><p>prevents selection of WebGL renderer, even if such is present</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+
+    
+    
+    
+
+    
+    
+<h5>Returns: 
+<span class="param-type">WebGLRenderer</span>
+|
+
+<span class="param-type">CanvasRenderer</span>
+
+</h5>
+    
+            <div class="param-desc">
+    		<p>Returns WebGL renderer if available, otherwise CanvasRenderer</p>
+	</div>
+
+        
+    
+    
+</dd>
+
+        </dl>
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+	<h1 class="page-title">Namespace: PIXI</h1>
+<section>
+
+<header>
+    
+        <h2>
+        PIXI
+        </h2>
+        
+    
+</header>
+
+
+<article>
+    <div class="container-overview">
+    
+        
+            <div class="description"><p>The DisplacementFilter class uses the pixel values from the specified texture (called the displacement map) to perform a displacement of an object.
+You can use this filter to apply all manor of crazy warping effects
+Currently the r property of the texture is used to offset the x and the g property of the texture is used to offset the y.</p></div>
+        
+
+        
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+        
+    
+    </div>
+
+    
+        <h3 class="subsection-title">Extends</h3>
+
+        
+
+
+    <ul>
+        <li>AbstractFilter</li>
+    </ul>
+
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Classes</h3>
+
+        <dl>
+            <dt><a href="PIXI.AbstractFilter.html">AbstractFilter</a></dt>
+            <dd></dd>
+        
+            <dt><a href="PIXI.AssetLoader.html">AssetLoader</a></dt>
+            <dd></dd>
+        
+            <dt><a href="PIXI.BaseTexture.html">BaseTexture</a></dt>
+            <dd></dd>
+        
+            <dt><a href="PIXI.BlendModeManager.html">BlendModeManager</a></dt>
+            <dd></dd>
+        
+            <dt><a href="PIXI.CanvasBuffer.html">CanvasBuffer</a></dt>
+            <dd></dd>
+        
+            <dt><a href="PIXI.CanvasMaskManager.html">CanvasMaskManager</a></dt>
+            <dd></dd>
+        
+            <dt><a href="PIXI.CanvasRenderer.html">CanvasRenderer</a></dt>
+            <dd></dd>
+        
+            <dt><a href="PIXI.Circle.html">Circle</a></dt>
+            <dd></dd>
+        
+            <dt><a href="PIXI.ComplexPrimitiveShader.html">ComplexPrimitiveShader</a></dt>
+            <dd></dd>
+        
+            <dt><a href="PIXI.Container.html">Container</a></dt>
+            <dd></dd>
+        
+            <dt><a href="PIXI.DisplayObject.html">DisplayObject</a></dt>
+            <dd></dd>
+        
+            <dt><a href="PIXI.DisplayObjectContainer.html">DisplayObjectContainer</a></dt>
+            <dd></dd>
+        
+            <dt><a href="PIXI.Ellipse.html">Ellipse</a></dt>
+            <dd></dd>
+        
+            <dt><a href="PIXI.FilterManager.html">FilterManager</a></dt>
+            <dd></dd>
+        
+            <dt><a href="PIXI.FXAAFilter.html">FXAAFilter</a></dt>
+            <dd></dd>
+        
+            <dt><a href="PIXI.Graphics.html">Graphics</a></dt>
+            <dd></dd>
+        
+            <dt><a href="PIXI.GraphicsData.html">GraphicsData</a></dt>
+            <dd></dd>
+        
+            <dt><a href="PIXI.MaskManager.html">MaskManager</a></dt>
+            <dd></dd>
+        
+            <dt><a href="PIXI.Matrix.html">Matrix</a></dt>
+            <dd></dd>
+        
+            <dt><a href="PIXI.ObjectRenderer.html">ObjectRenderer</a></dt>
+            <dd></dd>
+        
+            <dt><a href="PIXI.ParticleContainer.html">ParticleContainer</a></dt>
+            <dd></dd>
+        
+            <dt><a href="PIXI.ParticleShader.html">ParticleShader</a></dt>
+            <dd></dd>
+        
+            <dt><a href="PIXI.Point.html">Point</a></dt>
+            <dd></dd>
+        
+            <dt><a href="PIXI.Polygon.html">Polygon</a></dt>
+            <dd></dd>
+        
+            <dt><a href="PIXI.PrimitiveShader.html">PrimitiveShader</a></dt>
+            <dd></dd>
+        
+            <dt><a href="PIXI.Quad.html">Quad</a></dt>
+            <dd></dd>
+        
+            <dt><a href="PIXI.Rectangle.html">Rectangle</a></dt>
+            <dd></dd>
+        
+            <dt><a href="PIXI.RenderTarget.html">RenderTarget</a></dt>
+            <dd></dd>
+        
+            <dt><a href="PIXI.RenderTexture.html">RenderTexture</a></dt>
+            <dd></dd>
+        
+            <dt><a href="PIXI.RoundedRectangle.html">RoundedRectangle</a></dt>
+            <dd></dd>
+        
+            <dt><a href="PIXI.Shader.html">Shader</a></dt>
+            <dd></dd>
+        
+            <dt><a href="PIXI.ShaderManager.html">ShaderManager</a></dt>
+            <dd></dd>
+        
+            <dt><a href="PIXI.Sprite.html">Sprite</a></dt>
+            <dd></dd>
+        
+            <dt><a href="PIXI.SpriteBatch.html">SpriteBatch</a></dt>
+            <dd></dd>
+        
+            <dt><a href="PIXI.SpriteMaskFilter.html">SpriteMaskFilter</a></dt>
+            <dd></dd>
+        
+            <dt><a href="PIXI.Stage.html">Stage</a></dt>
+            <dd></dd>
+        
+            <dt><a href="PIXI.StencilMaskStack.html">StencilMaskStack</a></dt>
+            <dd></dd>
+        
+            <dt><a href="PIXI.Strip.html">Strip</a></dt>
+            <dd></dd>
+        
+            <dt><a href="PIXI.SystemRenderer.html">SystemRenderer</a></dt>
+            <dd></dd>
+        
+            <dt><a href="PIXI.Text.html">Text</a></dt>
+            <dd></dd>
+        
+            <dt><a href="PIXI.Texture.html">Texture</a></dt>
+            <dd></dd>
+        
+            <dt><a href="PIXI.TextureShader.html">TextureShader</a></dt>
+            <dd></dd>
+        
+            <dt><a href="PIXI.VideoBaseTexture.html">VideoBaseTexture</a></dt>
+            <dd></dd>
+        
+            <dt><a href="PIXI.WebGLManager.html">WebGLManager</a></dt>
+            <dd></dd>
+        
+            <dt><a href="PIXI.WebGLMaskManager.html">WebGLMaskManager</a></dt>
+            <dd></dd>
+        
+            <dt><a href="PIXI.WebGLRenderer.html">WebGLRenderer</a></dt>
+            <dd></dd>
+        </dl>
+    
+
+    
+
+    
+        <h3 class="subsection-title">Namespaces</h3>
+
+        <dl>
+            <dt><a href="namespaces.html#PIXI.extras"><a href="PIXI.extras.html">extras</a></a></dt>
+            <dd></dd>
+        
+            <dt><a href="namespaces.html#PIXI.filters"><a href="PIXI.filters.html">filters</a></a></dt>
+            <dd></dd>
+        
+            <dt><a href="namespaces.html#PIXI.interaction"><a href="PIXI.interaction.html">interaction</a></a></dt>
+            <dd></dd>
+        
+            <dt><a href="namespaces.html#PIXI.loaders"><a href="PIXI.loaders.html">loaders</a></a></dt>
+            <dd></dd>
+        
+            <dt><a href="namespaces.html#PIXI.mesh"><a href="PIXI.mesh.html">mesh</a></a></dt>
+            <dd></dd>
+        
+            <dt><a href="namespaces.html#PIXI.spine"><a href="PIXI.spine.html">spine</a></a></dt>
+            <dd></dd>
+        
+            <dt><a href="namespaces.html#PIXI.utils"><a href="PIXI.utils.html">utils</a></a></dt>
+            <dd></dd>
+        </dl>
+    
+
+    
+        <h3 class="subsection-title">Members</h3>
+
+        <dl>
+            
+<dt class="name" id=".CanvasGraphics">
+    <h4>.CanvasGraphics</h4>
+
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        <p>A set of functions used by the canvas renderer to draw the primitive graphics data.</p>
+    </div>
+    
+
+    
+
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+</dd>
+
+        
+            
+<dt class="name" id=".CanvasTinter">
+    <h4>.CanvasTinter</h4>
+
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        <p>Utility methods for Sprite/Texture tinting.</p>
+    </div>
+    
+
+    
+
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+</dd>
+
+        
+            
+<dt class="name" id=".module.exports">
+    <h4>.module.exports</h4>
+
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        <p>Constant values used in pixi</p>
+    </div>
+    
+
+    
+
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+</dd>
+
+        </dl>
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        <dl>
+            
+<dt>
+    <h4 class="name" id=".autoDetectRenderer">.autoDetectRenderer(width, height, <span class="optional">options</span>, <span class="optional">noWebGL</span>)</h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>This helper function will automatically detect which renderer you should be using.
+WebGL is the preferred renderer as it is a lot faster. If webGL is not supported by
+the browser then this function will return a canvas renderer</p>
+    </div>
+    
+
+    
+
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+		<th>Argument</th>
+		
+
+		
+		<th>Default</th>
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>width</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    800
+                
+                </td>
+            
+
+            <td class="description last"><p>the width of the renderers view</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>height</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    600
+                
+                </td>
+            
+
+            <td class="description last"><p>the height of the renderers view</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>options</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last"><p>The optional renderer parameters</p>
+                <h6 class="method-params-label method-subparams-label">Properties</h6>
+                
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+		<th>Argument</th>
+		
+
+		
+		<th>Default</th>
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>view</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">HTMLCanvasElement</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last"><p>the canvas to use as a view, optional</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>transparent</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    false
+                
+                </td>
+            
+
+            <td class="description last"><p>If the render view is transparent, default false</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>antialias</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    false
+                
+                </td>
+            
+
+            <td class="description last"><p>sets antialias (only applicable in chrome at the moment)</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>preserveDrawingBuffer</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    false
+                
+                </td>
+            
+
+            <td class="description last"><p>enables drawing buffer preservation, enable this if you
+     need to call toDataUrl on the webgl context</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>resolution</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    1
+                
+                </td>
+            
+
+            <td class="description last"><p>the resolution of the renderer, retina would be 2</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+            </td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>noWebGL</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    false
+                
+                </td>
+            
+
+            <td class="description last"><p>prevents selection of WebGL renderer, even if such is present</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+
+    
+    
+    
+
+    
+    
+<h5>Returns: 
+<span class="param-type">WebGLRenderer</span>
+|
+
+<span class="param-type">CanvasRenderer</span>
+
+</h5>
+    
+            <div class="param-desc">
+    		<p>Returns WebGL renderer if available, otherwise CanvasRenderer</p>
+	</div>
+
+        
+    
+    
+</dd>
+
+        </dl>
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+	<h1 class="page-title">Namespace: PIXI</h1>
+<section>
+
+<header>
+    
+        <h2>
+        PIXI
+        </h2>
+        
+    
+</header>
+
+
+<article>
+    <div class="container-overview">
+    
+        
+            <div class="description"><p>An RGB Split Filter.</p></div>
+        
+
+        
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+        
+    
+    </div>
+
+    
+        <h3 class="subsection-title">Extends</h3>
+
+        
+
+
+    <ul>
+        <li>AbstractFilter</li>
+    </ul>
+
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Classes</h3>
+
+        <dl>
+            <dt><a href="PIXI.AbstractFilter.html">AbstractFilter</a></dt>
+            <dd></dd>
+        
+            <dt><a href="PIXI.AssetLoader.html">AssetLoader</a></dt>
+            <dd></dd>
+        
+            <dt><a href="PIXI.BaseTexture.html">BaseTexture</a></dt>
+            <dd></dd>
+        
+            <dt><a href="PIXI.BlendModeManager.html">BlendModeManager</a></dt>
+            <dd></dd>
+        
+            <dt><a href="PIXI.CanvasBuffer.html">CanvasBuffer</a></dt>
+            <dd></dd>
+        
+            <dt><a href="PIXI.CanvasMaskManager.html">CanvasMaskManager</a></dt>
+            <dd></dd>
+        
+            <dt><a href="PIXI.CanvasRenderer.html">CanvasRenderer</a></dt>
+            <dd></dd>
+        
+            <dt><a href="PIXI.Circle.html">Circle</a></dt>
+            <dd></dd>
+        
+            <dt><a href="PIXI.ComplexPrimitiveShader.html">ComplexPrimitiveShader</a></dt>
+            <dd></dd>
+        
+            <dt><a href="PIXI.Container.html">Container</a></dt>
+            <dd></dd>
+        
+            <dt><a href="PIXI.DisplayObject.html">DisplayObject</a></dt>
+            <dd></dd>
+        
+            <dt><a href="PIXI.DisplayObjectContainer.html">DisplayObjectContainer</a></dt>
+            <dd></dd>
+        
+            <dt><a href="PIXI.Ellipse.html">Ellipse</a></dt>
+            <dd></dd>
+        
+            <dt><a href="PIXI.FilterManager.html">FilterManager</a></dt>
+            <dd></dd>
+        
+            <dt><a href="PIXI.FXAAFilter.html">FXAAFilter</a></dt>
+            <dd></dd>
+        
+            <dt><a href="PIXI.Graphics.html">Graphics</a></dt>
+            <dd></dd>
+        
+            <dt><a href="PIXI.GraphicsData.html">GraphicsData</a></dt>
+            <dd></dd>
+        
+            <dt><a href="PIXI.MaskManager.html">MaskManager</a></dt>
+            <dd></dd>
+        
+            <dt><a href="PIXI.Matrix.html">Matrix</a></dt>
+            <dd></dd>
+        
+            <dt><a href="PIXI.ObjectRenderer.html">ObjectRenderer</a></dt>
+            <dd></dd>
+        
+            <dt><a href="PIXI.ParticleContainer.html">ParticleContainer</a></dt>
+            <dd></dd>
+        
+            <dt><a href="PIXI.ParticleShader.html">ParticleShader</a></dt>
+            <dd></dd>
+        
+            <dt><a href="PIXI.Point.html">Point</a></dt>
+            <dd></dd>
+        
+            <dt><a href="PIXI.Polygon.html">Polygon</a></dt>
+            <dd></dd>
+        
+            <dt><a href="PIXI.PrimitiveShader.html">PrimitiveShader</a></dt>
+            <dd></dd>
+        
+            <dt><a href="PIXI.Quad.html">Quad</a></dt>
+            <dd></dd>
+        
+            <dt><a href="PIXI.Rectangle.html">Rectangle</a></dt>
+            <dd></dd>
+        
+            <dt><a href="PIXI.RenderTarget.html">RenderTarget</a></dt>
+            <dd></dd>
+        
+            <dt><a href="PIXI.RenderTexture.html">RenderTexture</a></dt>
+            <dd></dd>
+        
+            <dt><a href="PIXI.RoundedRectangle.html">RoundedRectangle</a></dt>
+            <dd></dd>
+        
+            <dt><a href="PIXI.Shader.html">Shader</a></dt>
+            <dd></dd>
+        
+            <dt><a href="PIXI.ShaderManager.html">ShaderManager</a></dt>
+            <dd></dd>
+        
+            <dt><a href="PIXI.Sprite.html">Sprite</a></dt>
+            <dd></dd>
+        
+            <dt><a href="PIXI.SpriteBatch.html">SpriteBatch</a></dt>
+            <dd></dd>
+        
+            <dt><a href="PIXI.SpriteMaskFilter.html">SpriteMaskFilter</a></dt>
+            <dd></dd>
+        
+            <dt><a href="PIXI.Stage.html">Stage</a></dt>
+            <dd></dd>
+        
+            <dt><a href="PIXI.StencilMaskStack.html">StencilMaskStack</a></dt>
+            <dd></dd>
+        
+            <dt><a href="PIXI.Strip.html">Strip</a></dt>
+            <dd></dd>
+        
+            <dt><a href="PIXI.SystemRenderer.html">SystemRenderer</a></dt>
+            <dd></dd>
+        
+            <dt><a href="PIXI.Text.html">Text</a></dt>
+            <dd></dd>
+        
+            <dt><a href="PIXI.Texture.html">Texture</a></dt>
+            <dd></dd>
+        
+            <dt><a href="PIXI.TextureShader.html">TextureShader</a></dt>
+            <dd></dd>
+        
+            <dt><a href="PIXI.VideoBaseTexture.html">VideoBaseTexture</a></dt>
+            <dd></dd>
+        
+            <dt><a href="PIXI.WebGLManager.html">WebGLManager</a></dt>
+            <dd></dd>
+        
+            <dt><a href="PIXI.WebGLMaskManager.html">WebGLMaskManager</a></dt>
+            <dd></dd>
+        
+            <dt><a href="PIXI.WebGLRenderer.html">WebGLRenderer</a></dt>
+            <dd></dd>
+        </dl>
+    
+
+    
+
+    
+        <h3 class="subsection-title">Namespaces</h3>
+
+        <dl>
+            <dt><a href="namespaces.html#PIXI.extras"><a href="PIXI.extras.html">extras</a></a></dt>
+            <dd></dd>
+        
+            <dt><a href="namespaces.html#PIXI.filters"><a href="PIXI.filters.html">filters</a></a></dt>
+            <dd></dd>
+        
+            <dt><a href="namespaces.html#PIXI.interaction"><a href="PIXI.interaction.html">interaction</a></a></dt>
+            <dd></dd>
+        
+            <dt><a href="namespaces.html#PIXI.loaders"><a href="PIXI.loaders.html">loaders</a></a></dt>
+            <dd></dd>
+        
+            <dt><a href="namespaces.html#PIXI.mesh"><a href="PIXI.mesh.html">mesh</a></a></dt>
+            <dd></dd>
+        
+            <dt><a href="namespaces.html#PIXI.spine"><a href="PIXI.spine.html">spine</a></a></dt>
+            <dd></dd>
+        
+            <dt><a href="namespaces.html#PIXI.utils"><a href="PIXI.utils.html">utils</a></a></dt>
+            <dd></dd>
+        </dl>
+    
+
+    
+        <h3 class="subsection-title">Members</h3>
+
+        <dl>
+            
+<dt class="name" id=".CanvasGraphics">
+    <h4>.CanvasGraphics</h4>
+
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        <p>A set of functions used by the canvas renderer to draw the primitive graphics data.</p>
+    </div>
+    
+
+    
+
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+</dd>
+
+        
+            
+<dt class="name" id=".CanvasTinter">
+    <h4>.CanvasTinter</h4>
+
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        <p>Utility methods for Sprite/Texture tinting.</p>
+    </div>
+    
+
+    
+
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+</dd>
+
+        
+            
+<dt class="name" id=".module.exports">
+    <h4>.module.exports</h4>
+
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        <p>Constant values used in pixi</p>
+    </div>
+    
+
+    
+
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+</dd>
+
+        </dl>
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        <dl>
+            
+<dt>
+    <h4 class="name" id=".autoDetectRenderer">.autoDetectRenderer(width, height, <span class="optional">options</span>, <span class="optional">noWebGL</span>)</h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>This helper function will automatically detect which renderer you should be using.
+WebGL is the preferred renderer as it is a lot faster. If webGL is not supported by
+the browser then this function will return a canvas renderer</p>
+    </div>
+    
+
+    
+
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+		<th>Argument</th>
+		
+
+		
+		<th>Default</th>
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>width</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    800
+                
+                </td>
+            
+
+            <td class="description last"><p>the width of the renderers view</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>height</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    600
+                
+                </td>
+            
+
+            <td class="description last"><p>the height of the renderers view</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>options</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last"><p>The optional renderer parameters</p>
+                <h6 class="method-params-label method-subparams-label">Properties</h6>
+                
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+		<th>Argument</th>
+		
+
+		
+		<th>Default</th>
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>view</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">HTMLCanvasElement</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last"><p>the canvas to use as a view, optional</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>transparent</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    false
+                
+                </td>
+            
+
+            <td class="description last"><p>If the render view is transparent, default false</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>antialias</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    false
+                
+                </td>
+            
+
+            <td class="description last"><p>sets antialias (only applicable in chrome at the moment)</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>preserveDrawingBuffer</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    false
+                
+                </td>
+            
+
+            <td class="description last"><p>enables drawing buffer preservation, enable this if you
+     need to call toDataUrl on the webgl context</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>resolution</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    1
+                
+                </td>
+            
+
+            <td class="description last"><p>the resolution of the renderer, retina would be 2</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+            </td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>noWebGL</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    false
+                
+                </td>
+            
+
+            <td class="description last"><p>prevents selection of WebGL renderer, even if such is present</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+
+    
+    
+    
+
+    
+    
+<h5>Returns: 
+<span class="param-type">WebGLRenderer</span>
+|
+
+<span class="param-type">CanvasRenderer</span>
+
+</h5>
+    
+            <div class="param-desc">
+    		<p>Returns WebGL renderer if available, otherwise CanvasRenderer</p>
+	</div>
+
+        
+    
+    
+</dd>
+
+        </dl>
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+		</div>
+	</div>
+
+	<div class="clearfix"></div>
+
+	
+		<div class="col-md-3">
+			<div id="toc" class="col-md-3"></div>
+		</div>
+	
+
+</div>
+</div>
+
+
+<footer>
+
+	Made with ♥ by <a href='http://goodboydigital.com'>Goodboy Digital</a>
+
+
+	<span class="copyright">
+	PIXI Copyright © 2013-2015 Mat Groves.
+	</span>
+
+<span class="jsdoc-message">
+	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-beta2</a>
+	on 2015-03-24T07:37:13-07:00 using the <a
+	href="https://github.com/terryweiss/docstrap">DocStrap template</a>.
+</span>
+</footer>
+
+<!--<script src="scripts/sunlight.js"></script>-->
+<script src="scripts/docstrap.lib.js"></script>
+<script src="scripts/bootstrap-dropdown.js"></script>
+<script src="scripts/toc.js"></script>
+
+<script>
+$( function () {
+	$( "[id*='$']" ).each( function () {
+		var $this = $( this );
+
+		$this.attr( "id", $this.attr( "id" ).replace( "$", "__" ) );
+	} );
+
+	$( "#toc" ).toc( {
+		anchorName  : function ( i, heading, prefix ) {
+			return $( heading ).attr( "id" ) || ( prefix + i );
+		},
+		selectors   : "h1,h2,h3,h4",
+		showAndHide : false,
+		scrollTo    : "100px"
+	} );
+
+	$( "#toc>ul" ).addClass( "nav nav-pills nav-stacked" );
+	$( "#main span[id^='toc']" ).addClass( "toc-shim" );
+	$( '.dropdown-toggle' ).dropdown();
+	//			$( ".tutorial-section pre, .readme-section pre" ).addClass( "sunlight-highlight-javascript" ).addClass( "linenums" );
+
+	$( ".tutorial-section pre, .readme-section pre" ).each( function () {
+		var $this = $( this );
+
+		var example = $this.find( "code" );
+		exampleText = example.html();
+		var lang = /{@lang (.*?)}/.exec( exampleText );
+		if ( lang && lang[1] ) {
+			exampleText = exampleText.replace( lang[0], "" );
+			example.html( exampleText );
+			lang = lang[1];
+		} else {
+			lang = "javascript";
+		}
+
+		if ( lang ) {
+
+			$this
+			.addClass( "sunlight-highlight-" + lang )
+			.addClass( "linenums" )
+			.html( example.html() );
+
+		}
+	} );
+
+	Sunlight.highlightAll( {
+		lineNumbers : true,
+		showMenu : true,
+		enableDoclinks : true
+	} );
+} );
+</script>
+
+
+
+<!--Navigation and Symbol Display-->
+
+
+<!--Google Analytics-->
+
+
+</body>
+</html>

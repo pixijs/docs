@@ -1,0 +1,2673 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>PIXI Class: ColorMatrixFilter</title>
+
+	<!--[if lt IE 9]>
+	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<link type="text/css" rel="stylesheet" href="styles/sunlight.default.css">
+
+	<link type="text/css" rel="stylesheet" href="styles/site.cerulean.css">
+
+</head>
+
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top navbar-inverse">
+<div class="container">
+	<div class="navbar-header">
+		<a class="navbar-brand" href="index.html">PIXI</a>
+	</div>
+	<div class="navbar-collapse">
+		<ul class="nav navbar-nav">
+			
+			<li class="dropdown">
+				<a href="namespaces.list.html" class="dropdown-toggle" data-toggle="dropdown">Namespaces<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="PIXI.html">PIXI</a></li><li><a href="PIXI.extras.html">PIXI.extras</a></li><li><a href="PIXI.filters.html">PIXI.filters</a></li><li><a href="PIXI.interaction.html">PIXI.interaction</a></li><li><a href="PIXI.loaders.html">PIXI.loaders</a></li><li><a href="PIXI.mesh.html">PIXI.mesh</a></li><li><a href="PIXI.spine.html">PIXI.spine</a></li><li><a href="PIXI.utils.html">PIXI.utils</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="classes.list.html" class="dropdown-toggle" data-toggle="dropdown">Classes<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="PIXI.AbstractFilter.html">PIXI.AbstractFilter</a></li><li><a href="PIXI.AssetLoader.html">PIXI.AssetLoader</a></li><li><a href="PIXI.BaseTexture.html">PIXI.BaseTexture</a></li><li><a href="PIXI.BlendModeManager.html">PIXI.BlendModeManager</a></li><li><a href="PIXI.CanvasBuffer.html">PIXI.CanvasBuffer</a></li><li><a href="PIXI.CanvasMaskManager.html">PIXI.CanvasMaskManager</a></li><li><a href="PIXI.CanvasRenderer.html">PIXI.CanvasRenderer</a></li><li><a href="PIXI.Circle.html">PIXI.Circle</a></li><li><a href="PIXI.ComplexPrimitiveShader.html">PIXI.ComplexPrimitiveShader</a></li><li><a href="PIXI.Container.html">PIXI.Container</a></li><li><a href="PIXI.DisplayObject.html">PIXI.DisplayObject</a></li><li><a href="PIXI.DisplayObjectContainer.html">PIXI.DisplayObjectContainer</a></li><li><a href="PIXI.Ellipse.html">PIXI.Ellipse</a></li><li><a href="PIXI.extras.BitmapText.html">PIXI.extras.BitmapText</a></li><li><a href="PIXI.extras.MovieClip.html">PIXI.extras.MovieClip</a></li><li><a href="PIXI.extras.Ticker.html">PIXI.extras.Ticker</a></li><li><a href="PIXI.extras.TilingSprite.html">PIXI.extras.TilingSprite</a></li><li><a href="PIXI.FilterManager.html">PIXI.FilterManager</a></li><li><a href="PIXI.filters.AsciiFilter.html">PIXI.filters.AsciiFilter</a></li><li><a href="PIXI.filters.BloomFilter.html">PIXI.filters.BloomFilter</a></li><li><a href="PIXI.filters.BlurFilter.html">PIXI.filters.BlurFilter</a></li><li><a href="PIXI.filters.BlurXFilter.html">PIXI.filters.BlurXFilter</a></li><li><a href="PIXI.filters.BlurYFilter.html">PIXI.filters.BlurYFilter</a></li><li><a href="PIXI.filters.BlurYTintFilter.html">PIXI.filters.BlurYTintFilter</a></li><li><a href="PIXI.filters.ColorMatrixFilter.html">PIXI.filters.ColorMatrixFilter</a></li><li><a href="PIXI.filters.ColorStepFilter.html">PIXI.filters.ColorStepFilter</a></li><li><a href="PIXI.filters.ConvolutionFilter.html">PIXI.filters.ConvolutionFilter</a></li><li><a href="PIXI.filters.CrossHatchFilter.html">PIXI.filters.CrossHatchFilter</a></li><li><a href="PIXI.filters.DotScreenFilter.html">PIXI.filters.DotScreenFilter</a></li><li><a href="PIXI.filters.DropShadowFilter.html">PIXI.filters.DropShadowFilter</a></li><li><a href="PIXI.filters.GrayFilter.html">PIXI.filters.GrayFilter</a></li><li><a href="PIXI.filters.InvertFilter.html">PIXI.filters.InvertFilter</a></li><li><a href="PIXI.filters.NoiseFilter.html">PIXI.filters.NoiseFilter</a></li><li><a href="PIXI.filters.NormalMapFilter.html">PIXI.filters.NormalMapFilter</a></li><li><a href="PIXI.filters.PixelateFilter.html">PIXI.filters.PixelateFilter</a></li><li><a href="PIXI.filters.SepiaFilter.html">PIXI.filters.SepiaFilter</a></li><li><a href="PIXI.filters.ShockwaveFilter.html">PIXI.filters.ShockwaveFilter</a></li><li><a href="PIXI.filters.SmartBlurFilter.html">PIXI.filters.SmartBlurFilter</a></li><li><a href="PIXI.filters.TiltShiftAxisFilter.html">PIXI.filters.TiltShiftAxisFilter</a></li><li><a href="PIXI.filters.TiltShiftFilter.html">PIXI.filters.TiltShiftFilter</a></li><li><a href="PIXI.filters.TiltShiftXFilter.html">PIXI.filters.TiltShiftXFilter</a></li><li><a href="PIXI.filters.TiltShiftYFilter.html">PIXI.filters.TiltShiftYFilter</a></li><li><a href="PIXI.filters.TwistFilter.html">PIXI.filters.TwistFilter</a></li><li><a href="PIXI.FXAAFilter.html">PIXI.FXAAFilter</a></li><li><a href="PIXI.Graphics.html">PIXI.Graphics</a></li><li><a href="PIXI.GraphicsData.html">PIXI.GraphicsData</a></li><li><a href="PIXI.interaction.InteractionData.html">PIXI.interaction.InteractionData</a></li><li><a href="PIXI.interaction.InteractionManager.html">PIXI.interaction.InteractionManager</a></li><li><a href="PIXI.loaders.Loader.html">PIXI.loaders.Loader</a></li><li><a href="PIXI.MaskManager.html">PIXI.MaskManager</a></li><li><a href="PIXI.Matrix.html">PIXI.Matrix</a></li><li><a href="PIXI.mesh.Mesh.html">PIXI.mesh.Mesh</a></li><li><a href="PIXI.mesh.Rope.html">PIXI.mesh.Rope</a></li><li><a href="PIXI.mesh.StripShader.html">PIXI.mesh.StripShader</a></li><li><a href="PIXI.ObjectRenderer.html">PIXI.ObjectRenderer</a></li><li><a href="PIXI.ParticleContainer.html">PIXI.ParticleContainer</a></li><li><a href="PIXI.ParticleShader.html">PIXI.ParticleShader</a></li><li><a href="PIXI.Point.html">PIXI.Point</a></li><li><a href="PIXI.Polygon.html">PIXI.Polygon</a></li><li><a href="PIXI.PrimitiveShader.html">PIXI.PrimitiveShader</a></li><li><a href="PIXI.Quad.html">PIXI.Quad</a></li><li><a href="PIXI.Rectangle.html">PIXI.Rectangle</a></li><li><a href="PIXI.RenderTarget.html">PIXI.RenderTarget</a></li><li><a href="PIXI.RenderTexture.html">PIXI.RenderTexture</a></li><li><a href="PIXI.RoundedRectangle.html">PIXI.RoundedRectangle</a></li><li><a href="PIXI.Shader.html">PIXI.Shader</a></li><li><a href="PIXI.ShaderManager.html">PIXI.ShaderManager</a></li><li><a href="PIXI.spine.Spine.html">PIXI.spine.Spine</a></li><li><a href="PIXI.Sprite.html">PIXI.Sprite</a></li><li><a href="PIXI.SpriteBatch.html">PIXI.SpriteBatch</a></li><li><a href="PIXI.SpriteMaskFilter.html">PIXI.SpriteMaskFilter</a></li><li><a href="PIXI.Stage.html">PIXI.Stage</a></li><li><a href="PIXI.StencilMaskStack.html">PIXI.StencilMaskStack</a></li><li><a href="PIXI.Strip.html">PIXI.Strip</a></li><li><a href="PIXI.SystemRenderer.html">PIXI.SystemRenderer</a></li><li><a href="PIXI.Text.html">PIXI.Text</a></li><li><a href="PIXI.Texture.html">PIXI.Texture</a></li><li><a href="PIXI.TextureShader.html">PIXI.TextureShader</a></li><li><a href="PIXI.VideoBaseTexture.html">PIXI.VideoBaseTexture</a></li><li><a href="PIXI.WebGLManager.html">PIXI.WebGLManager</a></li><li><a href="PIXI.WebGLMaskManager.html">PIXI.WebGLMaskManager</a></li><li><a href="PIXI.WebGLRenderer.html">PIXI.WebGLRenderer</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="mixins.list.html" class="dropdown-toggle" data-toggle="dropdown">Mixins<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="PIXI.interaction.module.exports.html">PIXI.interaction.module.exports</a></li><li><a href="PIXI.utils.pluginTarget.html">PIXI.utils.pluginTarget</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="events.list.html" class="dropdown-toggle" data-toggle="dropdown">Events<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="BaseTexture.html#event:error">BaseTexture#event:error</a></li><li><a href="BaseTexture.html#event:loaded">BaseTexture#event:loaded</a></li><li><a href="PIXI.VideoBaseTexture.html#event:error">PIXI.VideoBaseTexture#event:error</a></li><li><a href="PIXI.VideoBaseTexture.html#event:loaded">PIXI.VideoBaseTexture#event:loaded</a></li>
+				</ul>
+			</li>
+			
+		</ul>
+	</div>
+</div>
+</div>
+
+
+<div class="container">
+<div class="row">
+
+	
+	<div class="col-md-8">
+	
+		<div id="main">
+    		
+
+	<h1 class="page-title">Class: ColorMatrixFilter</h1>
+<section>
+
+<header>
+    
+        <h2>
+            <span class="ancestors"><a href="PIXI.html">PIXI</a><a href="PIXI.filters.html">.filters</a>.</span>
+        
+        ColorMatrixFilter
+        </h2>
+        
+    
+</header>
+
+
+<article>
+    <div class="container-overview">
+    
+        
+<dt>
+    <h4 class="name" id="ColorMatrixFilter">new .ColorMatrixFilter()</h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>The ColorMatrixFilter class lets you apply a 5x5 matrix transformation on the RGBA
+color and alpha values of every pixel on your displayObject to produce a result
+with a new set of RGBA color and alpha values. It's pretty powerful!</p>
+<pre class="prettyprint source lang-js"><code> var colorMatrix = new PIXI.ColorMatrixFilter();
+ container.filters = [colorMatrix];
+ colorMatrix.contrast(2);</code></pre>
+    </div>
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+	<dt class="tag-author method-doc-label method-doc-details-label">Author:</dt>
+	<dd class="tag-author">
+		<ul>
+			<li><a href="mailto:clement@goodboydigital.com">Clément Chenebault</a></li>
+			</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+
+    
+    
+    
+
+    
+    
+    
+</dd>
+
+    
+    </div>
+
+    
+        <h3 class="subsection-title">Extends</h3>
+
+        
+
+
+    <ul>
+        <li>AbstractFilter</li>
+    </ul>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        <dl>
+            
+<dt>
+    <h4 class="name" id="_colorMatrix">#_colorMatrix(matrix)</h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Create a Float32 Array and normalize the offset component to 0-1</p>
+    </div>
+    
+
+    
+
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>matrix</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">array</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>(mat 5x5)</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+
+    
+    
+    
+
+    
+    
+<h5>Returns: 
+<span class="param-type">array</span>
+
+</h5>
+    
+            <div class="param-desc">
+    		<p>m  (mat 5x5) with all values between 0-1</p>
+	</div>
+
+        
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="_loadMatrix">#_loadMatrix(matrix, multiply)</h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Transforms current matrix and set the new one</p>
+    </div>
+    
+
+    
+
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>matrix</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">array</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>(mat 5x5)</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>multiply</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>if true, current matrix and matrix are multiplied. If false, just set the current matrix with @param matrix</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+
+    
+    
+    
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="_multiply">#_multiply(out, a, b)</h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Multiplies two mat5's</p>
+    </div>
+    
+
+    
+
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>out</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">array</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>(mat 5x5) the receiving matrix</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>a</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">array</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>(mat 5x5) the first operand</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>b</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">array</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>(mat 5x5) the second operand</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+
+    
+    
+    
+
+    
+    
+<h5>Returns: 
+<span class="param-type">array</span>
+
+</h5>
+    
+            <div class="param-desc">
+    		<p>out  (mat 5x5)</p>
+	</div>
+
+        
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="blackAndWhite">#blackAndWhite(multiply)</h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Set the black and white matrice
+Multiply the current matrix</p>
+    </div>
+    
+
+    
+
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>multiply</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>refer to ._loadMatrix() method</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+
+    
+    
+    
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="brightness">#brightness(b, multiply)</h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Adjusts brightness</p>
+<p>Multiply the current matrix</p>
+    </div>
+    
+
+    
+
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>b</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>value of the brigthness (0 is black)</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>multiply</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>refer to ._loadMatrix() method</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+
+    
+    
+    
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="browni">#browni(multiply)</h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Brown delicious browni filter (thanks Dominic Szablewski)</p>
+    </div>
+    
+
+    
+
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>multiply</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>refer to ._loadMatrix() method</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+
+    
+    
+    
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="contrast">#contrast(amount, multiply)</h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Set the contrast matrix, increase the separation between dark and bright
+Increase contrast : shadows darker and highlights brighter
+Decrease contrast : bring the shadows up and the highlights down</p>
+    </div>
+    
+
+    
+
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>amount</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>value of the contrast</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>multiply</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>refer to ._loadMatrix() method</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+
+    
+    
+    
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="desaturate">#desaturate(multiply)</h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Desaturate image (remove color)</p>
+<p>Call the saturate function</p>
+    </div>
+    
+
+    
+
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>multiply</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>refer to ._loadMatrix() method</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+
+    
+    
+    
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="greyscale">#greyscale(scale, multiply)</h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Set the matrices in grey scales</p>
+<p>Multiply the current matrix</p>
+    </div>
+    
+
+    
+
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>scale</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>value of the grey (0 is black)</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>multiply</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>refer to ._loadMatrix() method</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+
+    
+    
+    
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="hue">#hue(rotation, multiply)</h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Set the hue propertie of the color</p>
+<p>Multiply the current matrix</p>
+    </div>
+    
+
+    
+
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>rotation</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>in degrees</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>multiply</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>refer to ._loadMatrix() method</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+
+    
+    
+    
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="kodachrome">#kodachrome(multiply)</h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Color reversal film introduced by Eastman Kodak in 1935. (thanks Dominic Szablewski)</p>
+    </div>
+    
+
+    
+
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>multiply</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>refer to ._loadMatrix() method</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+
+    
+    
+    
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="negative">#negative(multiply)</h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Negative image (inverse of classic rgb matrix)</p>
+    </div>
+    
+
+    
+
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>multiply</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>refer to ._loadMatrix() method</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+
+    
+    
+    
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="polaroid">#polaroid(multiply)</h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Polaroid filter</p>
+    </div>
+    
+
+    
+
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>multiply</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>refer to ._loadMatrix() method</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+
+    
+    
+    
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="saturation">#saturation(amount, multiply)</h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Set the saturation matrix, increase the separation between colors
+Increase saturation : increase contrast, brightness, and sharpness</p>
+    </div>
+    
+
+    
+
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>amount</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>multiply</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>refer to ._loadMatrix() method</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+
+    
+    
+    
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="sepia">#sepia(multiply)</h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Sepia image</p>
+    </div>
+    
+
+    
+
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>multiply</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>refer to ._loadMatrix() method</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+
+    
+    
+    
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="technicolor">#technicolor(multiply)</h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Color motion picture process invented in 1916 (thanks Dominic Szablewski)</p>
+    </div>
+    
+
+    
+
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>multiply</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>refer to ._loadMatrix() method</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+
+    
+    
+    
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="toBGR">#toBGR(multiply)</h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Filter who transforms : Red -&gt; Blue and Blue -&gt; Red</p>
+    </div>
+    
+
+    
+
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>multiply</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>refer to ._loadMatrix() method</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+
+    
+    
+    
+
+    
+    
+    
+</dd>
+
+        </dl>
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+		</div>
+	</div>
+
+	<div class="clearfix"></div>
+
+	
+		<div class="col-md-3">
+			<div id="toc" class="col-md-3"></div>
+		</div>
+	
+
+</div>
+</div>
+
+
+<footer>
+
+	Made with ♥ by <a href='http://goodboydigital.com'>Goodboy Digital</a>
+
+
+	<span class="copyright">
+	PIXI Copyright © 2013-2015 Mat Groves.
+	</span>
+
+<span class="jsdoc-message">
+	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-beta2</a>
+	on 2015-03-24T07:37:14-07:00 using the <a
+	href="https://github.com/terryweiss/docstrap">DocStrap template</a>.
+</span>
+</footer>
+
+<!--<script src="scripts/sunlight.js"></script>-->
+<script src="scripts/docstrap.lib.js"></script>
+<script src="scripts/bootstrap-dropdown.js"></script>
+<script src="scripts/toc.js"></script>
+
+<script>
+$( function () {
+	$( "[id*='$']" ).each( function () {
+		var $this = $( this );
+
+		$this.attr( "id", $this.attr( "id" ).replace( "$", "__" ) );
+	} );
+
+	$( "#toc" ).toc( {
+		anchorName  : function ( i, heading, prefix ) {
+			return $( heading ).attr( "id" ) || ( prefix + i );
+		},
+		selectors   : "h1,h2,h3,h4",
+		showAndHide : false,
+		scrollTo    : "100px"
+	} );
+
+	$( "#toc>ul" ).addClass( "nav nav-pills nav-stacked" );
+	$( "#main span[id^='toc']" ).addClass( "toc-shim" );
+	$( '.dropdown-toggle' ).dropdown();
+	//			$( ".tutorial-section pre, .readme-section pre" ).addClass( "sunlight-highlight-javascript" ).addClass( "linenums" );
+
+	$( ".tutorial-section pre, .readme-section pre" ).each( function () {
+		var $this = $( this );
+
+		var example = $this.find( "code" );
+		exampleText = example.html();
+		var lang = /{@lang (.*?)}/.exec( exampleText );
+		if ( lang && lang[1] ) {
+			exampleText = exampleText.replace( lang[0], "" );
+			example.html( exampleText );
+			lang = lang[1];
+		} else {
+			lang = "javascript";
+		}
+
+		if ( lang ) {
+
+			$this
+			.addClass( "sunlight-highlight-" + lang )
+			.addClass( "linenums" )
+			.html( example.html() );
+
+		}
+	} );
+
+	Sunlight.highlightAll( {
+		lineNumbers : true,
+		showMenu : true,
+		enableDoclinks : true
+	} );
+} );
+</script>
+
+
+
+<!--Navigation and Symbol Display-->
+
+
+<!--Google Analytics-->
+
+
+</body>
+</html>
