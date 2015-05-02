@@ -1,0 +1,1760 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>PIXI Class: Ticker</title>
+
+	<!--[if lt IE 9]>
+	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<link type="text/css" rel="stylesheet" href="styles/sunlight.default.css">
+
+	<link type="text/css" rel="stylesheet" href="styles/site.cerulean.css">
+
+</head>
+
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top navbar-inverse">
+<div class="container">
+	<div class="navbar-header">
+		<a class="navbar-brand" href="index.html">PIXI</a>
+	</div>
+	<div class="navbar-collapse">
+		<ul class="nav navbar-nav">
+			
+			<li class="dropdown">
+				<a href="namespaces.list.html" class="dropdown-toggle" data-toggle="dropdown">Namespaces<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="PIXI.html">PIXI</a></li><li><a href="PIXI.extras.html">PIXI.extras</a></li><li><a href="PIXI.filters.html">PIXI.filters</a></li><li><a href="PIXI.interaction.html">PIXI.interaction</a></li><li><a href="PIXI.loaders.html">PIXI.loaders</a></li><li><a href="PIXI.mesh.html">PIXI.mesh</a></li><li><a href="PIXI.utils.html">PIXI.utils</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="classes.list.html" class="dropdown-toggle" data-toggle="dropdown">Classes<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="PIXI.AbstractFilter.html">PIXI.AbstractFilter</a></li><li><a href="PIXI.AssetLoader.html">PIXI.AssetLoader</a></li><li><a href="PIXI.BaseTexture.html">PIXI.BaseTexture</a></li><li><a href="PIXI.BaseTextureCache.html">PIXI.BaseTextureCache</a></li><li><a href="PIXI.BitmapText.html">PIXI.BitmapText</a></li><li><a href="PIXI.BlendModeManager.html">PIXI.BlendModeManager</a></li><li><a href="PIXI.blendModes.html">PIXI.blendModes</a></li><li><a href="PIXI.CanvasBuffer.html">PIXI.CanvasBuffer</a></li><li><a href="PIXI.CanvasMaskManager.html">PIXI.CanvasMaskManager</a></li><li><a href="PIXI.CanvasRenderer.html">PIXI.CanvasRenderer</a></li><li><a href="PIXI.Circle.html">PIXI.Circle</a></li><li><a href="PIXI.ComplexPrimitiveShader.html">PIXI.ComplexPrimitiveShader</a></li><li><a href="PIXI.Container.html">PIXI.Container</a></li><li><a href="PIXI.DisplayObject.html">PIXI.DisplayObject</a></li><li><a href="PIXI.DisplayObjectContainer.html">PIXI.DisplayObjectContainer</a></li><li><a href="PIXI.Ellipse.html">PIXI.Ellipse</a></li><li><a href="PIXI.extras.BitmapText.html">PIXI.extras.BitmapText</a></li><li><a href="PIXI.extras.MovieClip.html">PIXI.extras.MovieClip</a></li><li><a href="PIXI.extras.TilingSprite.html">PIXI.extras.TilingSprite</a></li><li><a href="PIXI.FilterManager.html">PIXI.FilterManager</a></li><li><a href="PIXI.filters.AsciiFilter.html">PIXI.filters.AsciiFilter</a></li><li><a href="PIXI.filters.BloomFilter.html">PIXI.filters.BloomFilter</a></li><li><a href="PIXI.filters.BlurDirFilter.html">PIXI.filters.BlurDirFilter</a></li><li><a href="PIXI.filters.BlurFilter.html">PIXI.filters.BlurFilter</a></li><li><a href="PIXI.filters.BlurXFilter.html">PIXI.filters.BlurXFilter</a></li><li><a href="PIXI.filters.BlurYFilter.html">PIXI.filters.BlurYFilter</a></li><li><a href="PIXI.filters.BlurYTintFilter.html">PIXI.filters.BlurYTintFilter</a></li><li><a href="PIXI.filters.ColorMatrixFilter.html">PIXI.filters.ColorMatrixFilter</a></li><li><a href="PIXI.filters.ColorStepFilter.html">PIXI.filters.ColorStepFilter</a></li><li><a href="PIXI.filters.ConvolutionFilter.html">PIXI.filters.ConvolutionFilter</a></li><li><a href="PIXI.filters.CrossHatchFilter.html">PIXI.filters.CrossHatchFilter</a></li><li><a href="PIXI.filters.DotScreenFilter.html">PIXI.filters.DotScreenFilter</a></li><li><a href="PIXI.filters.DropShadowFilter.html">PIXI.filters.DropShadowFilter</a></li><li><a href="PIXI.filters.GrayFilter.html">PIXI.filters.GrayFilter</a></li><li><a href="PIXI.filters.InvertFilter.html">PIXI.filters.InvertFilter</a></li><li><a href="PIXI.filters.NoiseFilter.html">PIXI.filters.NoiseFilter</a></li><li><a href="PIXI.filters.NormalMapFilter.html">PIXI.filters.NormalMapFilter</a></li><li><a href="PIXI.filters.PixelateFilter.html">PIXI.filters.PixelateFilter</a></li><li><a href="PIXI.filters.SepiaFilter.html">PIXI.filters.SepiaFilter</a></li><li><a href="PIXI.filters.ShockwaveFilter.html">PIXI.filters.ShockwaveFilter</a></li><li><a href="PIXI.filters.SmartBlurFilter.html">PIXI.filters.SmartBlurFilter</a></li><li><a href="PIXI.filters.TiltShiftAxisFilter.html">PIXI.filters.TiltShiftAxisFilter</a></li><li><a href="PIXI.filters.TiltShiftFilter.html">PIXI.filters.TiltShiftFilter</a></li><li><a href="PIXI.filters.TiltShiftXFilter.html">PIXI.filters.TiltShiftXFilter</a></li><li><a href="PIXI.filters.TiltShiftYFilter.html">PIXI.filters.TiltShiftYFilter</a></li><li><a href="PIXI.filters.TwistFilter.html">PIXI.filters.TwistFilter</a></li><li><a href="PIXI.FXAAFilter.html">PIXI.FXAAFilter</a></li><li><a href="PIXI.Graphics.html">PIXI.Graphics</a></li><li><a href="PIXI.GraphicsData.html">PIXI.GraphicsData</a></li><li><a href="PIXI.interaction.InteractionData.html">PIXI.interaction.InteractionData</a></li><li><a href="PIXI.interaction.InteractionManager.html">PIXI.interaction.InteractionManager</a></li><li><a href="PIXI.loaders.Loader.html">PIXI.loaders.Loader</a></li><li><a href="PIXI.MaskManager.html">PIXI.MaskManager</a></li><li><a href="PIXI.Matrix.html">PIXI.Matrix</a></li><li><a href="PIXI.mesh.Mesh.html">PIXI.mesh.Mesh</a></li><li><a href="PIXI.mesh.Rope.html">PIXI.mesh.Rope</a></li><li><a href="PIXI.mesh.StripShader.html">PIXI.mesh.StripShader</a></li><li><a href="PIXI.MovieClip.html">PIXI.MovieClip</a></li><li><a href="PIXI.ObjectRenderer.html">PIXI.ObjectRenderer</a></li><li><a href="PIXI.ParticleContainer.html">PIXI.ParticleContainer</a></li><li><a href="PIXI.ParticleShader.html">PIXI.ParticleShader</a></li><li><a href="PIXI.Point.html">PIXI.Point</a></li><li><a href="PIXI.Polygon.html">PIXI.Polygon</a></li><li><a href="PIXI.PrimitiveShader.html">PIXI.PrimitiveShader</a></li><li><a href="PIXI.Quad.html">PIXI.Quad</a></li><li><a href="PIXI.Rectangle.html">PIXI.Rectangle</a></li><li><a href="PIXI.RenderTarget.html">PIXI.RenderTarget</a></li><li><a href="PIXI.RenderTexture.html">PIXI.RenderTexture</a></li><li><a href="PIXI.Rope.html">PIXI.Rope</a></li><li><a href="PIXI.RoundedRectangle.html">PIXI.RoundedRectangle</a></li><li><a href="PIXI.scaleModes.html">PIXI.scaleModes</a></li><li><a href="PIXI.Shader.html">PIXI.Shader</a></li><li><a href="PIXI.ShaderManager.html">PIXI.ShaderManager</a></li><li><a href="PIXI.Sprite.html">PIXI.Sprite</a></li><li><a href="PIXI.SpriteBatch.html">PIXI.SpriteBatch</a></li><li><a href="PIXI.SpriteMaskFilter.html">PIXI.SpriteMaskFilter</a></li><li><a href="PIXI.Stage.html">PIXI.Stage</a></li><li><a href="PIXI.StencilMaskStack.html">PIXI.StencilMaskStack</a></li><li><a href="PIXI.Strip.html">PIXI.Strip</a></li><li><a href="PIXI.SystemRenderer.html">PIXI.SystemRenderer</a></li><li><a href="PIXI.Text.html">PIXI.Text</a></li><li><a href="PIXI.Texture.html">PIXI.Texture</a></li><li><a href="PIXI.TextureCache.html">PIXI.TextureCache</a></li><li><a href="PIXI.TextureShader.html">PIXI.TextureShader</a></li><li><a href="PIXI.ticker.Ticker.html">PIXI.ticker.Ticker</a></li><li><a href="PIXI.TilingSprite.html">PIXI.TilingSprite</a></li><li><a href="PIXI.VideoBaseTexture.html">PIXI.VideoBaseTexture</a></li><li><a href="PIXI.WebGLManager.html">PIXI.WebGLManager</a></li><li><a href="PIXI.WebGLMaskManager.html">PIXI.WebGLMaskManager</a></li><li><a href="PIXI.WebGLRenderer.html">PIXI.WebGLRenderer</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="mixins.list.html" class="dropdown-toggle" data-toggle="dropdown">Mixins<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="PIXI.interaction.module.exports.html">PIXI.interaction.module.exports</a></li><li><a href="PIXI.utils.pluginTarget.html">PIXI.utils.pluginTarget</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="events.list.html" class="dropdown-toggle" data-toggle="dropdown">Events<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="BaseTexture.html#event:error">BaseTexture#event:error</a></li><li><a href="BaseTexture.html#event:loaded">BaseTexture#event:loaded</a></li><li><a href="PIXI.VideoBaseTexture.html#event:error">PIXI.VideoBaseTexture#event:error</a></li><li><a href="PIXI.VideoBaseTexture.html#event:loaded">PIXI.VideoBaseTexture#event:loaded</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="global.html" class="dropdown-toggle" data-toggle="dropdown">Global<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="global.html#currentFrame">currentFrame</a></li>
+				</ul>
+			</li>
+			
+		</ul>
+	</div>
+</div>
+</div>
+
+
+<div class="container">
+<div class="row">
+
+	
+	<div class="col-md-8">
+	
+		<div id="main">
+    		
+
+	<h1 class="page-title">Class: Ticker</h1>
+<section>
+
+<header>
+    
+        <h2>
+        Ticker
+        </h2>
+        
+    
+</header>
+
+
+<article>
+    <div class="container-overview">
+    
+        
+<dt>
+    <h4 class="name" id="Ticker">new .Ticker()</h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>A Ticker class that runs an update loop that other objects listen to.
+This class is composed around an EventEmitter object to add listeners
+meant for execution on the next requested animation frame.
+Animation frames are requested only when necessary,
+e.g. When the ticker is started and the emitter has listeners.</p>
+    </div>
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+
+    
+    
+    
+
+    
+    
+    
+</dd>
+
+    
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Members</h3>
+
+        <dl>
+            
+<dt class="name" id="autoStart">
+    <h4>#autoStart</h4>
+
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        <p>Whether or not this ticker should invoke the method
+<a href="PIXI.ticker.Ticker.html#start">PIXI.ticker.Ticker#start</a> automatically
+when a listener is added.</p>
+    </div>
+    
+
+    
+        <h5>Type: 
+<span class="param-type">boolean</span>
+
+</h5>
+    
+
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+	<dt class="tag-default method-doc-label method-doc-details-label">Default Value:</dt>
+	<dd class="tag-default">
+		<ul class="dummy">
+			<li>false</li>
+		</ul>
+	</dd>
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+</dd>
+
+        
+            
+<dt class="name" id="deltaTime">
+    <h4>#deltaTime</h4>
+
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        <p>Scalar time value from last frame to this frame.
+This value is capped by setting <a href="PIXI.ticker.Ticker.html#minFPS">PIXI.ticker.Ticker#minFPS</a>
+and is scaled with <a href="PIXI.ticker.Ticker.html#speed">PIXI.ticker.Ticker#speed</a>.
+<strong>Note:</strong> The cap may be exceeded by scaling.</p>
+    </div>
+    
+
+    
+        <h5>Type: 
+<span class="param-type">number</span>
+
+</h5>
+    
+
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+	<dt class="tag-default method-doc-label method-doc-details-label">Default Value:</dt>
+	<dd class="tag-default">
+		<ul class="dummy">
+			<li>1</li>
+		</ul>
+	</dd>
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+</dd>
+
+        
+            
+<dt class="name" id="elapsedMS">
+    <h4>#elapsedMS</h4>
+
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        <p>Time elapsed in milliseconds from last frame to this frame.
+Opposed to what the scalar <a href="PIXI.ticker.Ticker.html#deltaTime">PIXI.ticker.Ticker#deltaTime</a>
+is based, this value is neither capped nor scaled.
+If the platform supports DOMHighResTimeStamp,
+this value will have a precision of 1 µs.</p>
+    </div>
+    
+
+    
+        <h5>Type: 
+<span class="param-type">DOMHighResTimeStamp</span>
+|
+
+<span class="param-type">number</span>
+
+</h5>
+    
+
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+	<dt class="tag-default method-doc-label method-doc-details-label">Default Value:</dt>
+	<dd class="tag-default">
+		<ul class="dummy">
+			<li>1 / TARGET_FPMS</li>
+		</ul>
+	</dd>
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+</dd>
+
+        
+            
+<dt class="name" id="FPS">
+    <h4>#FPS</h4>
+
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        <p>The frames per second at which this ticker is running.
+The default is approximately 60 in most modern browsers.
+<strong>Note:</strong> This does not factor in the value of
+<a href="PIXI.ticker.Ticker.html#speed">PIXI.ticker.Ticker#speed</a>, which is specific
+to scaling <a href="PIXI.ticker.Ticker.html#deltaTime">PIXI.ticker.Ticker#deltaTime</a>.</p>
+    </div>
+    
+
+    
+
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+</dd>
+
+        
+            
+<dt class="name" id="lastTime">
+    <h4>#lastTime</h4>
+
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        <p>The last time <a href="PIXI.ticker.Ticker.html#update">PIXI.ticker.Ticker#update</a> was invoked.
+This value is also reset internally outside of invoking
+update, but only when a new animation frame is requested.
+If the platform supports DOMHighResTimeStamp,
+this value will have a precision of 1 µs.</p>
+    </div>
+    
+
+    
+        <h5>Type: 
+<span class="param-type">DOMHighResTimeStamp</span>
+|
+
+<span class="param-type">number</span>
+
+</h5>
+    
+
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+	<dt class="tag-default method-doc-label method-doc-details-label">Default Value:</dt>
+	<dd class="tag-default">
+		<ul class="dummy">
+			<li>0</li>
+		</ul>
+	</dd>
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+</dd>
+
+        
+            
+<dt class="name" id="minFPS">
+    <h4>#minFPS</h4>
+
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        <p>Manages the maximum amount of milliseconds allowed to
+elapse between invoking <a href="PIXI.ticker.Ticker.html#update">PIXI.ticker.Ticker#update</a>.
+This value is used to cap <a href="PIXI.ticker.Ticker.html#deltaTime">PIXI.ticker.Ticker#deltaTime</a>,
+but does not effect the measured value of <a href="PIXI.ticker.Ticker.html#FPS">PIXI.ticker.Ticker#FPS</a>.
+When setting this property it is clamped to a value between
+<code>0</code> and <code>PIXI.TARGET_FPMS * 1000</code>.</p>
+    </div>
+    
+
+    
+
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+	<dt class="tag-default method-doc-label method-doc-details-label">Default Value:</dt>
+	<dd class="tag-default">
+		<ul class="dummy">
+			<li>10</li>
+		</ul>
+	</dd>
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+</dd>
+
+        
+            
+<dt class="name" id="speed">
+    <h4>#speed</h4>
+
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        <p>Factor of current <a href="PIXI.ticker.Ticker.html#deltaTime">PIXI.ticker.Ticker#deltaTime</a>.</p>
+    </div>
+    
+
+    
+        <h5>Type: 
+<span class="param-type">number</span>
+
+</h5>
+    
+
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+	<dt class="tag-default method-doc-label method-doc-details-label">Default Value:</dt>
+	<dd class="tag-default">
+		<ul class="dummy">
+			<li>1</li>
+		</ul>
+	</dd>
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">// Scales ticker.deltaTime to what would be
+    // the equivalent of approximately 120 FPS
+    ticker.speed = 2;</pre>
+
+
+    
+</dd>
+
+        
+            
+<dt class="name" id="started">
+    <h4>#started</h4>
+
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        <p>Whether or not this ticker has been started.
+<code>true</code> if <a href="PIXI.ticker.Ticker.html#start">PIXI.ticker.Ticker#start</a> has been called.
+<code>false</code> if <a href="PIXI.ticker.Ticker.html#stop">PIXI.ticker.Ticker#stop</a> has been called.
+While <code>false</code>, this value may change to <code>true</code> in the
+event of <a href="PIXI.ticker.Ticker.html#autoStart">PIXI.ticker.Ticker#autoStart</a> being <code>true</code>
+and a listener is added.</p>
+    </div>
+    
+
+    
+        <h5>Type: 
+<span class="param-type">boolean</span>
+
+</h5>
+    
+
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+	<dt class="tag-default method-doc-label method-doc-details-label">Default Value:</dt>
+	<dd class="tag-default">
+		<ul class="dummy">
+			<li>false</li>
+		</ul>
+	</dd>
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+</dd>
+
+        </dl>
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        <dl>
+            
+<dt>
+    <h4 class="name" id="add">#add(fn, <span class="optional">context</span>)</h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Calls module:eventemitter3.EventEmitter#on internally for the
+internal 'tick' event. It checks if the emitter has listeners,
+and if so it requests a new animation frame at this point.</p>
+    </div>
+    
+
+    
+
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+		<th>Argument</th>
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>fn</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The listener function to be added for updates</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>context</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The listener context</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+
+    
+    
+    
+
+    
+    
+<h5>Returns: 
+<span class="param-type"><a href="PIXI.ticker.Ticker.html">PIXI.ticker.Ticker</a></span>
+
+</h5>
+    
+            <div class="param-desc">
+    		<p>this</p>
+	</div>
+
+        
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="addOnce">#addOnce(fn, <span class="optional">context</span>)</h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Calls module:eventemitter3.EventEmitter#once internally for the
+internal 'tick' event. It checks if the emitter has listeners,
+and if so it requests a new animation frame at this point.</p>
+    </div>
+    
+
+    
+
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+		<th>Argument</th>
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>fn</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The listener function to be added for one update</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>context</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The listener context</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+
+    
+    
+    
+
+    
+    
+<h5>Returns: 
+<span class="param-type"><a href="PIXI.ticker.Ticker.html">PIXI.ticker.Ticker</a></span>
+
+</h5>
+    
+            <div class="param-desc">
+    		<p>this</p>
+	</div>
+
+        
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="remove">#remove(<span class="optional">fn</span>, <span class="optional">context</span>)</h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Calls module:eventemitter3.EventEmitter#off internally for 'tick' event.
+It checks if the emitter has listeners for 'tick' event.
+If it does, then it cancels the animation frame.</p>
+    </div>
+    
+
+    
+
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+		<th>Argument</th>
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>fn</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The listener function to be removed</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>context</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The listener context to be removed</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+
+    
+    
+    
+
+    
+    
+<h5>Returns: 
+<span class="param-type"><a href="PIXI.ticker.Ticker.html">PIXI.ticker.Ticker</a></span>
+
+</h5>
+    
+            <div class="param-desc">
+    		<p>this</p>
+	</div>
+
+        
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="start">#start()</h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Starts the ticker. If the ticker has listeners
+a new animation frame is requested at this point.</p>
+    </div>
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+
+    
+    
+    
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="stop">#stop()</h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Stops the ticker. If the ticker has requested
+an animation frame it is canceled at this point.</p>
+    </div>
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+
+    
+    
+    
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="update">#update(<span class="optional">currentTime</span>)</h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Triggers an update. An update entails setting the
+current <a href="PIXI.ticker.Ticker.html#elapsedMS">PIXI.ticker.Ticker#elapsedMS</a>,
+the current <a href="PIXI.ticker.Ticker.html#deltaTime">PIXI.ticker.Ticker#deltaTime</a>,
+invoking all listeners with current deltaTime,
+and then finally setting <a href="PIXI.ticker.Ticker.html#lastTime">PIXI.ticker.Ticker#lastTime</a>
+with the value of currentTime that was provided.
+This method will be called automatically by animation
+frame callbacks if the ticker instance has been started
+and listeners are added.</p>
+    </div>
+    
+
+    
+
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+		<th>Argument</th>
+		
+
+		
+		<th>Default</th>
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>currentTime</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">DOMHighResTimeStamp</span>
+|
+
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    performance.now()
+                
+                </td>
+            
+
+            <td class="description last"><p>the current time of execution</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+
+    
+    
+    
+
+    
+    
+    
+</dd>
+
+        </dl>
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+		</div>
+	</div>
+
+	<div class="clearfix"></div>
+
+	
+		<div class="col-md-3">
+			<div id="toc" class="col-md-3"></div>
+		</div>
+	
+
+</div>
+</div>
+
+
+<footer>
+
+	Made with ♥ by <a href='http://goodboydigital.com'>Goodboy Digital</a>
+
+
+	<span class="copyright">
+	PIXI Copyright © 2013-2015 Mat Groves.
+	</span>
+
+<span class="jsdoc-message">
+	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-beta3</a>
+	on 2015-05-01T18:07:11-07:00 using the <a
+	href="https://github.com/terryweiss/docstrap">DocStrap template</a>.
+</span>
+</footer>
+
+<!--<script src="scripts/sunlight.js"></script>-->
+<script src="scripts/docstrap.lib.js"></script>
+<script src="scripts/bootstrap-dropdown.js"></script>
+<script src="scripts/toc.js"></script>
+
+<script>
+$( function () {
+	$( "[id*='$']" ).each( function () {
+		var $this = $( this );
+
+		$this.attr( "id", $this.attr( "id" ).replace( "$", "__" ) );
+	} );
+
+	$( "#toc" ).toc( {
+		anchorName  : function ( i, heading, prefix ) {
+			return $( heading ).attr( "id" ) || ( prefix + i );
+		},
+		selectors   : "h1,h2,h3,h4",
+		showAndHide : false,
+		scrollTo    : "100px"
+	} );
+
+	$( "#toc>ul" ).addClass( "nav nav-pills nav-stacked" );
+	$( "#main span[id^='toc']" ).addClass( "toc-shim" );
+	$( '.dropdown-toggle' ).dropdown();
+	//			$( ".tutorial-section pre, .readme-section pre" ).addClass( "sunlight-highlight-javascript" ).addClass( "linenums" );
+
+	$( ".tutorial-section pre, .readme-section pre" ).each( function () {
+		var $this = $( this );
+
+		var example = $this.find( "code" );
+		exampleText = example.html();
+		var lang = /{@lang (.*?)}/.exec( exampleText );
+		if ( lang && lang[1] ) {
+			exampleText = exampleText.replace( lang[0], "" );
+			example.html( exampleText );
+			lang = lang[1];
+		} else {
+			lang = "javascript";
+		}
+
+		if ( lang ) {
+
+			$this
+			.addClass( "sunlight-highlight-" + lang )
+			.addClass( "linenums" )
+			.html( example.html() );
+
+		}
+	} );
+
+	Sunlight.highlightAll( {
+		lineNumbers : true,
+		showMenu : true,
+		enableDoclinks : true
+	} );
+} );
+</script>
+
+
+
+<!--Navigation and Symbol Display-->
+
+
+<!--Google Analytics-->
+
+
+</body>
+</html>
