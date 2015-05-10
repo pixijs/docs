@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: core/renderers/webgl/managers/MaskManager.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: core/renderers/webgl/managers/MaskManager.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>var WebGLManager = require('./WebGLManager'),
+    AlphaMaskFilter = require('../filters/SpriteMaskFilter');
+
+/**
+ * @class
+ * @memberof PIXI
+ * @param renderer {WebGLRenderer} The renderer this manager works for.
+ */
+function MaskManager(renderer)
+{
+    WebGLManager.call(this, renderer);
+
+    this.stencilStack = [];
+    this.reverse = true;
+    this.count = 0;
+
+    this.alphaMaskPool = [];
+}
+
+MaskManager.prototype = Object.create(WebGLManager.prototype);
+MaskManager.prototype.constructor = MaskManager;
+module.exports = MaskManager;
+
+/**
+ * Applies the Mask and adds it to the current filter stack.
+ *
+ * @param graphics {Graphics}
+ * @param webGLData {any[]}
+ */
+MaskManager.prototype.pushMask = function (target, maskData)
+{
+    if (maskData.texture)
+    {
+        this.pushSpriteMask(target, maskData);
+    }
+    else
+    {
+        this.pushStencilMask(target, maskData);
+    }
+
+};
+
+/**
+ * Removes the last mask from the mask stack and doesn't return it.
+ *
+ * @param target {RenderTarget}
+ * @param maskData {any[]}
+ */
+MaskManager.prototype.popMask = function (target, maskData)
+{
+    if (maskData.texture)
+    {
+        this.popSpriteMask(target, maskData);
+    }
+    else
+    {
+        this.popStencilMask(target, maskData);
+    }
+};
+
+/**
+ * Applies the Mask and adds it to the current filter stack.
+ *
+ * @param target {RenderTarget}
+ * @param maskData {any[]}
+ */
+MaskManager.prototype.pushSpriteMask = function (target, maskData)
+{
+    var alphaMaskFilter = this.alphaMaskPool.pop();
+
+    if (!alphaMaskFilter)
+    {
+        alphaMaskFilter = [new AlphaMaskFilter(maskData)];
+    }
+
+    alphaMaskFilter[0].maskSprite = maskData;
+    this.renderer.filterManager.pushFilter(target, alphaMaskFilter);
+};
+
+/**
+ * Removes the last filter from the filter stack and doesn't return it.
+ *
+ */
+MaskManager.prototype.popSpriteMask = function ()
+{
+    var filters = this.renderer.filterManager.popFilter();
+
+    this.alphaMaskPool.push(filters);
+};
+
+
+/**
+ * Applies the Mask and adds it to the current filter stack.
+ *
+ * @param target {RenderTarget}
+ * @param maskData {any[]}
+ */
+MaskManager.prototype.pushStencilMask = function (target, maskData)
+{
+    this.renderer.stencilManager.pushMask(maskData);
+};
+
+/**
+ * Removes the last filter from the filter stack and doesn't return it.
+ * @param target {RenderTarget}
+ * @param maskData {any[]}
+ */
+MaskManager.prototype.popStencilMask = function (target, maskData)
+{
+    this.renderer.stencilManager.popMask(maskData);
+};
+
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="PIXI.AbstractFilter.html">AbstractFilter</a></li><li><a href="PIXI.BaseTexture.html">BaseTexture</a></li><li><a href="PIXI.BlendModeManager.html">BlendModeManager</a></li><li><a href="PIXI.CanvasBuffer.html">CanvasBuffer</a></li><li><a href="PIXI.CanvasGraphics.html">CanvasGraphics</a></li><li><a href="PIXI.CanvasMaskManager.html">CanvasMaskManager</a></li><li><a href="PIXI.CanvasRenderer.html">CanvasRenderer</a></li><li><a href="PIXI.CanvasTinter.html">CanvasTinter</a></li><li><a href="PIXI.Circle.html">Circle</a></li><li><a href="PIXI.ComplexPrimitiveShader.html">ComplexPrimitiveShader</a></li><li><a href="PIXI.CONST.html">CONST</a></li><li><a href="PIXI.Container.html">Container</a></li><li><a href="PIXI.DisplayObject.html">DisplayObject</a></li><li><a href="PIXI.Ellipse.html">Ellipse</a></li><li><a href="PIXI.extras.BitmapText.html">BitmapText</a></li><li><a href="PIXI.extras.MovieClip.html">MovieClip</a></li><li><a href="PIXI.extras.TilingSprite.html">TilingSprite</a></li><li><a href="PIXI.FilterManager.html">FilterManager</a></li><li><a href="PIXI.filters.AsciiFilter.html">AsciiFilter</a></li><li><a href="PIXI.filters.BloomFilter.html">BloomFilter</a></li><li><a href="PIXI.filters.BlurDirFilter.html">BlurDirFilter</a></li><li><a href="PIXI.filters.BlurFilter.html">BlurFilter</a></li><li><a href="PIXI.filters.BlurXFilter.html">BlurXFilter</a></li><li><a href="PIXI.filters.BlurYFilter.html">BlurYFilter</a></li><li><a href="PIXI.filters.BlurYTintFilter.html">BlurYTintFilter</a></li><li><a href="PIXI.filters.ColorMatrixFilter.html">ColorMatrixFilter</a></li><li><a href="PIXI.filters.ColorStepFilter.html">ColorStepFilter</a></li><li><a href="PIXI.filters.ConvolutionFilter.html">ConvolutionFilter</a></li><li><a href="PIXI.filters.CrossHatchFilter.html">CrossHatchFilter</a></li><li><a href="PIXI.filters.DisplacementFilter.html">DisplacementFilter</a></li><li><a href="PIXI.filters.DotScreenFilter.html">DotScreenFilter</a></li><li><a href="PIXI.filters.DropShadowFilter.html">DropShadowFilter</a></li><li><a href="PIXI.filters.GrayFilter.html">GrayFilter</a></li><li><a href="PIXI.filters.InvertFilter.html">InvertFilter</a></li><li><a href="PIXI.filters.NoiseFilter.html">NoiseFilter</a></li><li><a href="PIXI.filters.NormalMapFilter.html">NormalMapFilter</a></li><li><a href="PIXI.filters.PixelateFilter.html">PixelateFilter</a></li><li><a href="PIXI.filters.RGBSplitFilter.html">RGBSplitFilter</a></li><li><a href="PIXI.filters.SepiaFilter.html">SepiaFilter</a></li><li><a href="PIXI.filters.ShockwaveFilter.html">ShockwaveFilter</a></li><li><a href="PIXI.filters.SmartBlurFilter.html">SmartBlurFilter</a></li><li><a href="PIXI.filters.TiltShiftAxisFilter.html">TiltShiftAxisFilter</a></li><li><a href="PIXI.filters.TiltShiftFilter.html">TiltShiftFilter</a></li><li><a href="PIXI.filters.TiltShiftXFilter.html">TiltShiftXFilter</a></li><li><a href="PIXI.filters.TiltShiftYFilter.html">TiltShiftYFilter</a></li><li><a href="PIXI.filters.TwistFilter.html">TwistFilter</a></li><li><a href="PIXI.FXAAFilter.html">FXAAFilter</a></li><li><a href="PIXI.Graphics.html">Graphics</a></li><li><a href="PIXI.GraphicsData.html">GraphicsData</a></li><li><a href="PIXI.interaction.InteractionData.html">InteractionData</a></li><li><a href="PIXI.interaction.InteractionManager.html">InteractionManager</a></li><li><a href="PIXI.loaders.Loader.html">Loader</a></li><li><a href="PIXI.MaskManager.html">MaskManager</a></li><li><a href="PIXI.Matrix.html">Matrix</a></li><li><a href="PIXI.mesh.Mesh.html">Mesh</a></li><li><a href="PIXI.mesh.Rope.html">Rope</a></li><li><a href="PIXI.mesh.StripShader.html">StripShader</a></li><li><a href="PIXI.ObjectRenderer.html">ObjectRenderer</a></li><li><a href="PIXI.ParticleContainer.html">ParticleContainer</a></li><li><a href="PIXI.ParticleShader.html">ParticleShader</a></li><li><a href="PIXI.Point.html">Point</a></li><li><a href="PIXI.Polygon.html">Polygon</a></li><li><a href="PIXI.PrimitiveShader.html">PrimitiveShader</a></li><li><a href="PIXI.Quad.html">Quad</a></li><li><a href="PIXI.Rectangle.html">Rectangle</a></li><li><a href="PIXI.RenderTarget.html">RenderTarget</a></li><li><a href="PIXI.RenderTexture.html">RenderTexture</a></li><li><a href="PIXI.RoundedRectangle.html">RoundedRectangle</a></li><li><a href="PIXI.Shader.html">Shader</a></li><li><a href="PIXI.ShaderManager.html">ShaderManager</a></li><li><a href="PIXI.Sprite.html">Sprite</a></li><li><a href="PIXI.SpriteMaskFilter.html">SpriteMaskFilter</a></li><li><a href="PIXI.StencilMaskStack.html">StencilMaskStack</a></li><li><a href="PIXI.SystemRenderer.html">SystemRenderer</a></li><li><a href="PIXI.Text.html">Text</a></li><li><a href="PIXI.Texture.html">Texture</a></li><li><a href="PIXI.TextureShader.html">TextureShader</a></li><li><a href="PIXI.ticker.Ticker.html">Ticker</a></li><li><a href="PIXI.VideoBaseTexture.html">VideoBaseTexture</a></li><li><a href="PIXI.WebGLManager.html">WebGLManager</a></li><li><a href="PIXI.WebGLMaskManager.html">WebGLMaskManager</a></li><li><a href="PIXI.WebGLRenderer.html">WebGLRenderer</a></li></ul><h3>Events</h3><ul><li><a href="BaseTexture.html#event:error">error</a></li><li><a href="BaseTexture.html#event:loaded">loaded</a></li></ul><h3>Namespaces</h3><ul><li><a href="PIXI.html">PIXI</a></li><li><a href="PIXI.extras.html">extras</a></li><li><a href="PIXI.filters.html">filters</a></li><li><a href="PIXI.interaction.html">interaction</a></li><li><a href="PIXI.loaders.html">loaders</a></li><li><a href="PIXI.mesh.html">mesh</a></li><li><a href="PIXI.utils.html">utils</a></li></ul><h3>Mixins</h3><ul><li><a href="PIXI.interaction.module.exports.html">module.exports</a></li><li><a href="PIXI.utils.pluginTarget.html">pluginTarget</a></li></ul><h3>Global</h3><ul><li><a href="global.html#currentFrame">currentFrame</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-beta3</a> on Sun May 10 2015 18:32:51 GMT+0100 (BST)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: core/display/DisplayObject.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: core/display/DisplayObject.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>var math = require('../math'),
+    RenderTexture = require('../textures/RenderTexture'),
+    EventEmitter = require('eventemitter3'),
+    CONST = require('../const'),
+    _tempMatrix = new math.Matrix();
+
+/**
+ * The base class for all objects that are rendered on the screen.
+ * This is an abstract class and should not be used on its own rather it should be extended.
+ *
+ * @class
+ * @memberof PIXI
+ */
+function DisplayObject()
+{
+    EventEmitter.call(this);
+
+    /**
+     * The coordinate of the object relative to the local coordinates of the parent.
+     *
+     * @member {Point}
+     */
+    this.position = new math.Point();
+
+    /**
+     * The scale factor of the object.
+     *
+     * @member {Point}
+     */
+    this.scale = new math.Point(1, 1);
+
+    /**
+     * The pivot point of the displayObject that it rotates around
+     *
+     * @member {Point}
+     */
+    this.pivot = new math.Point(0, 0);
+
+    /**
+     * The rotation of the object in radians.
+     *
+     * @member {number}
+     */
+    this.rotation = 0;
+
+    /**
+     * The opacity of the object.
+     *
+     * @member {number}
+     */
+    this.alpha = 1;
+
+    /**
+     * The visibility of the object. If false the object will not be drawn, and
+     * the updateTransform function will not be called.
+     *
+     * @member {boolean}
+     */
+    this.visible = true;
+
+    /**
+     * Can this object be rendered, if false the object will not be drawn but the updateTransform
+     * methods will still be called.
+     *
+     * @member {boolean}
+     */
+    this.renderable = true;
+
+    /**
+     * The display object container that contains this display object.
+     *
+     * @member {Container}
+     * @readOnly
+     */
+    this.parent = null;
+
+    /**
+     * The multiplied alpha of the displayObject
+     *
+     * @member {number}
+     * @readOnly
+     */
+    this.worldAlpha = 1;
+
+    /**
+     * Current transform of the object based on world (parent) factors
+     *
+     * @member {Matrix}
+     * @readOnly
+     */
+    this.worldTransform = new math.Matrix();
+
+    /**
+     * The area the filter is applied to. This is used as more of an optimisation
+     * rather than figuring out the dimensions of the displayObject each frame you can set this rectangle
+     *
+     * @member {Rectangle}
+     */
+    this.filterArea = null;
+
+    /**
+     * cached sin rotation
+     *
+     * @member {number}
+     * @private
+     */
+    this._sr = 0;
+
+    /**
+     * cached cos rotation
+     *
+     * @member {number}
+     * @private
+     */
+    this._cr = 1;
+
+    /**
+     * The original, cached bounds of the object
+     *
+     * @member {Rectangle}
+     * @private
+     */
+    this._bounds = new math.Rectangle(0, 0, 1, 1);
+
+    /**
+     * The most up-to-date bounds of the object
+     *
+     * @member {Rectangle}
+     * @private
+     */
+    this._currentBounds = null;
+
+    /**
+     * The original, cached mask of the object
+     *
+     * @member {Rectangle}
+     * @private
+     */
+    this._mask = null;
+
+    //TODO rename to _isMask
+   // this.isMask = false;
+
+    /**
+     * Cached internal flag.
+     *
+     * @member {boolean}
+     * @private
+     */
+    this._cacheAsBitmap = false;
+    this._cachedObject = null;
+}
+
+// constructor
+DisplayObject.prototype = Object.create(EventEmitter.prototype);
+DisplayObject.prototype.constructor = DisplayObject;
+module.exports = DisplayObject;
+
+Object.defineProperties(DisplayObject.prototype, {
+    /**
+     * The position of the displayObject on the x axis relative to the local coordinates of the parent.
+     *
+     * @member {number}
+     * @memberof DisplayObject#
+     */
+    x: {
+        get: function ()
+        {
+            return this.position.x;
+        },
+        set: function (value)
+        {
+            this.position.x = value;
+        }
+    },
+
+    /**
+     * The position of the displayObject on the y axis relative to the local coordinates of the parent.
+     *
+     * @member {number}
+     * @memberof DisplayObject#
+     */
+    y: {
+        get: function ()
+        {
+            return this.position.y;
+        },
+        set: function (value)
+        {
+            this.position.y = value;
+        }
+    },
+
+    /**
+     * Indicates if the sprite is globally visible.
+     *
+     * @member {boolean}
+     * @memberof DisplayObject#
+     * @readonly
+     */
+    worldVisible: {
+        get: function ()
+        {
+            var item = this;
+
+            do {
+                if (!item.visible)
+                {
+                    return false;
+                }
+
+                item = item.parent;
+            } while (item);
+
+            return true;
+        }
+    },
+
+    /**
+     * Sets a mask for the displayObject. A mask is an object that limits the visibility of an object to the shape of the mask applied to it.
+     * In PIXI a regular mask must be a PIXI.Graphics object. This allows for much faster masking in canvas as it utilises shape clipping.
+     * To remove a mask, set this property to null.
+     *
+     * @member {Graphics}
+     * @property {Graphics}
+     * @memberof PIXI.DisplayObject.prototype
+     */
+    mask: {
+        get: function ()
+        {
+            return this._mask;
+        },
+        set: function (value)
+        {
+            if (this._mask)
+            {
+                this._mask.renderable = true;
+            }
+
+            this._mask = value;
+
+            if (this._mask)
+            {
+                this._mask.renderable = false;
+            }
+        }
+    },
+
+    /**
+     * Sets the filters for the displayObject.
+     * * IMPORTANT: This is a webGL only feature and will be ignored by the canvas renderer.
+     * To remove filters simply set this property to 'null'
+     *
+     * @member {Filter[]}
+     * @memberof! DisplayObject
+     */
+    filters: {
+        get: function ()
+        {
+            return this._filters &amp;&amp; this._filters.slice();
+        },
+        set: function (value)
+        {
+            this._filters = value &amp;&amp; value.slice();
+        }
+    }
+
+});
+
+/*
+ * Updates the object transform for rendering
+ *
+ * TODO - Optimization pass!
+ */
+DisplayObject.prototype.updateTransform = function ()
+{
+
+    // create some matrix refs for easy access
+    var pt = this.parent.worldTransform;
+    var wt = this.worldTransform;
+
+    // temporary matrix variables
+    var a, b, c, d, tx, ty;
+
+    // so if rotation is between 0 then we can simplify the multiplication process...
+    if (this.rotation % CONST.PI_2)
+    {
+        // check to see if the rotation is the same as the previous render. This means we only need to use sin and cos when rotation actually changes
+        if (this.rotation !== this.rotationCache)
+        {
+            this.rotationCache = this.rotation;
+            this._sr = Math.sin(this.rotation);
+            this._cr = Math.cos(this.rotation);
+        }
+
+        // get the matrix values of the displayobject based on its transform properties..
+        a  =  this._cr * this.scale.x;
+        b  =  this._sr * this.scale.x;
+        c  = -this._sr * this.scale.y;
+        d  =  this._cr * this.scale.y;
+        tx =  this.position.x;
+        ty =  this.position.y;
+
+        // check for pivot.. not often used so geared towards that fact!
+        if (this.pivot.x || this.pivot.y)
+        {
+            tx -= this.pivot.x * a + this.pivot.y * c;
+            ty -= this.pivot.x * b + this.pivot.y * d;
+        }
+
+        // concat the parent matrix with the objects transform.
+        wt.a  = a  * pt.a + b  * pt.c;
+        wt.b  = a  * pt.b + b  * pt.d;
+        wt.c  = c  * pt.a + d  * pt.c;
+        wt.d  = c  * pt.b + d  * pt.d;
+        wt.tx = tx * pt.a + ty * pt.c + pt.tx;
+        wt.ty = tx * pt.b + ty * pt.d + pt.ty;
+    }
+    else
+    {
+        // lets do the fast version as we know there is no rotation..
+        a  = this.scale.x;
+        d  = this.scale.y;
+
+        tx = this.position.x - this.pivot.x * a;
+        ty = this.position.y - this.pivot.y * d;
+
+        wt.a  = a  * pt.a;
+        wt.b  = a  * pt.b;
+        wt.c  = d  * pt.c;
+        wt.d  = d  * pt.d;
+        wt.tx = tx * pt.a + ty * pt.c + pt.tx;
+        wt.ty = tx * pt.b + ty * pt.d + pt.ty;
+    }
+
+    // multiply the alphas..
+    this.worldAlpha = this.alpha * this.parent.worldAlpha;
+
+    // reset the bounds each time this is called!
+    this._currentBounds = null;
+};
+
+// performance increase to avoid using call.. (10x faster)
+DisplayObject.prototype.displayObjectUpdateTransform = DisplayObject.prototype.updateTransform;
+
+/**
+ *
+ *
+ * Retrieves the bounds of the displayObject as a rectangle object
+ *
+ * @param matrix {Matrix}
+ * @return {Rectangle} the rectangular bounding area
+ */
+DisplayObject.prototype.getBounds = function (matrix) // jshint unused:false
+{
+    return math.Rectangle.EMPTY;
+};
+
+/**
+ * Retrieves the local bounds of the displayObject as a rectangle object
+ *
+ * @return {Rectangle} the rectangular bounding area
+ */
+DisplayObject.prototype.getLocalBounds = function ()
+{
+    return this.getBounds(math.Matrix.IDENTITY);
+};
+
+/**
+ * Calculates the global position of the display object
+ *
+ * @param position {Point} The world origin to calculate from
+ * @return {Point} A point object representing the position of this object
+ */
+DisplayObject.prototype.toGlobal = function (position)
+{
+    // don't need to update the lot
+    this.displayObjectUpdateTransform();
+    return this.worldTransform.apply(position);
+};
+
+/**
+ * Calculates the local position of the display object relative to another point
+ *
+ * @param position {Point} The world origin to calculate from
+ * @param [from] {DisplayObject} The DisplayObject to calculate the global position from
+ * @return {Point} A point object representing the position of this object
+ */
+DisplayObject.prototype.toLocal = function (position, from)
+{
+    if (from)
+    {
+        position = from.toGlobal(position);
+    }
+
+    // don't need to update the lot
+    this.displayObjectUpdateTransform();
+    return this.worldTransform.applyInverse(position);
+};
+
+/**
+ * Renders the object using the WebGL renderer
+ *
+ * @param renderer {WebGLRenderer} The renderer
+ * @private
+ */
+DisplayObject.prototype.renderWebGL = function (renderer) // jshint unused:false
+{
+    // OVERWRITE;
+};
+
+/**
+ * Renders the object using the Canvas renderer
+ *
+ * @param renderer {CanvasRenderer} The renderer
+ * @private
+ */
+DisplayObject.prototype.renderCanvas = function (renderer) // jshint unused:false
+{
+    // OVERWRITE;
+};
+/**
+ * Useful function that returns a texture of the display object that can then be used to create sprites
+ * This can be quite useful if your displayObject is static / complicated and needs to be reused multiple times.
+ *
+ * @param renderer {CanvasRenderer|WebGLRenderer} The renderer used to generate the texture.
+ * @param scaleMode {Number} See {@link SCALE_MODES} for possible values
+ * @param resolution {Number} The resolution of the texture being generated
+ * @return {Texture} a texture of the display object
+ */
+DisplayObject.prototype.generateTexture = function (renderer, scaleMode, resolution)
+{
+    var bounds = this.getLocalBounds();
+
+    var renderTexture = new RenderTexture(renderer, bounds.width | 0, bounds.height | 0, scaleMode, resolution);
+
+    _tempMatrix.tx = -bounds.x;
+    _tempMatrix.ty = -bounds.y;
+
+    renderTexture.render(this, _tempMatrix);
+
+    return renderTexture;
+};
+
+/**
+ * Base destroy method for generic display objects
+ *
+ */
+DisplayObject.prototype.destroy = function ()
+{
+
+    this.position = null;
+    this.scale = null;
+    this.pivot = null;
+
+    this.parent = null;
+
+    this._bounds = null;
+    this._currentBounds = null;
+    this._mask = null;
+
+    this.worldTransform = null;
+    this.filterArea = null;
+};
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="PIXI.AbstractFilter.html">AbstractFilter</a></li><li><a href="PIXI.BaseTexture.html">BaseTexture</a></li><li><a href="PIXI.BlendModeManager.html">BlendModeManager</a></li><li><a href="PIXI.CanvasBuffer.html">CanvasBuffer</a></li><li><a href="PIXI.CanvasGraphics.html">CanvasGraphics</a></li><li><a href="PIXI.CanvasMaskManager.html">CanvasMaskManager</a></li><li><a href="PIXI.CanvasRenderer.html">CanvasRenderer</a></li><li><a href="PIXI.CanvasTinter.html">CanvasTinter</a></li><li><a href="PIXI.Circle.html">Circle</a></li><li><a href="PIXI.ComplexPrimitiveShader.html">ComplexPrimitiveShader</a></li><li><a href="PIXI.CONST.html">CONST</a></li><li><a href="PIXI.Container.html">Container</a></li><li><a href="PIXI.DisplayObject.html">DisplayObject</a></li><li><a href="PIXI.Ellipse.html">Ellipse</a></li><li><a href="PIXI.extras.BitmapText.html">BitmapText</a></li><li><a href="PIXI.extras.MovieClip.html">MovieClip</a></li><li><a href="PIXI.extras.TilingSprite.html">TilingSprite</a></li><li><a href="PIXI.FilterManager.html">FilterManager</a></li><li><a href="PIXI.filters.AsciiFilter.html">AsciiFilter</a></li><li><a href="PIXI.filters.BloomFilter.html">BloomFilter</a></li><li><a href="PIXI.filters.BlurDirFilter.html">BlurDirFilter</a></li><li><a href="PIXI.filters.BlurFilter.html">BlurFilter</a></li><li><a href="PIXI.filters.BlurXFilter.html">BlurXFilter</a></li><li><a href="PIXI.filters.BlurYFilter.html">BlurYFilter</a></li><li><a href="PIXI.filters.BlurYTintFilter.html">BlurYTintFilter</a></li><li><a href="PIXI.filters.ColorMatrixFilter.html">ColorMatrixFilter</a></li><li><a href="PIXI.filters.ColorStepFilter.html">ColorStepFilter</a></li><li><a href="PIXI.filters.ConvolutionFilter.html">ConvolutionFilter</a></li><li><a href="PIXI.filters.CrossHatchFilter.html">CrossHatchFilter</a></li><li><a href="PIXI.filters.DisplacementFilter.html">DisplacementFilter</a></li><li><a href="PIXI.filters.DotScreenFilter.html">DotScreenFilter</a></li><li><a href="PIXI.filters.DropShadowFilter.html">DropShadowFilter</a></li><li><a href="PIXI.filters.GrayFilter.html">GrayFilter</a></li><li><a href="PIXI.filters.InvertFilter.html">InvertFilter</a></li><li><a href="PIXI.filters.NoiseFilter.html">NoiseFilter</a></li><li><a href="PIXI.filters.NormalMapFilter.html">NormalMapFilter</a></li><li><a href="PIXI.filters.PixelateFilter.html">PixelateFilter</a></li><li><a href="PIXI.filters.RGBSplitFilter.html">RGBSplitFilter</a></li><li><a href="PIXI.filters.SepiaFilter.html">SepiaFilter</a></li><li><a href="PIXI.filters.ShockwaveFilter.html">ShockwaveFilter</a></li><li><a href="PIXI.filters.SmartBlurFilter.html">SmartBlurFilter</a></li><li><a href="PIXI.filters.TiltShiftAxisFilter.html">TiltShiftAxisFilter</a></li><li><a href="PIXI.filters.TiltShiftFilter.html">TiltShiftFilter</a></li><li><a href="PIXI.filters.TiltShiftXFilter.html">TiltShiftXFilter</a></li><li><a href="PIXI.filters.TiltShiftYFilter.html">TiltShiftYFilter</a></li><li><a href="PIXI.filters.TwistFilter.html">TwistFilter</a></li><li><a href="PIXI.FXAAFilter.html">FXAAFilter</a></li><li><a href="PIXI.Graphics.html">Graphics</a></li><li><a href="PIXI.GraphicsData.html">GraphicsData</a></li><li><a href="PIXI.interaction.InteractionData.html">InteractionData</a></li><li><a href="PIXI.interaction.InteractionManager.html">InteractionManager</a></li><li><a href="PIXI.loaders.Loader.html">Loader</a></li><li><a href="PIXI.MaskManager.html">MaskManager</a></li><li><a href="PIXI.Matrix.html">Matrix</a></li><li><a href="PIXI.mesh.Mesh.html">Mesh</a></li><li><a href="PIXI.mesh.Rope.html">Rope</a></li><li><a href="PIXI.mesh.StripShader.html">StripShader</a></li><li><a href="PIXI.ObjectRenderer.html">ObjectRenderer</a></li><li><a href="PIXI.ParticleContainer.html">ParticleContainer</a></li><li><a href="PIXI.ParticleShader.html">ParticleShader</a></li><li><a href="PIXI.Point.html">Point</a></li><li><a href="PIXI.Polygon.html">Polygon</a></li><li><a href="PIXI.PrimitiveShader.html">PrimitiveShader</a></li><li><a href="PIXI.Quad.html">Quad</a></li><li><a href="PIXI.Rectangle.html">Rectangle</a></li><li><a href="PIXI.RenderTarget.html">RenderTarget</a></li><li><a href="PIXI.RenderTexture.html">RenderTexture</a></li><li><a href="PIXI.RoundedRectangle.html">RoundedRectangle</a></li><li><a href="PIXI.Shader.html">Shader</a></li><li><a href="PIXI.ShaderManager.html">ShaderManager</a></li><li><a href="PIXI.Sprite.html">Sprite</a></li><li><a href="PIXI.SpriteMaskFilter.html">SpriteMaskFilter</a></li><li><a href="PIXI.StencilMaskStack.html">StencilMaskStack</a></li><li><a href="PIXI.SystemRenderer.html">SystemRenderer</a></li><li><a href="PIXI.Text.html">Text</a></li><li><a href="PIXI.Texture.html">Texture</a></li><li><a href="PIXI.TextureShader.html">TextureShader</a></li><li><a href="PIXI.ticker.Ticker.html">Ticker</a></li><li><a href="PIXI.VideoBaseTexture.html">VideoBaseTexture</a></li><li><a href="PIXI.WebGLManager.html">WebGLManager</a></li><li><a href="PIXI.WebGLMaskManager.html">WebGLMaskManager</a></li><li><a href="PIXI.WebGLRenderer.html">WebGLRenderer</a></li></ul><h3>Events</h3><ul><li><a href="BaseTexture.html#event:error">error</a></li><li><a href="BaseTexture.html#event:loaded">loaded</a></li></ul><h3>Namespaces</h3><ul><li><a href="PIXI.html">PIXI</a></li><li><a href="PIXI.extras.html">extras</a></li><li><a href="PIXI.filters.html">filters</a></li><li><a href="PIXI.interaction.html">interaction</a></li><li><a href="PIXI.loaders.html">loaders</a></li><li><a href="PIXI.mesh.html">mesh</a></li><li><a href="PIXI.utils.html">utils</a></li></ul><h3>Mixins</h3><ul><li><a href="PIXI.interaction.module.exports.html">module.exports</a></li><li><a href="PIXI.utils.pluginTarget.html">pluginTarget</a></li></ul><h3>Global</h3><ul><li><a href="global.html#currentFrame">currentFrame</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-beta3</a> on Sun May 10 2015 18:32:51 GMT+0100 (BST)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

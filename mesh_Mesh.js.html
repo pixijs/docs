@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: mesh/Mesh.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: mesh/Mesh.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>var core = require('../core');
+
+/**
+ * Base mesh class
+ * @class
+ * @extends PIXI.Container
+ * @memberof PIXI.mesh
+ * @param texture {Texture} The texture to use
+ * @param [vertices] {Float32Arrif you want to specify the vertices
+ * @param [uvs] {Float32Array} if you want to specify the uvs
+ * @param [indices] {Uint16Array} if you want to specify the indices
+ * @param [drawMode] {number} the drawMode, can be any of the Mesh.DRAW_MODES consts
+ */
+function Mesh(texture, vertices, uvs, indices, drawMode)
+{
+    core.Container.call(this);
+
+    /**
+     * The texture of the Mesh
+     *
+     * @member {Texture}
+     */
+    this.texture = texture;
+
+    /**
+     * The Uvs of the Mesh
+     *
+     * @member {Float32Array}
+     */
+    this.uvs = uvs || new Float32Array([0, 1,
+                                 1, 1,
+                                 1, 0,
+                                 0, 1]);
+
+    /**
+     * An array of vertices
+     *
+     * @member {Float32Array}
+     */
+    this.vertices = vertices || new Float32Array([0, 0,
+                                      100, 0,
+                                      100, 100,
+                                      0, 100]);
+
+    /*
+     * @member {Uint16Array} An array containing the indices of the vertices
+     */
+    //  TODO auto generate this based on draw mode!
+    this.indices = indices || new Uint16Array([0, 1, 2, 3]);
+
+    /**
+     * Whether the Mesh is dirty or not
+     *
+     * @member {boolean}
+     */
+    this.dirty = true;
+
+    /**
+     * The blend mode to be applied to the sprite. Set to blendModes.NORMAL to remove any blend mode.
+     *
+     * @member {number}
+     * @default CONST.BLEND_MODES.NORMAL;
+     */
+    this.blendMode = core.BLEND_MODES.NORMAL;
+
+    /**
+     * Triangles in canvas mode are automatically antialiased, use this value to force triangles to overlap a bit with each other.
+     *
+     * @member {number}
+     */
+    this.canvasPadding = 0;
+
+    /**
+     * The way the Mesh should be drawn, can be any of the Mesh.DRAW_MODES consts
+     *
+     * @member {number}
+     */
+    this.drawMode = drawMode || Mesh.DRAW_MODES.TRIANGLE_MESH;
+}
+
+// constructor
+Mesh.prototype = Object.create(core.Container.prototype);
+Mesh.prototype.constructor = Mesh;
+module.exports = Mesh;
+
+/**
+ * Renders the object using the WebGL renderer
+ *
+ * @param renderer {WebGLRenderer} a reference to the WebGL renderer
+ * @private
+ */
+Mesh.prototype._renderWebGL = function (renderer)
+{
+    renderer.setObjectRenderer(renderer.plugins.mesh);
+    renderer.plugins.mesh.render(this);
+};
+
+/**
+ * Renders the object using the Canvas renderer
+ *
+ * @param renderer {CanvasRenderer}
+ * @private
+ */
+Mesh.prototype._renderCanvas = function (renderer)
+{
+    var context = renderer.context;
+
+    var transform = this.worldTransform;
+
+    if (renderer.roundPixels)
+    {
+        context.setTransform(transform.a, transform.b, transform.c, transform.d, transform.tx | 0, transform.ty | 0);
+    }
+    else
+    {
+        context.setTransform(transform.a, transform.b, transform.c, transform.d, transform.tx, transform.ty);
+    }
+
+    if (this.drawMode === Mesh.DRAW_MODES.TRIANGLE_MESH)
+    {
+        this._renderCanvasTriangleMesh(context);
+    }
+    else
+    {
+        this._renderCanvasTriangles(context);
+    }
+};
+
+/**
+ * Draws the object in Triangle Mesh mode using canvas
+ *
+ * @param context {CanvasRenderingContext2D} the current drawing context
+ * @private
+ */
+Mesh.prototype._renderCanvasTriangleMesh = function (context)
+{
+    // draw triangles!!
+    var vertices = this.vertices;
+    var uvs = this.uvs;
+
+    var length = vertices.length / 2;
+    // this.count++;
+
+    for (var i = 0; i &lt; length - 2; i++)
+    {
+        // draw some triangles!
+        var index = i * 2;
+        this._renderCanvasDrawTriangle(context, vertices, uvs, index, (index + 2), (index + 4));
+    }
+};
+
+/**
+ * Draws the object in triangle mode using canvas
+ *
+ * @param context {CanvasRenderingContext2D} the current drawing context
+ * @private
+ */
+Mesh.prototype._renderCanvasTriangles = function (context)
+{
+    // draw triangles!!
+    var vertices = this.vertices;
+    var uvs = this.uvs;
+    var indices = this.indices;
+
+    var length = indices.length;
+    // this.count++;
+
+    for (var i = 0; i &lt; length; i += 3)
+    {
+        // draw some triangles!
+        var index0 = indices[i] * 2, index1 = indices[i + 1] * 2, index2 = indices[i + 2] * 2;
+        this._renderCanvasDrawTriangle(context, vertices, uvs, index0, index1, index2);
+    }
+};
+
+/**
+ * Draws one of the triangles that form this Mesh
+ *
+ * @param context {CanvasRenderingContext2D} the current drawing context
+ * @param vertices {Float32Array} a reference to the vertices of the Mesh
+ * @param uvs {Float32Array} a reference to the uvs of the Mesh
+ * @param index0 {number} the index of the first vertex
+ * @param index1 {number} the index of the second vertex
+ * @param index2 {number} the index of the third vertex
+ * @private
+ */
+Mesh.prototype._renderCanvasDrawTriangle = function (context, vertices, uvs, index0, index1, index2)
+{
+    var textureSource = this.texture.baseTexture.source;
+    var textureWidth = this.texture.baseTexture.width;
+    var textureHeight = this.texture.baseTexture.height;
+
+    var x0 = vertices[index0], x1 = vertices[index1], x2 = vertices[index2];
+    var y0 = vertices[index0 + 1], y1 = vertices[index1 + 1], y2 = vertices[index2 + 1];
+
+    var u0 = uvs[index0] * textureWidth, u1 = uvs[index1] * textureWidth, u2 = uvs[index2] * textureWidth;
+    var v0 = uvs[index0 + 1] * textureHeight, v1 = uvs[index1 + 1] * textureHeight, v2 = uvs[index2 + 1] * textureHeight;
+
+    if (this.canvasPadding > 0)
+    {
+        var paddingX = this.canvasPadding / this.worldTransform.a;
+        var paddingY = this.canvasPadding / this.worldTransform.d;
+        var centerX = (x0 + x1 + x2) / 3;
+        var centerY = (y0 + y1 + y2) / 3;
+
+        var normX = x0 - centerX;
+        var normY = y0 - centerY;
+
+        var dist = Math.sqrt(normX * normX + normY * normY);
+        x0 = centerX + (normX / dist) * (dist + paddingX);
+        y0 = centerY + (normY / dist) * (dist + paddingY);
+
+        //
+
+        normX = x1 - centerX;
+        normY = y1 - centerY;
+
+        dist = Math.sqrt(normX * normX + normY * normY);
+        x1 = centerX + (normX / dist) * (dist + paddingX);
+        y1 = centerY + (normY / dist) * (dist + paddingY);
+
+        normX = x2 - centerX;
+        normY = y2 - centerY;
+
+        dist = Math.sqrt(normX * normX + normY * normY);
+        x2 = centerX + (normX / dist) * (dist + paddingX);
+        y2 = centerY + (normY / dist) * (dist + paddingY);
+    }
+
+    context.save();
+    context.beginPath();
+
+
+    context.moveTo(x0, y0);
+    context.lineTo(x1, y1);
+    context.lineTo(x2, y2);
+
+    context.closePath();
+
+    context.clip();
+
+    // Compute matrix transform
+    var delta =  (u0 * v1)      + (v0 * u2)      + (u1 * v2)      - (v1 * u2)      - (v0 * u1)      - (u0 * v2);
+    var deltaA = (x0 * v1)      + (v0 * x2)      + (x1 * v2)      - (v1 * x2)      - (v0 * x1)      - (x0 * v2);
+    var deltaB = (u0 * x1)      + (x0 * u2)      + (u1 * x2)      - (x1 * u2)      - (x0 * u1)      - (u0 * x2);
+    var deltaC = (u0 * v1 * x2) + (v0 * x1 * u2) + (x0 * u1 * v2) - (x0 * v1 * u2) - (v0 * u1 * x2) - (u0 * x1 * v2);
+    var deltaD = (y0 * v1)      + (v0 * y2)      + (y1 * v2)      - (v1 * y2)      - (v0 * y1)      - (y0 * v2);
+    var deltaE = (u0 * y1)      + (y0 * u2)      + (u1 * y2)      - (y1 * u2)      - (y0 * u1)      - (u0 * y2);
+    var deltaF = (u0 * v1 * y2) + (v0 * y1 * u2) + (y0 * u1 * v2) - (y0 * v1 * u2) - (v0 * u1 * y2) - (u0 * y1 * v2);
+
+    context.transform(deltaA / delta, deltaD / delta,
+        deltaB / delta, deltaE / delta,
+        deltaC / delta, deltaF / delta);
+
+    context.drawImage(textureSource, 0, 0);
+    context.restore();
+};
+
+
+
+/**
+ * Renders a flat Mesh
+ *
+ * @param Mesh {Mesh} The Mesh to render
+ * @private
+ */
+Mesh.prototype.renderMeshFlat = function (Mesh)
+{
+    var context = this.context;
+    var vertices = Mesh.vertices;
+
+    var length = vertices.length/2;
+    // this.count++;
+
+    context.beginPath();
+    for (var i=1; i &lt; length-2; i++)
+    {
+        // draw some triangles!
+        var index = i*2;
+
+        var x0 = vertices[index],   x1 = vertices[index+2], x2 = vertices[index+4];
+        var y0 = vertices[index+1], y1 = vertices[index+3], y2 = vertices[index+5];
+
+        context.moveTo(x0, y0);
+        context.lineTo(x1, y1);
+        context.lineTo(x2, y2);
+    }
+
+    context.fillStyle = '#FF0000';
+    context.fill();
+    context.closePath();
+};
+
+/*
+Mesh.prototype.setTexture = function (texture)
+{
+    //TODO SET THE TEXTURES
+    //TODO VISIBILITY
+    //TODO SETTER
+
+    // stop current texture
+    this.texture = texture;
+    this.width   = texture.frame.width;
+    this.height  = texture.frame.height;
+    this.updateFrame = true;
+};
+ */
+
+/**
+ * When the texture is updated, this event will fire to update the scale and frame
+ *
+ * @param event
+ * @private
+ */
+
+Mesh.prototype.onTextureUpdate = function ()
+{
+    this.updateFrame = true;
+};
+
+/**
+ * Returns the bounds of the mesh as a rectangle. The bounds calculation takes the worldTransform into account.
+ *
+ * @param matrix {Matrix} the transformation matrix of the sprite
+ * @return {Rectangle} the framing rectangle
+ */
+Mesh.prototype.getBounds = function (matrix)
+{
+    var worldTransform = matrix || this.worldTransform;
+
+    var a = worldTransform.a;
+    var b = worldTransform.b;
+    var c = worldTransform.c;
+    var d = worldTransform.d;
+    var tx = worldTransform.tx;
+    var ty = worldTransform.ty;
+
+    var maxX = -Infinity;
+    var maxY = -Infinity;
+
+    var minX = Infinity;
+    var minY = Infinity;
+
+    var vertices = this.vertices;
+    for (var i = 0, n = vertices.length; i &lt; n; i += 2)
+    {
+        var rawX = vertices[i], rawY = vertices[i + 1];
+        var x = (a * rawX) + (c * rawY) + tx;
+        var y = (d * rawY) + (b * rawX) + ty;
+
+        minX = x &lt; minX ? x : minX;
+        minY = y &lt; minY ? y : minY;
+
+        maxX = x > maxX ? x : maxX;
+        maxY = y > maxY ? y : maxY;
+    }
+
+    if (minX === -Infinity || maxY === Infinity)
+    {
+        return core.math.Rectangle.EMPTY;
+    }
+
+    var bounds = this._bounds;
+
+    bounds.x = minX;
+    bounds.width = maxX - minX;
+
+    bounds.y = minY;
+    bounds.height = maxY - minY;
+
+    // store a reference so that if this function gets called again in the render cycle we do not have to recalculate
+    this._currentBounds = bounds;
+
+    return bounds;
+};
+
+/**
+ * Different drawing buffer modes supported
+ *
+ * @static
+ * @constant
+ * @property {object} DRAW_MODES
+ * @property {number} DRAW_MODES.TRIANGLE_MESH
+ * @property {number} DRAW_MODES.TRIANGLES
+ */
+Mesh.DRAW_MODES = {
+    TRIANGLE_MESH: 0,
+    TRIANGLES: 1
+};
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="PIXI.AbstractFilter.html">AbstractFilter</a></li><li><a href="PIXI.BaseTexture.html">BaseTexture</a></li><li><a href="PIXI.BlendModeManager.html">BlendModeManager</a></li><li><a href="PIXI.CanvasBuffer.html">CanvasBuffer</a></li><li><a href="PIXI.CanvasGraphics.html">CanvasGraphics</a></li><li><a href="PIXI.CanvasMaskManager.html">CanvasMaskManager</a></li><li><a href="PIXI.CanvasRenderer.html">CanvasRenderer</a></li><li><a href="PIXI.CanvasTinter.html">CanvasTinter</a></li><li><a href="PIXI.Circle.html">Circle</a></li><li><a href="PIXI.ComplexPrimitiveShader.html">ComplexPrimitiveShader</a></li><li><a href="PIXI.CONST.html">CONST</a></li><li><a href="PIXI.Container.html">Container</a></li><li><a href="PIXI.DisplayObject.html">DisplayObject</a></li><li><a href="PIXI.Ellipse.html">Ellipse</a></li><li><a href="PIXI.extras.BitmapText.html">BitmapText</a></li><li><a href="PIXI.extras.MovieClip.html">MovieClip</a></li><li><a href="PIXI.extras.TilingSprite.html">TilingSprite</a></li><li><a href="PIXI.FilterManager.html">FilterManager</a></li><li><a href="PIXI.filters.AsciiFilter.html">AsciiFilter</a></li><li><a href="PIXI.filters.BloomFilter.html">BloomFilter</a></li><li><a href="PIXI.filters.BlurDirFilter.html">BlurDirFilter</a></li><li><a href="PIXI.filters.BlurFilter.html">BlurFilter</a></li><li><a href="PIXI.filters.BlurXFilter.html">BlurXFilter</a></li><li><a href="PIXI.filters.BlurYFilter.html">BlurYFilter</a></li><li><a href="PIXI.filters.BlurYTintFilter.html">BlurYTintFilter</a></li><li><a href="PIXI.filters.ColorMatrixFilter.html">ColorMatrixFilter</a></li><li><a href="PIXI.filters.ColorStepFilter.html">ColorStepFilter</a></li><li><a href="PIXI.filters.ConvolutionFilter.html">ConvolutionFilter</a></li><li><a href="PIXI.filters.CrossHatchFilter.html">CrossHatchFilter</a></li><li><a href="PIXI.filters.DisplacementFilter.html">DisplacementFilter</a></li><li><a href="PIXI.filters.DotScreenFilter.html">DotScreenFilter</a></li><li><a href="PIXI.filters.DropShadowFilter.html">DropShadowFilter</a></li><li><a href="PIXI.filters.GrayFilter.html">GrayFilter</a></li><li><a href="PIXI.filters.InvertFilter.html">InvertFilter</a></li><li><a href="PIXI.filters.NoiseFilter.html">NoiseFilter</a></li><li><a href="PIXI.filters.NormalMapFilter.html">NormalMapFilter</a></li><li><a href="PIXI.filters.PixelateFilter.html">PixelateFilter</a></li><li><a href="PIXI.filters.RGBSplitFilter.html">RGBSplitFilter</a></li><li><a href="PIXI.filters.SepiaFilter.html">SepiaFilter</a></li><li><a href="PIXI.filters.ShockwaveFilter.html">ShockwaveFilter</a></li><li><a href="PIXI.filters.SmartBlurFilter.html">SmartBlurFilter</a></li><li><a href="PIXI.filters.TiltShiftAxisFilter.html">TiltShiftAxisFilter</a></li><li><a href="PIXI.filters.TiltShiftFilter.html">TiltShiftFilter</a></li><li><a href="PIXI.filters.TiltShiftXFilter.html">TiltShiftXFilter</a></li><li><a href="PIXI.filters.TiltShiftYFilter.html">TiltShiftYFilter</a></li><li><a href="PIXI.filters.TwistFilter.html">TwistFilter</a></li><li><a href="PIXI.FXAAFilter.html">FXAAFilter</a></li><li><a href="PIXI.Graphics.html">Graphics</a></li><li><a href="PIXI.GraphicsData.html">GraphicsData</a></li><li><a href="PIXI.interaction.InteractionData.html">InteractionData</a></li><li><a href="PIXI.interaction.InteractionManager.html">InteractionManager</a></li><li><a href="PIXI.loaders.Loader.html">Loader</a></li><li><a href="PIXI.MaskManager.html">MaskManager</a></li><li><a href="PIXI.Matrix.html">Matrix</a></li><li><a href="PIXI.mesh.Mesh.html">Mesh</a></li><li><a href="PIXI.mesh.Rope.html">Rope</a></li><li><a href="PIXI.mesh.StripShader.html">StripShader</a></li><li><a href="PIXI.ObjectRenderer.html">ObjectRenderer</a></li><li><a href="PIXI.ParticleContainer.html">ParticleContainer</a></li><li><a href="PIXI.ParticleShader.html">ParticleShader</a></li><li><a href="PIXI.Point.html">Point</a></li><li><a href="PIXI.Polygon.html">Polygon</a></li><li><a href="PIXI.PrimitiveShader.html">PrimitiveShader</a></li><li><a href="PIXI.Quad.html">Quad</a></li><li><a href="PIXI.Rectangle.html">Rectangle</a></li><li><a href="PIXI.RenderTarget.html">RenderTarget</a></li><li><a href="PIXI.RenderTexture.html">RenderTexture</a></li><li><a href="PIXI.RoundedRectangle.html">RoundedRectangle</a></li><li><a href="PIXI.Shader.html">Shader</a></li><li><a href="PIXI.ShaderManager.html">ShaderManager</a></li><li><a href="PIXI.Sprite.html">Sprite</a></li><li><a href="PIXI.SpriteMaskFilter.html">SpriteMaskFilter</a></li><li><a href="PIXI.StencilMaskStack.html">StencilMaskStack</a></li><li><a href="PIXI.SystemRenderer.html">SystemRenderer</a></li><li><a href="PIXI.Text.html">Text</a></li><li><a href="PIXI.Texture.html">Texture</a></li><li><a href="PIXI.TextureShader.html">TextureShader</a></li><li><a href="PIXI.ticker.Ticker.html">Ticker</a></li><li><a href="PIXI.VideoBaseTexture.html">VideoBaseTexture</a></li><li><a href="PIXI.WebGLManager.html">WebGLManager</a></li><li><a href="PIXI.WebGLMaskManager.html">WebGLMaskManager</a></li><li><a href="PIXI.WebGLRenderer.html">WebGLRenderer</a></li></ul><h3>Events</h3><ul><li><a href="BaseTexture.html#event:error">error</a></li><li><a href="BaseTexture.html#event:loaded">loaded</a></li></ul><h3>Namespaces</h3><ul><li><a href="PIXI.html">PIXI</a></li><li><a href="PIXI.extras.html">extras</a></li><li><a href="PIXI.filters.html">filters</a></li><li><a href="PIXI.interaction.html">interaction</a></li><li><a href="PIXI.loaders.html">loaders</a></li><li><a href="PIXI.mesh.html">mesh</a></li><li><a href="PIXI.utils.html">utils</a></li></ul><h3>Mixins</h3><ul><li><a href="PIXI.interaction.module.exports.html">module.exports</a></li><li><a href="PIXI.utils.pluginTarget.html">pluginTarget</a></li></ul><h3>Global</h3><ul><li><a href="global.html#currentFrame">currentFrame</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-beta3</a> on Sun May 10 2015 18:32:51 GMT+0100 (BST)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
