@@ -1,26 +1,3893 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: core/math/Point.js</title>
-
-    <script src="scripts/prettify/prettify.js"> </script>
-    <script src="scripts/prettify/lang-css.js"> </script>
+    <title>Source: core/math/Point.js</title>
+    
+    
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <script src="scripts/jquery.min.js"></script>
     <!--[if lt IE 9]>
       <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
     <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
-    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
-</head>
-
-<body>
-
-<div id="main">
-
-    <h1 class="page-title">Source: core/math/Point.js</h1>
-
+    <link type="text/css" rel="stylesheet" href="styles/bootstrap.min.css">
+    <link type="text/css" rel="stylesheet" href="styles/jaguar.css">
+    
+    
+    <script>
+    var config = {"monospaceLinks":false,"cleverLinks":false,"default":{"outputSourceFiles":true},"systemName":"PIXI","footer":"Made with ♥ by <a href='http://goodboydigital.com'>Goodboy Digital</a>","copyright":"PIXI Copyright © 2013-2015 Mat Groves.","linenums":true,"collapseSymbols":false};
+    </script>
     
 
+    
+</head>
+<body>
+<div id="wrap" class="clearfix">
+    
+<div class="navigation">
+    <h3 class="applicationName"><a href="index.html"></a></h3>
+
+    <div class="search">
+        <input id="search" type="text" class="form-control input-sm" placeholder="Search Documentations">
+    </div>
+    <ul class="list">
+    
+        <li class="item" data-name="PIXI">
+            <span class="title">
+                <a href="PIXI.html">PIXI</a>
+                
+                <span class="static">static</span>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="PIXI.autoDetectRenderer"><a href="PIXI.html#.autoDetectRenderer">autoDetectRenderer</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="PIXI.extras">
+            <span class="title">
+                <a href="PIXI.extras.html">PIXI.extras</a>
+                
+                <span class="static">static</span>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="PIXI.filters">
+            <span class="title">
+                <a href="PIXI.filters.html">PIXI.filters</a>
+                
+                <span class="static">static</span>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="PIXI.interaction">
+            <span class="title">
+                <a href="PIXI.interaction.html">PIXI.interaction</a>
+                
+                <span class="static">static</span>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="PIXI.loaders">
+            <span class="title">
+                <a href="PIXI.loaders.html">PIXI.loaders</a>
+                
+                <span class="static">static</span>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="PIXI.mesh">
+            <span class="title">
+                <a href="PIXI.mesh.html">PIXI.mesh</a>
+                
+                <span class="static">static</span>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="PIXI.utils">
+            <span class="title">
+                <a href="PIXI.utils.html">PIXI.utils</a>
+                
+                <span class="static">static</span>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="PIXI.AbstractFilter">
+            <span class="title">
+                <a href="PIXI.AbstractFilter.html">PIXI.AbstractFilter</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            <span class="subtitle">Members</span>
+            
+                <li data-name="PIXI.AbstractFilter#padding"><a href="PIXI.AbstractFilter.html#padding">padding</a></li>
+            
+                <li data-name="PIXI.AbstractFilter#uniforms"><a href="PIXI.AbstractFilter.html#uniforms">uniforms</a></li>
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="PIXI.AbstractFilter#syncUniform"><a href="PIXI.AbstractFilter.html#syncUniform">syncUniform</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="PIXI.BaseTexture">
+            <span class="title">
+                <a href="PIXI.BaseTexture.html">PIXI.BaseTexture</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            <span class="subtitle">Members</span>
+            
+                <li data-name="PIXI.BaseTexture#hasLoaded"><a href="PIXI.BaseTexture.html#hasLoaded">hasLoaded</a></li>
+            
+                <li data-name="PIXI.BaseTexture#height"><a href="PIXI.BaseTexture.html#height">height</a></li>
+            
+                <li data-name="PIXI.BaseTexture#imageUrl"><a href="PIXI.BaseTexture.html#imageUrl">imageUrl</a></li>
+            
+                <li data-name="PIXI.BaseTexture#isLoading"><a href="PIXI.BaseTexture.html#isLoading">isLoading</a></li>
+            
+                <li data-name="PIXI.BaseTexture#mipmap"><a href="PIXI.BaseTexture.html#mipmap">mipmap</a></li>
+            
+                <li data-name="PIXI.BaseTexture#premultipliedAlpha"><a href="PIXI.BaseTexture.html#premultipliedAlpha">premultipliedAlpha</a></li>
+            
+                <li data-name="PIXI.BaseTexture#realHeight"><a href="PIXI.BaseTexture.html#realHeight">realHeight</a></li>
+            
+                <li data-name="PIXI.BaseTexture#realWidth"><a href="PIXI.BaseTexture.html#realWidth">realWidth</a></li>
+            
+                <li data-name="PIXI.BaseTexture#resolution"><a href="PIXI.BaseTexture.html#resolution">resolution</a></li>
+            
+                <li data-name="PIXI.BaseTexture#scaleMode"><a href="PIXI.BaseTexture.html#scaleMode">scaleMode</a></li>
+            
+                <li data-name="PIXI.BaseTexture#source"><a href="PIXI.BaseTexture.html#source">source</a></li>
+            
+                <li data-name="PIXI.BaseTexture#width"><a href="PIXI.BaseTexture.html#width">width</a></li>
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="PIXI.BaseTexture.fromCanvas"><a href="PIXI.BaseTexture.html#.fromCanvas">fromCanvas</a></li>
+            
+                <li data-name="PIXI.BaseTexture.fromImage"><a href="PIXI.BaseTexture.html#.fromImage">fromImage</a></li>
+            
+                <li data-name="PIXI.BaseTexture#destroy"><a href="PIXI.BaseTexture.html#destroy">destroy</a></li>
+            
+                <li data-name="PIXI.BaseTexture#dispose"><a href="PIXI.BaseTexture.html#dispose">dispose</a></li>
+            
+                <li data-name="PIXI.BaseTexture#loadSource"><a href="PIXI.BaseTexture.html#loadSource">loadSource</a></li>
+            
+                <li data-name="PIXI.BaseTexture#update"><a href="PIXI.BaseTexture.html#update">update</a></li>
+            
+                <li data-name="PIXI.BaseTexture#updateSourceImage"><a href="PIXI.BaseTexture.html#updateSourceImage">updateSourceImage</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            <span class="subtitle">Events</span>
+            
+                <li data-name="PIXI.BaseTexture#event:error"><a href="PIXI.BaseTexture.html#event:error">error</a></li>
+            
+                <li data-name="PIXI.BaseTexture#event:loaded"><a href="PIXI.BaseTexture.html#event:loaded">loaded</a></li>
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="PIXI.BlendModeManager">
+            <span class="title">
+                <a href="PIXI.BlendModeManager.html">PIXI.BlendModeManager</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            <span class="subtitle">Members</span>
+            
+                <li data-name="PIXI.BlendModeManager#currentBlendMode"><a href="PIXI.BlendModeManager.html#currentBlendMode">currentBlendMode</a></li>
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="PIXI.BlendModeManager#setBlendMode"><a href="PIXI.BlendModeManager.html#setBlendMode">setBlendMode</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="PIXI.CanvasBuffer">
+            <span class="title">
+                <a href="PIXI.CanvasBuffer.html">PIXI.CanvasBuffer</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            <span class="subtitle">Members</span>
+            
+                <li data-name="PIXI.CanvasBuffer#canvas"><a href="PIXI.CanvasBuffer.html#canvas">canvas</a></li>
+            
+                <li data-name="PIXI.CanvasBuffer#context"><a href="PIXI.CanvasBuffer.html#context">context</a></li>
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="PIXI.CanvasBuffer#destroy"><a href="PIXI.CanvasBuffer.html#destroy">destroy</a></li>
+            
+                <li data-name="PIXI.CanvasBuffer#resize"><a href="PIXI.CanvasBuffer.html#resize">resize</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="PIXI.CanvasGraphics">
+            <span class="title">
+                <a href="PIXI.CanvasGraphics.html">PIXI.CanvasGraphics</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="PIXI.CanvasMaskManager">
+            <span class="title">
+                <a href="PIXI.CanvasMaskManager.html">PIXI.CanvasMaskManager</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="PIXI.CanvasMaskManager#popMask"><a href="PIXI.CanvasMaskManager.html#popMask">popMask</a></li>
+            
+                <li data-name="PIXI.CanvasMaskManager#pushMask"><a href="PIXI.CanvasMaskManager.html#pushMask">pushMask</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="PIXI.CanvasRenderer">
+            <span class="title">
+                <a href="PIXI.CanvasRenderer.html">PIXI.CanvasRenderer</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            <span class="subtitle">Members</span>
+            
+                <li data-name="PIXI.CanvasRenderer#autoResize"><a href="PIXI.CanvasRenderer.html#autoResize">autoResize</a></li>
+            
+                <li data-name="PIXI.CanvasRenderer#blendModes"><a href="PIXI.CanvasRenderer.html#blendModes">blendModes</a></li>
+            
+                <li data-name="PIXI.CanvasRenderer#clearBeforeRender"><a href="PIXI.CanvasRenderer.html#clearBeforeRender">clearBeforeRender</a></li>
+            
+                <li data-name="PIXI.CanvasRenderer#context"><a href="PIXI.CanvasRenderer.html#context">context</a></li>
+            
+                <li data-name="PIXI.CanvasRenderer#currentBlendMode"><a href="PIXI.CanvasRenderer.html#currentBlendMode">currentBlendMode</a></li>
+            
+                <li data-name="PIXI.CanvasRenderer#currentScaleMode"><a href="PIXI.CanvasRenderer.html#currentScaleMode">currentScaleMode</a></li>
+            
+                <li data-name="PIXI.CanvasRenderer#height"><a href="PIXI.CanvasRenderer.html#height">height</a></li>
+            
+                <li data-name="PIXI.CanvasRenderer#maskManager"><a href="PIXI.CanvasRenderer.html#maskManager">maskManager</a></li>
+            
+                <li data-name="PIXI.CanvasRenderer#preserveDrawingBuffer"><a href="PIXI.CanvasRenderer.html#preserveDrawingBuffer">preserveDrawingBuffer</a></li>
+            
+                <li data-name="PIXI.CanvasRenderer#refresh"><a href="PIXI.CanvasRenderer.html#refresh">refresh</a></li>
+            
+                <li data-name="PIXI.CanvasRenderer#resolution"><a href="PIXI.CanvasRenderer.html#resolution">resolution</a></li>
+            
+                <li data-name="PIXI.CanvasRenderer#roundPixels"><a href="PIXI.CanvasRenderer.html#roundPixels">roundPixels</a></li>
+            
+                <li data-name="PIXI.CanvasRenderer#smoothProperty"><a href="PIXI.CanvasRenderer.html#smoothProperty">smoothProperty</a></li>
+            
+                <li data-name="PIXI.CanvasRenderer#transparent"><a href="PIXI.CanvasRenderer.html#transparent">transparent</a></li>
+            
+                <li data-name="PIXI.CanvasRenderer#type"><a href="PIXI.CanvasRenderer.html#type">type</a></li>
+            
+                <li data-name="PIXI.CanvasRenderer#view"><a href="PIXI.CanvasRenderer.html#view">view</a></li>
+            
+                <li data-name="PIXI.CanvasRenderer#width"><a href="PIXI.CanvasRenderer.html#width">width</a></li>
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="PIXI.CanvasRenderer#destroy"><a href="PIXI.CanvasRenderer.html#destroy">destroy</a></li>
+            
+                <li data-name="PIXI.CanvasRenderer#render"><a href="PIXI.CanvasRenderer.html#render">render</a></li>
+            
+                <li data-name="PIXI.CanvasRenderer#resize"><a href="PIXI.CanvasRenderer.html#resize">resize</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="PIXI.CanvasTinter">
+            <span class="title">
+                <a href="PIXI.CanvasTinter.html">PIXI.CanvasTinter</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            <span class="subtitle">Members</span>
+            
+                <li data-name="PIXI.CanvasTinter.cacheStepsPerColorChannel"><a href="PIXI.CanvasTinter.html#.cacheStepsPerColorChannel">cacheStepsPerColorChannel</a></li>
+            
+                <li data-name="PIXI.CanvasTinter.canUseMultiply"><a href="PIXI.CanvasTinter.html#.canUseMultiply">canUseMultiply</a></li>
+            
+                <li data-name="PIXI.CanvasTinter.convertTintToImage"><a href="PIXI.CanvasTinter.html#.convertTintToImage">convertTintToImage</a></li>
+            
+                <li data-name="PIXI.CanvasTinter.tintMethod"><a href="PIXI.CanvasTinter.html#.tintMethod">tintMethod</a></li>
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="PIXI.CanvasTinter.getTintedTexture"><a href="PIXI.CanvasTinter.html#.getTintedTexture">getTintedTexture</a></li>
+            
+                <li data-name="PIXI.CanvasTinter.roundColor"><a href="PIXI.CanvasTinter.html#.roundColor">roundColor</a></li>
+            
+                <li data-name="PIXI.CanvasTinter.tintWithMultiply"><a href="PIXI.CanvasTinter.html#.tintWithMultiply">tintWithMultiply</a></li>
+            
+                <li data-name="PIXI.CanvasTinter.tintWithOverlay"><a href="PIXI.CanvasTinter.html#.tintWithOverlay">tintWithOverlay</a></li>
+            
+                <li data-name="PIXI.CanvasTinter.tintWithPerPixel"><a href="PIXI.CanvasTinter.html#.tintWithPerPixel">tintWithPerPixel</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="PIXI.Circle">
+            <span class="title">
+                <a href="PIXI.Circle.html">PIXI.Circle</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            <span class="subtitle">Members</span>
+            
+                <li data-name="PIXI.Circle#radius"><a href="PIXI.Circle.html#radius">radius</a></li>
+            
+                <li data-name="PIXI.Circle#type"><a href="PIXI.Circle.html#type">type</a></li>
+            
+                <li data-name="PIXI.Circle#x"><a href="PIXI.Circle.html#x">x</a></li>
+            
+                <li data-name="PIXI.Circle#y"><a href="PIXI.Circle.html#y">y</a></li>
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="PIXI.Circle#clone"><a href="PIXI.Circle.html#clone">clone</a></li>
+            
+                <li data-name="PIXI.Circle#contains"><a href="PIXI.Circle.html#contains">contains</a></li>
+            
+                <li data-name="PIXI.Circle#getBounds"><a href="PIXI.Circle.html#getBounds">getBounds</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="PIXI.ComplexPrimitiveShader">
+            <span class="title">
+                <a href="PIXI.ComplexPrimitiveShader.html">PIXI.ComplexPrimitiveShader</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            <span class="subtitle">Members</span>
+            
+                <li data-name="PIXI.ComplexPrimitiveShader#fragmentSrc"><a href="PIXI.ComplexPrimitiveShader.html#fragmentSrc">fragmentSrc</a></li>
+            
+                <li data-name="PIXI.ComplexPrimitiveShader#gl"><a href="PIXI.ComplexPrimitiveShader.html#gl">gl</a></li>
+            
+                <li data-name="PIXI.ComplexPrimitiveShader#program"><a href="PIXI.ComplexPrimitiveShader.html#program">program</a></li>
+            
+                <li data-name="PIXI.ComplexPrimitiveShader#uuid"><a href="PIXI.ComplexPrimitiveShader.html#uuid">uuid</a></li>
+            
+                <li data-name="PIXI.ComplexPrimitiveShader#vertexSrc"><a href="PIXI.ComplexPrimitiveShader.html#vertexSrc">vertexSrc</a></li>
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="PIXI.ComplexPrimitiveShader#destroy"><a href="PIXI.ComplexPrimitiveShader.html#destroy">destroy</a></li>
+            
+                <li data-name="PIXI.ComplexPrimitiveShader#initSampler2D"><a href="PIXI.ComplexPrimitiveShader.html#initSampler2D">initSampler2D</a></li>
+            
+                <li data-name="PIXI.ComplexPrimitiveShader#syncUniform"><a href="PIXI.ComplexPrimitiveShader.html#syncUniform">syncUniform</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="PIXI.CONST">
+            <span class="title">
+                <a href="PIXI.CONST.html">PIXI.CONST</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            <span class="subtitle">Members</span>
+            
+                <li data-name="PIXI.CONST.BLEND_MODES"><a href="PIXI.CONST.html#.BLEND_MODES">BLEND_MODES</a></li>
+            
+                <li data-name="PIXI.CONST.DEFAULT_RENDER_OPTIONS"><a href="PIXI.CONST.html#.DEFAULT_RENDER_OPTIONS">DEFAULT_RENDER_OPTIONS</a></li>
+            
+                <li data-name="PIXI.CONST.DEG_TO_RAD"><a href="PIXI.CONST.html#.DEG_TO_RAD">DEG_TO_RAD</a></li>
+            
+                <li data-name="PIXI.CONST.PI_2"><a href="PIXI.CONST.html#.PI_2">PI_2</a></li>
+            
+                <li data-name="PIXI.CONST.RAD_TO_DEG"><a href="PIXI.CONST.html#.RAD_TO_DEG">RAD_TO_DEG</a></li>
+            
+                <li data-name="PIXI.CONST.RENDERER_TYPE"><a href="PIXI.CONST.html#.RENDERER_TYPE">RENDERER_TYPE</a></li>
+            
+                <li data-name="PIXI.CONST.RETINA_PREFIX"><a href="PIXI.CONST.html#.RETINA_PREFIX">RETINA_PREFIX</a></li>
+            
+                <li data-name="PIXI.CONST.SCALE_MODES"><a href="PIXI.CONST.html#.SCALE_MODES">SCALE_MODES</a></li>
+            
+                <li data-name="PIXI.CONST.SHAPES"><a href="PIXI.CONST.html#.SHAPES">SHAPES</a></li>
+            
+                <li data-name="PIXI.CONST.TARGET_FPMS"><a href="PIXI.CONST.html#.TARGET_FPMS">TARGET_FPMS</a></li>
+            
+                <li data-name="PIXI.CONST.VERSION"><a href="PIXI.CONST.html#.VERSION">VERSION</a></li>
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="PIXI.Container">
+            <span class="title">
+                <a href="PIXI.Container.html">PIXI.Container</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            <span class="subtitle">Members</span>
+            
+                <li data-name="PIXI.Container#alpha"><a href="PIXI.Container.html#alpha">alpha</a></li>
+            
+                <li data-name="PIXI.Container#children"><a href="PIXI.Container.html#children">children</a></li>
+            
+                <li data-name="PIXI.Container#filterArea"><a href="PIXI.Container.html#filterArea">filterArea</a></li>
+            
+                <li data-name="PIXI.Container#filters"><a href="PIXI.Container.html#filters">filters</a></li>
+            
+                <li data-name="PIXI.Container#height"><a href="PIXI.Container.html#height">height</a></li>
+            
+                <li data-name="PIXI.Container#mask"><a href="PIXI.Container.html#mask">mask</a></li>
+            
+                <li data-name="PIXI.Container#parent"><a href="PIXI.Container.html#parent">parent</a></li>
+            
+                <li data-name="PIXI.Container#pivot"><a href="PIXI.Container.html#pivot">pivot</a></li>
+            
+                <li data-name="PIXI.Container#position"><a href="PIXI.Container.html#position">position</a></li>
+            
+                <li data-name="PIXI.Container#renderable"><a href="PIXI.Container.html#renderable">renderable</a></li>
+            
+                <li data-name="PIXI.Container#rotation"><a href="PIXI.Container.html#rotation">rotation</a></li>
+            
+                <li data-name="PIXI.Container#scale"><a href="PIXI.Container.html#scale">scale</a></li>
+            
+                <li data-name="PIXI.Container#visible"><a href="PIXI.Container.html#visible">visible</a></li>
+            
+                <li data-name="PIXI.Container#width"><a href="PIXI.Container.html#width">width</a></li>
+            
+                <li data-name="PIXI.Container#worldAlpha"><a href="PIXI.Container.html#worldAlpha">worldAlpha</a></li>
+            
+                <li data-name="PIXI.Container#worldTransform"><a href="PIXI.Container.html#worldTransform">worldTransform</a></li>
+            
+                <li data-name="PIXI.Container#worldVisible"><a href="PIXI.Container.html#worldVisible">worldVisible</a></li>
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="PIXI.Container#addChild"><a href="PIXI.Container.html#addChild">addChild</a></li>
+            
+                <li data-name="PIXI.Container#addChildAt"><a href="PIXI.Container.html#addChildAt">addChildAt</a></li>
+            
+                <li data-name="PIXI.Container#destroy"><a href="PIXI.Container.html#destroy">destroy</a></li>
+            
+                <li data-name="PIXI.Container#generateTexture"><a href="PIXI.Container.html#generateTexture">generateTexture</a></li>
+            
+                <li data-name="PIXI.Container#getBounds"><a href="PIXI.Container.html#getBounds">getBounds</a></li>
+            
+                <li data-name="PIXI.Container#getChildAt"><a href="PIXI.Container.html#getChildAt">getChildAt</a></li>
+            
+                <li data-name="PIXI.Container#getChildIndex"><a href="PIXI.Container.html#getChildIndex">getChildIndex</a></li>
+            
+                <li data-name="PIXI.Container#getLocalBounds"><a href="PIXI.Container.html#getLocalBounds">getLocalBounds</a></li>
+            
+                <li data-name="PIXI.Container#removeChild"><a href="PIXI.Container.html#removeChild">removeChild</a></li>
+            
+                <li data-name="PIXI.Container#removeChildAt"><a href="PIXI.Container.html#removeChildAt">removeChildAt</a></li>
+            
+                <li data-name="PIXI.Container#removeChildren"><a href="PIXI.Container.html#removeChildren">removeChildren</a></li>
+            
+                <li data-name="PIXI.Container#renderCanvas"><a href="PIXI.Container.html#renderCanvas">renderCanvas</a></li>
+            
+                <li data-name="PIXI.Container#renderWebGL"><a href="PIXI.Container.html#renderWebGL">renderWebGL</a></li>
+            
+                <li data-name="PIXI.Container#setChildIndex"><a href="PIXI.Container.html#setChildIndex">setChildIndex</a></li>
+            
+                <li data-name="PIXI.Container#swapChildren"><a href="PIXI.Container.html#swapChildren">swapChildren</a></li>
+            
+                <li data-name="PIXI.Container#toGlobal"><a href="PIXI.Container.html#toGlobal">toGlobal</a></li>
+            
+                <li data-name="PIXI.Container#toLocal"><a href="PIXI.Container.html#toLocal">toLocal</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="PIXI.DisplayObject">
+            <span class="title">
+                <a href="PIXI.DisplayObject.html">PIXI.DisplayObject</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            <span class="subtitle">Members</span>
+            
+                <li data-name="PIXI.DisplayObject#alpha"><a href="PIXI.DisplayObject.html#alpha">alpha</a></li>
+            
+                <li data-name="PIXI.DisplayObject#filterArea"><a href="PIXI.DisplayObject.html#filterArea">filterArea</a></li>
+            
+                <li data-name="PIXI.DisplayObject#filters"><a href="PIXI.DisplayObject.html#filters">filters</a></li>
+            
+                <li data-name="PIXI.DisplayObject#mask"><a href="PIXI.DisplayObject.html#mask">mask</a></li>
+            
+                <li data-name="PIXI.DisplayObject#parent"><a href="PIXI.DisplayObject.html#parent">parent</a></li>
+            
+                <li data-name="PIXI.DisplayObject#pivot"><a href="PIXI.DisplayObject.html#pivot">pivot</a></li>
+            
+                <li data-name="PIXI.DisplayObject#position"><a href="PIXI.DisplayObject.html#position">position</a></li>
+            
+                <li data-name="PIXI.DisplayObject#renderable"><a href="PIXI.DisplayObject.html#renderable">renderable</a></li>
+            
+                <li data-name="PIXI.DisplayObject#rotation"><a href="PIXI.DisplayObject.html#rotation">rotation</a></li>
+            
+                <li data-name="PIXI.DisplayObject#scale"><a href="PIXI.DisplayObject.html#scale">scale</a></li>
+            
+                <li data-name="PIXI.DisplayObject#visible"><a href="PIXI.DisplayObject.html#visible">visible</a></li>
+            
+                <li data-name="PIXI.DisplayObject#worldAlpha"><a href="PIXI.DisplayObject.html#worldAlpha">worldAlpha</a></li>
+            
+                <li data-name="PIXI.DisplayObject#worldTransform"><a href="PIXI.DisplayObject.html#worldTransform">worldTransform</a></li>
+            
+                <li data-name="PIXI.DisplayObject#worldVisible"><a href="PIXI.DisplayObject.html#worldVisible">worldVisible</a></li>
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="PIXI.DisplayObject#destroy"><a href="PIXI.DisplayObject.html#destroy">destroy</a></li>
+            
+                <li data-name="PIXI.DisplayObject#generateTexture"><a href="PIXI.DisplayObject.html#generateTexture">generateTexture</a></li>
+            
+                <li data-name="PIXI.DisplayObject#getBounds"><a href="PIXI.DisplayObject.html#getBounds">getBounds</a></li>
+            
+                <li data-name="PIXI.DisplayObject#getLocalBounds"><a href="PIXI.DisplayObject.html#getLocalBounds">getLocalBounds</a></li>
+            
+                <li data-name="PIXI.DisplayObject#toGlobal"><a href="PIXI.DisplayObject.html#toGlobal">toGlobal</a></li>
+            
+                <li data-name="PIXI.DisplayObject#toLocal"><a href="PIXI.DisplayObject.html#toLocal">toLocal</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="PIXI.Ellipse">
+            <span class="title">
+                <a href="PIXI.Ellipse.html">PIXI.Ellipse</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            <span class="subtitle">Members</span>
+            
+                <li data-name="PIXI.Ellipse#height"><a href="PIXI.Ellipse.html#height">height</a></li>
+            
+                <li data-name="PIXI.Ellipse#type"><a href="PIXI.Ellipse.html#type">type</a></li>
+            
+                <li data-name="PIXI.Ellipse#width"><a href="PIXI.Ellipse.html#width">width</a></li>
+            
+                <li data-name="PIXI.Ellipse#x"><a href="PIXI.Ellipse.html#x">x</a></li>
+            
+                <li data-name="PIXI.Ellipse#y"><a href="PIXI.Ellipse.html#y">y</a></li>
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="PIXI.Ellipse#clone"><a href="PIXI.Ellipse.html#clone">clone</a></li>
+            
+                <li data-name="PIXI.Ellipse#contains"><a href="PIXI.Ellipse.html#contains">contains</a></li>
+            
+                <li data-name="PIXI.Ellipse#getBounds"><a href="PIXI.Ellipse.html#getBounds">getBounds</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="PIXI.extras.BitmapText">
+            <span class="title">
+                <a href="PIXI.extras.BitmapText.html">PIXI.extras.BitmapText</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            <span class="subtitle">Members</span>
+            
+                <li data-name="PIXI.extras.BitmapText#alpha"><a href="PIXI.extras.BitmapText.html#alpha">alpha</a></li>
+            
+                <li data-name="PIXI.extras.BitmapText#children"><a href="PIXI.extras.BitmapText.html#children">children</a></li>
+            
+                <li data-name="PIXI.extras.BitmapText#dirty"><a href="PIXI.extras.BitmapText.html#dirty">dirty</a></li>
+            
+                <li data-name="PIXI.extras.BitmapText#filterArea"><a href="PIXI.extras.BitmapText.html#filterArea">filterArea</a></li>
+            
+                <li data-name="PIXI.extras.BitmapText#filters"><a href="PIXI.extras.BitmapText.html#filters">filters</a></li>
+            
+                <li data-name="PIXI.extras.BitmapText#height"><a href="PIXI.extras.BitmapText.html#height">height</a></li>
+            
+                <li data-name="PIXI.extras.BitmapText#mask"><a href="PIXI.extras.BitmapText.html#mask">mask</a></li>
+            
+                <li data-name="PIXI.extras.BitmapText#maxWidth"><a href="PIXI.extras.BitmapText.html#maxWidth">maxWidth</a></li>
+            
+                <li data-name="PIXI.extras.BitmapText#parent"><a href="PIXI.extras.BitmapText.html#parent">parent</a></li>
+            
+                <li data-name="PIXI.extras.BitmapText#pivot"><a href="PIXI.extras.BitmapText.html#pivot">pivot</a></li>
+            
+                <li data-name="PIXI.extras.BitmapText#position"><a href="PIXI.extras.BitmapText.html#position">position</a></li>
+            
+                <li data-name="PIXI.extras.BitmapText#renderable"><a href="PIXI.extras.BitmapText.html#renderable">renderable</a></li>
+            
+                <li data-name="PIXI.extras.BitmapText#rotation"><a href="PIXI.extras.BitmapText.html#rotation">rotation</a></li>
+            
+                <li data-name="PIXI.extras.BitmapText#scale"><a href="PIXI.extras.BitmapText.html#scale">scale</a></li>
+            
+                <li data-name="PIXI.extras.BitmapText#textHeight"><a href="PIXI.extras.BitmapText.html#textHeight">textHeight</a></li>
+            
+                <li data-name="PIXI.extras.BitmapText#textWidth"><a href="PIXI.extras.BitmapText.html#textWidth">textWidth</a></li>
+            
+                <li data-name="PIXI.extras.BitmapText#visible"><a href="PIXI.extras.BitmapText.html#visible">visible</a></li>
+            
+                <li data-name="PIXI.extras.BitmapText#width"><a href="PIXI.extras.BitmapText.html#width">width</a></li>
+            
+                <li data-name="PIXI.extras.BitmapText#worldAlpha"><a href="PIXI.extras.BitmapText.html#worldAlpha">worldAlpha</a></li>
+            
+                <li data-name="PIXI.extras.BitmapText#worldTransform"><a href="PIXI.extras.BitmapText.html#worldTransform">worldTransform</a></li>
+            
+                <li data-name="PIXI.extras.BitmapText#worldVisible"><a href="PIXI.extras.BitmapText.html#worldVisible">worldVisible</a></li>
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="PIXI.extras.BitmapText#addChild"><a href="PIXI.extras.BitmapText.html#addChild">addChild</a></li>
+            
+                <li data-name="PIXI.extras.BitmapText#addChildAt"><a href="PIXI.extras.BitmapText.html#addChildAt">addChildAt</a></li>
+            
+                <li data-name="PIXI.extras.BitmapText#destroy"><a href="PIXI.extras.BitmapText.html#destroy">destroy</a></li>
+            
+                <li data-name="PIXI.extras.BitmapText#generateTexture"><a href="PIXI.extras.BitmapText.html#generateTexture">generateTexture</a></li>
+            
+                <li data-name="PIXI.extras.BitmapText#getBounds"><a href="PIXI.extras.BitmapText.html#getBounds">getBounds</a></li>
+            
+                <li data-name="PIXI.extras.BitmapText#getChildAt"><a href="PIXI.extras.BitmapText.html#getChildAt">getChildAt</a></li>
+            
+                <li data-name="PIXI.extras.BitmapText#getChildIndex"><a href="PIXI.extras.BitmapText.html#getChildIndex">getChildIndex</a></li>
+            
+                <li data-name="PIXI.extras.BitmapText#getLocalBounds"><a href="PIXI.extras.BitmapText.html#getLocalBounds">getLocalBounds</a></li>
+            
+                <li data-name="PIXI.extras.BitmapText#removeChild"><a href="PIXI.extras.BitmapText.html#removeChild">removeChild</a></li>
+            
+                <li data-name="PIXI.extras.BitmapText#removeChildAt"><a href="PIXI.extras.BitmapText.html#removeChildAt">removeChildAt</a></li>
+            
+                <li data-name="PIXI.extras.BitmapText#removeChildren"><a href="PIXI.extras.BitmapText.html#removeChildren">removeChildren</a></li>
+            
+                <li data-name="PIXI.extras.BitmapText#renderCanvas"><a href="PIXI.extras.BitmapText.html#renderCanvas">renderCanvas</a></li>
+            
+                <li data-name="PIXI.extras.BitmapText#renderWebGL"><a href="PIXI.extras.BitmapText.html#renderWebGL">renderWebGL</a></li>
+            
+                <li data-name="PIXI.extras.BitmapText#setChildIndex"><a href="PIXI.extras.BitmapText.html#setChildIndex">setChildIndex</a></li>
+            
+                <li data-name="PIXI.extras.BitmapText#setText"><a href="PIXI.extras.BitmapText.html#setText">setText</a></li>
+            
+                <li data-name="PIXI.extras.BitmapText#swapChildren"><a href="PIXI.extras.BitmapText.html#swapChildren">swapChildren</a></li>
+            
+                <li data-name="PIXI.extras.BitmapText#toGlobal"><a href="PIXI.extras.BitmapText.html#toGlobal">toGlobal</a></li>
+            
+                <li data-name="PIXI.extras.BitmapText#toLocal"><a href="PIXI.extras.BitmapText.html#toLocal">toLocal</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="PIXI.extras.MovieClip">
+            <span class="title">
+                <a href="PIXI.extras.MovieClip.html">PIXI.extras.MovieClip</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            <span class="subtitle">Members</span>
+            
+                <li data-name="PIXI.extras.MovieClip#alpha"><a href="PIXI.extras.MovieClip.html#alpha">alpha</a></li>
+            
+                <li data-name="PIXI.extras.MovieClip#anchor"><a href="PIXI.extras.MovieClip.html#anchor">anchor</a></li>
+            
+                <li data-name="PIXI.extras.MovieClip#animationSpeed"><a href="PIXI.extras.MovieClip.html#animationSpeed">animationSpeed</a></li>
+            
+                <li data-name="PIXI.extras.MovieClip#blendMode"><a href="PIXI.extras.MovieClip.html#blendMode">blendMode</a></li>
+            
+                <li data-name="PIXI.extras.MovieClip#cachedTint"><a href="PIXI.extras.MovieClip.html#cachedTint">cachedTint</a></li>
+            
+                <li data-name="PIXI.extras.MovieClip#children"><a href="PIXI.extras.MovieClip.html#children">children</a></li>
+            
+                <li data-name="PIXI.extras.MovieClip#filterArea"><a href="PIXI.extras.MovieClip.html#filterArea">filterArea</a></li>
+            
+                <li data-name="PIXI.extras.MovieClip#filters"><a href="PIXI.extras.MovieClip.html#filters">filters</a></li>
+            
+                <li data-name="PIXI.extras.MovieClip#height"><a href="PIXI.extras.MovieClip.html#height">height</a></li>
+            
+                <li data-name="PIXI.extras.MovieClip#loop"><a href="PIXI.extras.MovieClip.html#loop">loop</a></li>
+            
+                <li data-name="PIXI.extras.MovieClip#mask"><a href="PIXI.extras.MovieClip.html#mask">mask</a></li>
+            
+                <li data-name="PIXI.extras.MovieClip#parent"><a href="PIXI.extras.MovieClip.html#parent">parent</a></li>
+            
+                <li data-name="PIXI.extras.MovieClip#pivot"><a href="PIXI.extras.MovieClip.html#pivot">pivot</a></li>
+            
+                <li data-name="PIXI.extras.MovieClip#playing"><a href="PIXI.extras.MovieClip.html#playing">playing</a></li>
+            
+                <li data-name="PIXI.extras.MovieClip#position"><a href="PIXI.extras.MovieClip.html#position">position</a></li>
+            
+                <li data-name="PIXI.extras.MovieClip#renderable"><a href="PIXI.extras.MovieClip.html#renderable">renderable</a></li>
+            
+                <li data-name="PIXI.extras.MovieClip#rotation"><a href="PIXI.extras.MovieClip.html#rotation">rotation</a></li>
+            
+                <li data-name="PIXI.extras.MovieClip#scale"><a href="PIXI.extras.MovieClip.html#scale">scale</a></li>
+            
+                <li data-name="PIXI.extras.MovieClip#shader"><a href="PIXI.extras.MovieClip.html#shader">shader</a></li>
+            
+                <li data-name="PIXI.extras.MovieClip#texture"><a href="PIXI.extras.MovieClip.html#texture">texture</a></li>
+            
+                <li data-name="PIXI.extras.MovieClip#tint"><a href="PIXI.extras.MovieClip.html#tint">tint</a></li>
+            
+                <li data-name="PIXI.extras.MovieClip#visible"><a href="PIXI.extras.MovieClip.html#visible">visible</a></li>
+            
+                <li data-name="PIXI.extras.MovieClip#width"><a href="PIXI.extras.MovieClip.html#width">width</a></li>
+            
+                <li data-name="PIXI.extras.MovieClip#worldAlpha"><a href="PIXI.extras.MovieClip.html#worldAlpha">worldAlpha</a></li>
+            
+                <li data-name="PIXI.extras.MovieClip#worldTransform"><a href="PIXI.extras.MovieClip.html#worldTransform">worldTransform</a></li>
+            
+                <li data-name="PIXI.extras.MovieClip#worldVisible"><a href="PIXI.extras.MovieClip.html#worldVisible">worldVisible</a></li>
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="PIXI.extras.MovieClip.fromFrames"><a href="PIXI.extras.MovieClip.html#.fromFrames">fromFrames</a></li>
+            
+                <li data-name="PIXI.extras.MovieClip.fromImages"><a href="PIXI.extras.MovieClip.html#.fromImages">fromImages</a></li>
+            
+                <li data-name="PIXI.extras.MovieClip#addChild"><a href="PIXI.extras.MovieClip.html#addChild">addChild</a></li>
+            
+                <li data-name="PIXI.extras.MovieClip#addChildAt"><a href="PIXI.extras.MovieClip.html#addChildAt">addChildAt</a></li>
+            
+                <li data-name="PIXI.extras.MovieClip#containsPoint"><a href="PIXI.extras.MovieClip.html#containsPoint">containsPoint</a></li>
+            
+                <li data-name="PIXI.extras.MovieClip#destroy"><a href="PIXI.extras.MovieClip.html#destroy">destroy</a></li>
+            
+                <li data-name="PIXI.extras.MovieClip#generateTexture"><a href="PIXI.extras.MovieClip.html#generateTexture">generateTexture</a></li>
+            
+                <li data-name="PIXI.extras.MovieClip#getBounds"><a href="PIXI.extras.MovieClip.html#getBounds">getBounds</a></li>
+            
+                <li data-name="PIXI.extras.MovieClip#getChildAt"><a href="PIXI.extras.MovieClip.html#getChildAt">getChildAt</a></li>
+            
+                <li data-name="PIXI.extras.MovieClip#getChildIndex"><a href="PIXI.extras.MovieClip.html#getChildIndex">getChildIndex</a></li>
+            
+                <li data-name="PIXI.extras.MovieClip#getLocalBounds"><a href="PIXI.extras.MovieClip.html#getLocalBounds">getLocalBounds</a></li>
+            
+                <li data-name="PIXI.extras.MovieClip#gotoAndPlay"><a href="PIXI.extras.MovieClip.html#gotoAndPlay">gotoAndPlay</a></li>
+            
+                <li data-name="PIXI.extras.MovieClip#gotoAndStop"><a href="PIXI.extras.MovieClip.html#gotoAndStop">gotoAndStop</a></li>
+            
+                <li data-name="PIXI.extras.MovieClip#play"><a href="PIXI.extras.MovieClip.html#play">play</a></li>
+            
+                <li data-name="PIXI.extras.MovieClip#removeChild"><a href="PIXI.extras.MovieClip.html#removeChild">removeChild</a></li>
+            
+                <li data-name="PIXI.extras.MovieClip#removeChildAt"><a href="PIXI.extras.MovieClip.html#removeChildAt">removeChildAt</a></li>
+            
+                <li data-name="PIXI.extras.MovieClip#removeChildren"><a href="PIXI.extras.MovieClip.html#removeChildren">removeChildren</a></li>
+            
+                <li data-name="PIXI.extras.MovieClip#renderCanvas"><a href="PIXI.extras.MovieClip.html#renderCanvas">renderCanvas</a></li>
+            
+                <li data-name="PIXI.extras.MovieClip#renderWebGL"><a href="PIXI.extras.MovieClip.html#renderWebGL">renderWebGL</a></li>
+            
+                <li data-name="PIXI.extras.MovieClip#setChildIndex"><a href="PIXI.extras.MovieClip.html#setChildIndex">setChildIndex</a></li>
+            
+                <li data-name="PIXI.extras.MovieClip#stop"><a href="PIXI.extras.MovieClip.html#stop">stop</a></li>
+            
+                <li data-name="PIXI.extras.MovieClip#swapChildren"><a href="PIXI.extras.MovieClip.html#swapChildren">swapChildren</a></li>
+            
+                <li data-name="PIXI.extras.MovieClip#toGlobal"><a href="PIXI.extras.MovieClip.html#toGlobal">toGlobal</a></li>
+            
+                <li data-name="PIXI.extras.MovieClip#toLocal"><a href="PIXI.extras.MovieClip.html#toLocal">toLocal</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="PIXI.extras.TilingSprite">
+            <span class="title">
+                <a href="PIXI.extras.TilingSprite.html">PIXI.extras.TilingSprite</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            <span class="subtitle">Members</span>
+            
+                <li data-name="PIXI.extras.TilingSprite#alpha"><a href="PIXI.extras.TilingSprite.html#alpha">alpha</a></li>
+            
+                <li data-name="PIXI.extras.TilingSprite#anchor"><a href="PIXI.extras.TilingSprite.html#anchor">anchor</a></li>
+            
+                <li data-name="PIXI.extras.TilingSprite#blendMode"><a href="PIXI.extras.TilingSprite.html#blendMode">blendMode</a></li>
+            
+                <li data-name="PIXI.extras.TilingSprite#cachedTint"><a href="PIXI.extras.TilingSprite.html#cachedTint">cachedTint</a></li>
+            
+                <li data-name="PIXI.extras.TilingSprite#children"><a href="PIXI.extras.TilingSprite.html#children">children</a></li>
+            
+                <li data-name="PIXI.extras.TilingSprite#filterArea"><a href="PIXI.extras.TilingSprite.html#filterArea">filterArea</a></li>
+            
+                <li data-name="PIXI.extras.TilingSprite#filters"><a href="PIXI.extras.TilingSprite.html#filters">filters</a></li>
+            
+                <li data-name="PIXI.extras.TilingSprite#height"><a href="PIXI.extras.TilingSprite.html#height">height</a></li>
+            
+                <li data-name="PIXI.extras.TilingSprite#mask"><a href="PIXI.extras.TilingSprite.html#mask">mask</a></li>
+            
+                <li data-name="PIXI.extras.TilingSprite#parent"><a href="PIXI.extras.TilingSprite.html#parent">parent</a></li>
+            
+                <li data-name="PIXI.extras.TilingSprite#pivot"><a href="PIXI.extras.TilingSprite.html#pivot">pivot</a></li>
+            
+                <li data-name="PIXI.extras.TilingSprite#position"><a href="PIXI.extras.TilingSprite.html#position">position</a></li>
+            
+                <li data-name="PIXI.extras.TilingSprite#renderable"><a href="PIXI.extras.TilingSprite.html#renderable">renderable</a></li>
+            
+                <li data-name="PIXI.extras.TilingSprite#rotation"><a href="PIXI.extras.TilingSprite.html#rotation">rotation</a></li>
+            
+                <li data-name="PIXI.extras.TilingSprite#scale"><a href="PIXI.extras.TilingSprite.html#scale">scale</a></li>
+            
+                <li data-name="PIXI.extras.TilingSprite#shader"><a href="PIXI.extras.TilingSprite.html#shader">shader</a></li>
+            
+                <li data-name="PIXI.extras.TilingSprite#texture"><a href="PIXI.extras.TilingSprite.html#texture">texture</a></li>
+            
+                <li data-name="PIXI.extras.TilingSprite#tilePosition"><a href="PIXI.extras.TilingSprite.html#tilePosition">tilePosition</a></li>
+            
+                <li data-name="PIXI.extras.TilingSprite#tileScale"><a href="PIXI.extras.TilingSprite.html#tileScale">tileScale</a></li>
+            
+                <li data-name="PIXI.extras.TilingSprite#tint"><a href="PIXI.extras.TilingSprite.html#tint">tint</a></li>
+            
+                <li data-name="PIXI.extras.TilingSprite#visible"><a href="PIXI.extras.TilingSprite.html#visible">visible</a></li>
+            
+                <li data-name="PIXI.extras.TilingSprite#width"><a href="PIXI.extras.TilingSprite.html#width">width</a></li>
+            
+                <li data-name="PIXI.extras.TilingSprite#worldAlpha"><a href="PIXI.extras.TilingSprite.html#worldAlpha">worldAlpha</a></li>
+            
+                <li data-name="PIXI.extras.TilingSprite#worldTransform"><a href="PIXI.extras.TilingSprite.html#worldTransform">worldTransform</a></li>
+            
+                <li data-name="PIXI.extras.TilingSprite#worldVisible"><a href="PIXI.extras.TilingSprite.html#worldVisible">worldVisible</a></li>
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="PIXI.extras.TilingSprite.fromFrame"><a href="PIXI.extras.TilingSprite.html#.fromFrame">fromFrame</a></li>
+            
+                <li data-name="PIXI.extras.TilingSprite.fromImage"><a href="PIXI.extras.TilingSprite.html#.fromImage">fromImage</a></li>
+            
+                <li data-name="PIXI.extras.TilingSprite#addChild"><a href="PIXI.extras.TilingSprite.html#addChild">addChild</a></li>
+            
+                <li data-name="PIXI.extras.TilingSprite#addChildAt"><a href="PIXI.extras.TilingSprite.html#addChildAt">addChildAt</a></li>
+            
+                <li data-name="PIXI.extras.TilingSprite#containsPoint"><a href="PIXI.extras.TilingSprite.html#containsPoint">containsPoint</a></li>
+            
+                <li data-name="PIXI.extras.TilingSprite#destroy"><a href="PIXI.extras.TilingSprite.html#destroy">destroy</a></li>
+            
+                <li data-name="PIXI.extras.TilingSprite#generateTexture"><a href="PIXI.extras.TilingSprite.html#generateTexture">generateTexture</a></li>
+            
+                <li data-name="PIXI.extras.TilingSprite#getBounds"><a href="PIXI.extras.TilingSprite.html#getBounds">getBounds</a></li>
+            
+                <li data-name="PIXI.extras.TilingSprite#getChildAt"><a href="PIXI.extras.TilingSprite.html#getChildAt">getChildAt</a></li>
+            
+                <li data-name="PIXI.extras.TilingSprite#getChildIndex"><a href="PIXI.extras.TilingSprite.html#getChildIndex">getChildIndex</a></li>
+            
+                <li data-name="PIXI.extras.TilingSprite#getLocalBounds"><a href="PIXI.extras.TilingSprite.html#getLocalBounds">getLocalBounds</a></li>
+            
+                <li data-name="PIXI.extras.TilingSprite#removeChild"><a href="PIXI.extras.TilingSprite.html#removeChild">removeChild</a></li>
+            
+                <li data-name="PIXI.extras.TilingSprite#removeChildAt"><a href="PIXI.extras.TilingSprite.html#removeChildAt">removeChildAt</a></li>
+            
+                <li data-name="PIXI.extras.TilingSprite#removeChildren"><a href="PIXI.extras.TilingSprite.html#removeChildren">removeChildren</a></li>
+            
+                <li data-name="PIXI.extras.TilingSprite#renderCanvas"><a href="PIXI.extras.TilingSprite.html#renderCanvas">renderCanvas</a></li>
+            
+                <li data-name="PIXI.extras.TilingSprite#renderWebGL"><a href="PIXI.extras.TilingSprite.html#renderWebGL">renderWebGL</a></li>
+            
+                <li data-name="PIXI.extras.TilingSprite#setChildIndex"><a href="PIXI.extras.TilingSprite.html#setChildIndex">setChildIndex</a></li>
+            
+                <li data-name="PIXI.extras.TilingSprite#swapChildren"><a href="PIXI.extras.TilingSprite.html#swapChildren">swapChildren</a></li>
+            
+                <li data-name="PIXI.extras.TilingSprite#toGlobal"><a href="PIXI.extras.TilingSprite.html#toGlobal">toGlobal</a></li>
+            
+                <li data-name="PIXI.extras.TilingSprite#toLocal"><a href="PIXI.extras.TilingSprite.html#toLocal">toLocal</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="PIXI.FilterManager">
+            <span class="title">
+                <a href="PIXI.FilterManager.html">PIXI.FilterManager</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            <span class="subtitle">Members</span>
+            
+                <li data-name="PIXI.FilterManager#filterStack"><a href="PIXI.FilterManager.html#filterStack">filterStack</a></li>
+            
+                <li data-name="PIXI.FilterManager#renderer"><a href="PIXI.FilterManager.html#renderer">renderer</a></li>
+            
+                <li data-name="PIXI.FilterManager#texturePool"><a href="PIXI.FilterManager.html#texturePool">texturePool</a></li>
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="PIXI.FilterManager#destroy"><a href="PIXI.FilterManager.html#destroy">destroy</a></li>
+            
+                <li data-name="PIXI.FilterManager#getRenderTarget"><a href="PIXI.FilterManager.html#getRenderTarget">getRenderTarget</a></li>
+            
+                <li data-name="PIXI.FilterManager#onContextChange"><a href="PIXI.FilterManager.html#onContextChange">onContextChange</a></li>
+            
+                <li data-name="PIXI.FilterManager#popFilter"><a href="PIXI.FilterManager.html#popFilter">popFilter</a></li>
+            
+                <li data-name="PIXI.FilterManager#pushFilter"><a href="PIXI.FilterManager.html#pushFilter">pushFilter</a></li>
+            
+                <li data-name="PIXI.FilterManager#setFilterStack"><a href="PIXI.FilterManager.html#setFilterStack">setFilterStack</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="PIXI.filters.AsciiFilter">
+            <span class="title">
+                <a href="PIXI.filters.AsciiFilter.html">PIXI.filters.AsciiFilter</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            <span class="subtitle">Members</span>
+            
+                <li data-name="PIXI.filters.AsciiFilter#padding"><a href="PIXI.filters.AsciiFilter.html#padding">padding</a></li>
+            
+                <li data-name="PIXI.filters.AsciiFilter#uniforms"><a href="PIXI.filters.AsciiFilter.html#uniforms">uniforms</a></li>
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="PIXI.filters.AsciiFilter#syncUniform"><a href="PIXI.filters.AsciiFilter.html#syncUniform">syncUniform</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="PIXI.filters.BloomFilter">
+            <span class="title">
+                <a href="PIXI.filters.BloomFilter.html">PIXI.filters.BloomFilter</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            <span class="subtitle">Members</span>
+            
+                <li data-name="PIXI.filters.BloomFilter#padding"><a href="PIXI.filters.BloomFilter.html#padding">padding</a></li>
+            
+                <li data-name="PIXI.filters.BloomFilter#uniforms"><a href="PIXI.filters.BloomFilter.html#uniforms">uniforms</a></li>
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="PIXI.filters.BloomFilter#syncUniform"><a href="PIXI.filters.BloomFilter.html#syncUniform">syncUniform</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="PIXI.filters.BlurDirFilter">
+            <span class="title">
+                <a href="PIXI.filters.BlurDirFilter.html">PIXI.filters.BlurDirFilter</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            <span class="subtitle">Members</span>
+            
+                <li data-name="PIXI.filters.BlurDirFilter#padding"><a href="PIXI.filters.BlurDirFilter.html#padding">padding</a></li>
+            
+                <li data-name="PIXI.filters.BlurDirFilter#uniforms"><a href="PIXI.filters.BlurDirFilter.html#uniforms">uniforms</a></li>
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="PIXI.filters.BlurDirFilter#syncUniform"><a href="PIXI.filters.BlurDirFilter.html#syncUniform">syncUniform</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="PIXI.filters.BlurFilter">
+            <span class="title">
+                <a href="PIXI.filters.BlurFilter.html">PIXI.filters.BlurFilter</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            <span class="subtitle">Members</span>
+            
+                <li data-name="PIXI.filters.BlurFilter#padding"><a href="PIXI.filters.BlurFilter.html#padding">padding</a></li>
+            
+                <li data-name="PIXI.filters.BlurFilter#uniforms"><a href="PIXI.filters.BlurFilter.html#uniforms">uniforms</a></li>
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="PIXI.filters.BlurFilter#syncUniform"><a href="PIXI.filters.BlurFilter.html#syncUniform">syncUniform</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="PIXI.filters.BlurXFilter">
+            <span class="title">
+                <a href="PIXI.filters.BlurXFilter.html">PIXI.filters.BlurXFilter</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            <span class="subtitle">Members</span>
+            
+                <li data-name="PIXI.filters.BlurXFilter#padding"><a href="PIXI.filters.BlurXFilter.html#padding">padding</a></li>
+            
+                <li data-name="PIXI.filters.BlurXFilter#uniforms"><a href="PIXI.filters.BlurXFilter.html#uniforms">uniforms</a></li>
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="PIXI.filters.BlurXFilter#syncUniform"><a href="PIXI.filters.BlurXFilter.html#syncUniform">syncUniform</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="PIXI.filters.BlurYFilter">
+            <span class="title">
+                <a href="PIXI.filters.BlurYFilter.html">PIXI.filters.BlurYFilter</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            <span class="subtitle">Members</span>
+            
+                <li data-name="PIXI.filters.BlurYFilter#padding"><a href="PIXI.filters.BlurYFilter.html#padding">padding</a></li>
+            
+                <li data-name="PIXI.filters.BlurYFilter#uniforms"><a href="PIXI.filters.BlurYFilter.html#uniforms">uniforms</a></li>
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="PIXI.filters.BlurYFilter#syncUniform"><a href="PIXI.filters.BlurYFilter.html#syncUniform">syncUniform</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="PIXI.filters.BlurYTintFilter">
+            <span class="title">
+                <a href="PIXI.filters.BlurYTintFilter.html">PIXI.filters.BlurYTintFilter</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            <span class="subtitle">Members</span>
+            
+                <li data-name="PIXI.filters.BlurYTintFilter#padding"><a href="PIXI.filters.BlurYTintFilter.html#padding">padding</a></li>
+            
+                <li data-name="PIXI.filters.BlurYTintFilter#uniforms"><a href="PIXI.filters.BlurYTintFilter.html#uniforms">uniforms</a></li>
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="PIXI.filters.BlurYTintFilter#syncUniform"><a href="PIXI.filters.BlurYTintFilter.html#syncUniform">syncUniform</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="PIXI.filters.ColorMatrixFilter">
+            <span class="title">
+                <a href="PIXI.filters.ColorMatrixFilter.html">PIXI.filters.ColorMatrixFilter</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            <span class="subtitle">Members</span>
+            
+                <li data-name="PIXI.filters.ColorMatrixFilter#padding"><a href="PIXI.filters.ColorMatrixFilter.html#padding">padding</a></li>
+            
+                <li data-name="PIXI.filters.ColorMatrixFilter#uniforms"><a href="PIXI.filters.ColorMatrixFilter.html#uniforms">uniforms</a></li>
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="PIXI.filters.ColorMatrixFilter#_colorMatrix"><a href="PIXI.filters.ColorMatrixFilter.html#_colorMatrix">_colorMatrix</a></li>
+            
+                <li data-name="PIXI.filters.ColorMatrixFilter#_loadMatrix"><a href="PIXI.filters.ColorMatrixFilter.html#_loadMatrix">_loadMatrix</a></li>
+            
+                <li data-name="PIXI.filters.ColorMatrixFilter#_multiply"><a href="PIXI.filters.ColorMatrixFilter.html#_multiply">_multiply</a></li>
+            
+                <li data-name="PIXI.filters.ColorMatrixFilter#blackAndWhite"><a href="PIXI.filters.ColorMatrixFilter.html#blackAndWhite">blackAndWhite</a></li>
+            
+                <li data-name="PIXI.filters.ColorMatrixFilter#brightness"><a href="PIXI.filters.ColorMatrixFilter.html#brightness">brightness</a></li>
+            
+                <li data-name="PIXI.filters.ColorMatrixFilter#browni"><a href="PIXI.filters.ColorMatrixFilter.html#browni">browni</a></li>
+            
+                <li data-name="PIXI.filters.ColorMatrixFilter#contrast"><a href="PIXI.filters.ColorMatrixFilter.html#contrast">contrast</a></li>
+            
+                <li data-name="PIXI.filters.ColorMatrixFilter#desaturate"><a href="PIXI.filters.ColorMatrixFilter.html#desaturate">desaturate</a></li>
+            
+                <li data-name="PIXI.filters.ColorMatrixFilter#greyscale"><a href="PIXI.filters.ColorMatrixFilter.html#greyscale">greyscale</a></li>
+            
+                <li data-name="PIXI.filters.ColorMatrixFilter#hue"><a href="PIXI.filters.ColorMatrixFilter.html#hue">hue</a></li>
+            
+                <li data-name="PIXI.filters.ColorMatrixFilter#kodachrome"><a href="PIXI.filters.ColorMatrixFilter.html#kodachrome">kodachrome</a></li>
+            
+                <li data-name="PIXI.filters.ColorMatrixFilter#negative"><a href="PIXI.filters.ColorMatrixFilter.html#negative">negative</a></li>
+            
+                <li data-name="PIXI.filters.ColorMatrixFilter#polaroid"><a href="PIXI.filters.ColorMatrixFilter.html#polaroid">polaroid</a></li>
+            
+                <li data-name="PIXI.filters.ColorMatrixFilter#saturate"><a href="PIXI.filters.ColorMatrixFilter.html#saturate">saturate</a></li>
+            
+                <li data-name="PIXI.filters.ColorMatrixFilter#sepia"><a href="PIXI.filters.ColorMatrixFilter.html#sepia">sepia</a></li>
+            
+                <li data-name="PIXI.filters.ColorMatrixFilter#syncUniform"><a href="PIXI.filters.ColorMatrixFilter.html#syncUniform">syncUniform</a></li>
+            
+                <li data-name="PIXI.filters.ColorMatrixFilter#technicolor"><a href="PIXI.filters.ColorMatrixFilter.html#technicolor">technicolor</a></li>
+            
+                <li data-name="PIXI.filters.ColorMatrixFilter#toBGR"><a href="PIXI.filters.ColorMatrixFilter.html#toBGR">toBGR</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="PIXI.filters.ColorStepFilter">
+            <span class="title">
+                <a href="PIXI.filters.ColorStepFilter.html">PIXI.filters.ColorStepFilter</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            <span class="subtitle">Members</span>
+            
+                <li data-name="PIXI.filters.ColorStepFilter#padding"><a href="PIXI.filters.ColorStepFilter.html#padding">padding</a></li>
+            
+                <li data-name="PIXI.filters.ColorStepFilter#uniforms"><a href="PIXI.filters.ColorStepFilter.html#uniforms">uniforms</a></li>
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="PIXI.filters.ColorStepFilter#syncUniform"><a href="PIXI.filters.ColorStepFilter.html#syncUniform">syncUniform</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="PIXI.filters.ConvolutionFilter">
+            <span class="title">
+                <a href="PIXI.filters.ConvolutionFilter.html">PIXI.filters.ConvolutionFilter</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            <span class="subtitle">Members</span>
+            
+                <li data-name="PIXI.filters.ConvolutionFilter#padding"><a href="PIXI.filters.ConvolutionFilter.html#padding">padding</a></li>
+            
+                <li data-name="PIXI.filters.ConvolutionFilter#uniforms"><a href="PIXI.filters.ConvolutionFilter.html#uniforms">uniforms</a></li>
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="PIXI.filters.ConvolutionFilter#syncUniform"><a href="PIXI.filters.ConvolutionFilter.html#syncUniform">syncUniform</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="PIXI.filters.CrossHatchFilter">
+            <span class="title">
+                <a href="PIXI.filters.CrossHatchFilter.html">PIXI.filters.CrossHatchFilter</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            <span class="subtitle">Members</span>
+            
+                <li data-name="PIXI.filters.CrossHatchFilter#padding"><a href="PIXI.filters.CrossHatchFilter.html#padding">padding</a></li>
+            
+                <li data-name="PIXI.filters.CrossHatchFilter#uniforms"><a href="PIXI.filters.CrossHatchFilter.html#uniforms">uniforms</a></li>
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="PIXI.filters.CrossHatchFilter#syncUniform"><a href="PIXI.filters.CrossHatchFilter.html#syncUniform">syncUniform</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="PIXI.filters.DisplacementFilter">
+            <span class="title">
+                <a href="PIXI.filters.DisplacementFilter.html">PIXI.filters.DisplacementFilter</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            <span class="subtitle">Members</span>
+            
+                <li data-name="PIXI.filters.DisplacementFilter#padding"><a href="PIXI.filters.DisplacementFilter.html#padding">padding</a></li>
+            
+                <li data-name="PIXI.filters.DisplacementFilter#uniforms"><a href="PIXI.filters.DisplacementFilter.html#uniforms">uniforms</a></li>
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="PIXI.filters.DisplacementFilter#syncUniform"><a href="PIXI.filters.DisplacementFilter.html#syncUniform">syncUniform</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="PIXI.filters.DotScreenFilter">
+            <span class="title">
+                <a href="PIXI.filters.DotScreenFilter.html">PIXI.filters.DotScreenFilter</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            <span class="subtitle">Members</span>
+            
+                <li data-name="PIXI.filters.DotScreenFilter#padding"><a href="PIXI.filters.DotScreenFilter.html#padding">padding</a></li>
+            
+                <li data-name="PIXI.filters.DotScreenFilter#uniforms"><a href="PIXI.filters.DotScreenFilter.html#uniforms">uniforms</a></li>
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="PIXI.filters.DotScreenFilter#syncUniform"><a href="PIXI.filters.DotScreenFilter.html#syncUniform">syncUniform</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="PIXI.filters.DropShadowFilter">
+            <span class="title">
+                <a href="PIXI.filters.DropShadowFilter.html">PIXI.filters.DropShadowFilter</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            <span class="subtitle">Members</span>
+            
+                <li data-name="PIXI.filters.DropShadowFilter#padding"><a href="PIXI.filters.DropShadowFilter.html#padding">padding</a></li>
+            
+                <li data-name="PIXI.filters.DropShadowFilter#uniforms"><a href="PIXI.filters.DropShadowFilter.html#uniforms">uniforms</a></li>
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="PIXI.filters.DropShadowFilter#syncUniform"><a href="PIXI.filters.DropShadowFilter.html#syncUniform">syncUniform</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="PIXI.filters.GrayFilter">
+            <span class="title">
+                <a href="PIXI.filters.GrayFilter.html">PIXI.filters.GrayFilter</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            <span class="subtitle">Members</span>
+            
+                <li data-name="PIXI.filters.GrayFilter#padding"><a href="PIXI.filters.GrayFilter.html#padding">padding</a></li>
+            
+                <li data-name="PIXI.filters.GrayFilter#uniforms"><a href="PIXI.filters.GrayFilter.html#uniforms">uniforms</a></li>
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="PIXI.filters.GrayFilter#syncUniform"><a href="PIXI.filters.GrayFilter.html#syncUniform">syncUniform</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="PIXI.filters.InvertFilter">
+            <span class="title">
+                <a href="PIXI.filters.InvertFilter.html">PIXI.filters.InvertFilter</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            <span class="subtitle">Members</span>
+            
+                <li data-name="PIXI.filters.InvertFilter#padding"><a href="PIXI.filters.InvertFilter.html#padding">padding</a></li>
+            
+                <li data-name="PIXI.filters.InvertFilter#uniforms"><a href="PIXI.filters.InvertFilter.html#uniforms">uniforms</a></li>
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="PIXI.filters.InvertFilter#syncUniform"><a href="PIXI.filters.InvertFilter.html#syncUniform">syncUniform</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="PIXI.filters.NoiseFilter">
+            <span class="title">
+                <a href="PIXI.filters.NoiseFilter.html">PIXI.filters.NoiseFilter</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            <span class="subtitle">Members</span>
+            
+                <li data-name="PIXI.filters.NoiseFilter#padding"><a href="PIXI.filters.NoiseFilter.html#padding">padding</a></li>
+            
+                <li data-name="PIXI.filters.NoiseFilter#uniforms"><a href="PIXI.filters.NoiseFilter.html#uniforms">uniforms</a></li>
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="PIXI.filters.NoiseFilter#syncUniform"><a href="PIXI.filters.NoiseFilter.html#syncUniform">syncUniform</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="PIXI.filters.NormalMapFilter">
+            <span class="title">
+                <a href="PIXI.filters.NormalMapFilter.html">PIXI.filters.NormalMapFilter</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            <span class="subtitle">Members</span>
+            
+                <li data-name="PIXI.filters.NormalMapFilter#padding"><a href="PIXI.filters.NormalMapFilter.html#padding">padding</a></li>
+            
+                <li data-name="PIXI.filters.NormalMapFilter#uniforms"><a href="PIXI.filters.NormalMapFilter.html#uniforms">uniforms</a></li>
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="PIXI.filters.NormalMapFilter#syncUniform"><a href="PIXI.filters.NormalMapFilter.html#syncUniform">syncUniform</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="PIXI.filters.PixelateFilter">
+            <span class="title">
+                <a href="PIXI.filters.PixelateFilter.html">PIXI.filters.PixelateFilter</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            <span class="subtitle">Members</span>
+            
+                <li data-name="PIXI.filters.PixelateFilter#padding"><a href="PIXI.filters.PixelateFilter.html#padding">padding</a></li>
+            
+                <li data-name="PIXI.filters.PixelateFilter#uniforms"><a href="PIXI.filters.PixelateFilter.html#uniforms">uniforms</a></li>
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="PIXI.filters.PixelateFilter#syncUniform"><a href="PIXI.filters.PixelateFilter.html#syncUniform">syncUniform</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="PIXI.filters.RGBSplitFilter">
+            <span class="title">
+                <a href="PIXI.filters.RGBSplitFilter.html">PIXI.filters.RGBSplitFilter</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            <span class="subtitle">Members</span>
+            
+                <li data-name="PIXI.filters.RGBSplitFilter#padding"><a href="PIXI.filters.RGBSplitFilter.html#padding">padding</a></li>
+            
+                <li data-name="PIXI.filters.RGBSplitFilter#uniforms"><a href="PIXI.filters.RGBSplitFilter.html#uniforms">uniforms</a></li>
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="PIXI.filters.RGBSplitFilter#syncUniform"><a href="PIXI.filters.RGBSplitFilter.html#syncUniform">syncUniform</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="PIXI.filters.SepiaFilter">
+            <span class="title">
+                <a href="PIXI.filters.SepiaFilter.html">PIXI.filters.SepiaFilter</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            <span class="subtitle">Members</span>
+            
+                <li data-name="PIXI.filters.SepiaFilter#padding"><a href="PIXI.filters.SepiaFilter.html#padding">padding</a></li>
+            
+                <li data-name="PIXI.filters.SepiaFilter#uniforms"><a href="PIXI.filters.SepiaFilter.html#uniforms">uniforms</a></li>
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="PIXI.filters.SepiaFilter#syncUniform"><a href="PIXI.filters.SepiaFilter.html#syncUniform">syncUniform</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="PIXI.filters.ShockwaveFilter">
+            <span class="title">
+                <a href="PIXI.filters.ShockwaveFilter.html">PIXI.filters.ShockwaveFilter</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            <span class="subtitle">Members</span>
+            
+                <li data-name="PIXI.filters.ShockwaveFilter#padding"><a href="PIXI.filters.ShockwaveFilter.html#padding">padding</a></li>
+            
+                <li data-name="PIXI.filters.ShockwaveFilter#uniforms"><a href="PIXI.filters.ShockwaveFilter.html#uniforms">uniforms</a></li>
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="PIXI.filters.ShockwaveFilter#syncUniform"><a href="PIXI.filters.ShockwaveFilter.html#syncUniform">syncUniform</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="PIXI.filters.SmartBlurFilter">
+            <span class="title">
+                <a href="PIXI.filters.SmartBlurFilter.html">PIXI.filters.SmartBlurFilter</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            <span class="subtitle">Members</span>
+            
+                <li data-name="PIXI.filters.SmartBlurFilter#padding"><a href="PIXI.filters.SmartBlurFilter.html#padding">padding</a></li>
+            
+                <li data-name="PIXI.filters.SmartBlurFilter#uniforms"><a href="PIXI.filters.SmartBlurFilter.html#uniforms">uniforms</a></li>
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="PIXI.filters.SmartBlurFilter#syncUniform"><a href="PIXI.filters.SmartBlurFilter.html#syncUniform">syncUniform</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="PIXI.filters.TiltShiftAxisFilter">
+            <span class="title">
+                <a href="PIXI.filters.TiltShiftAxisFilter.html">PIXI.filters.TiltShiftAxisFilter</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            <span class="subtitle">Members</span>
+            
+                <li data-name="PIXI.filters.TiltShiftAxisFilter#padding"><a href="PIXI.filters.TiltShiftAxisFilter.html#padding">padding</a></li>
+            
+                <li data-name="PIXI.filters.TiltShiftAxisFilter#uniforms"><a href="PIXI.filters.TiltShiftAxisFilter.html#uniforms">uniforms</a></li>
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="PIXI.filters.TiltShiftAxisFilter#syncUniform"><a href="PIXI.filters.TiltShiftAxisFilter.html#syncUniform">syncUniform</a></li>
+            
+                <li data-name="PIXI.filters.TiltShiftAxisFilter#updateDelta"><a href="PIXI.filters.TiltShiftAxisFilter.html#updateDelta">updateDelta</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="PIXI.filters.TiltShiftFilter">
+            <span class="title">
+                <a href="PIXI.filters.TiltShiftFilter.html">PIXI.filters.TiltShiftFilter</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            <span class="subtitle">Members</span>
+            
+                <li data-name="PIXI.filters.TiltShiftFilter#padding"><a href="PIXI.filters.TiltShiftFilter.html#padding">padding</a></li>
+            
+                <li data-name="PIXI.filters.TiltShiftFilter#uniforms"><a href="PIXI.filters.TiltShiftFilter.html#uniforms">uniforms</a></li>
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="PIXI.filters.TiltShiftFilter#syncUniform"><a href="PIXI.filters.TiltShiftFilter.html#syncUniform">syncUniform</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="PIXI.filters.TiltShiftXFilter">
+            <span class="title">
+                <a href="PIXI.filters.TiltShiftXFilter.html">PIXI.filters.TiltShiftXFilter</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="PIXI.filters.TiltShiftXFilter#updateDelta"><a href="PIXI.filters.TiltShiftXFilter.html#updateDelta">updateDelta</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="PIXI.filters.TiltShiftYFilter">
+            <span class="title">
+                <a href="PIXI.filters.TiltShiftYFilter.html">PIXI.filters.TiltShiftYFilter</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="PIXI.filters.TiltShiftYFilter#updateDelta"><a href="PIXI.filters.TiltShiftYFilter.html#updateDelta">updateDelta</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="PIXI.filters.TwistFilter">
+            <span class="title">
+                <a href="PIXI.filters.TwistFilter.html">PIXI.filters.TwistFilter</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            <span class="subtitle">Members</span>
+            
+                <li data-name="PIXI.filters.TwistFilter#padding"><a href="PIXI.filters.TwistFilter.html#padding">padding</a></li>
+            
+                <li data-name="PIXI.filters.TwistFilter#uniforms"><a href="PIXI.filters.TwistFilter.html#uniforms">uniforms</a></li>
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="PIXI.filters.TwistFilter#syncUniform"><a href="PIXI.filters.TwistFilter.html#syncUniform">syncUniform</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="PIXI.FXAAFilter">
+            <span class="title">
+                <a href="PIXI.FXAAFilter.html">PIXI.FXAAFilter</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            <span class="subtitle">Members</span>
+            
+                <li data-name="PIXI.FXAAFilter#padding"><a href="PIXI.FXAAFilter.html#padding">padding</a></li>
+            
+                <li data-name="PIXI.FXAAFilter#uniforms"><a href="PIXI.FXAAFilter.html#uniforms">uniforms</a></li>
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="PIXI.FXAAFilter#syncUniform"><a href="PIXI.FXAAFilter.html#syncUniform">syncUniform</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="PIXI.Graphics">
+            <span class="title">
+                <a href="PIXI.Graphics.html">PIXI.Graphics</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            <span class="subtitle">Members</span>
+            
+                <li data-name="PIXI.Graphics#alpha"><a href="PIXI.Graphics.html#alpha">alpha</a></li>
+            
+                <li data-name="PIXI.Graphics#blendMode"><a href="PIXI.Graphics.html#blendMode">blendMode</a></li>
+            
+                <li data-name="PIXI.Graphics#boundsPadding"><a href="PIXI.Graphics.html#boundsPadding">boundsPadding</a></li>
+            
+                <li data-name="PIXI.Graphics#children"><a href="PIXI.Graphics.html#children">children</a></li>
+            
+                <li data-name="PIXI.Graphics#fillAlpha"><a href="PIXI.Graphics.html#fillAlpha">fillAlpha</a></li>
+            
+                <li data-name="PIXI.Graphics#filterArea"><a href="PIXI.Graphics.html#filterArea">filterArea</a></li>
+            
+                <li data-name="PIXI.Graphics#filters"><a href="PIXI.Graphics.html#filters">filters</a></li>
+            
+                <li data-name="PIXI.Graphics#height"><a href="PIXI.Graphics.html#height">height</a></li>
+            
+                <li data-name="PIXI.Graphics#isMask"><a href="PIXI.Graphics.html#isMask">isMask</a></li>
+            
+                <li data-name="PIXI.Graphics#lineColor"><a href="PIXI.Graphics.html#lineColor">lineColor</a></li>
+            
+                <li data-name="PIXI.Graphics#lineWidth"><a href="PIXI.Graphics.html#lineWidth">lineWidth</a></li>
+            
+                <li data-name="PIXI.Graphics#mask"><a href="PIXI.Graphics.html#mask">mask</a></li>
+            
+                <li data-name="PIXI.Graphics#parent"><a href="PIXI.Graphics.html#parent">parent</a></li>
+            
+                <li data-name="PIXI.Graphics#pivot"><a href="PIXI.Graphics.html#pivot">pivot</a></li>
+            
+                <li data-name="PIXI.Graphics#position"><a href="PIXI.Graphics.html#position">position</a></li>
+            
+                <li data-name="PIXI.Graphics#renderable"><a href="PIXI.Graphics.html#renderable">renderable</a></li>
+            
+                <li data-name="PIXI.Graphics#rotation"><a href="PIXI.Graphics.html#rotation">rotation</a></li>
+            
+                <li data-name="PIXI.Graphics#scale"><a href="PIXI.Graphics.html#scale">scale</a></li>
+            
+                <li data-name="PIXI.Graphics#tint"><a href="PIXI.Graphics.html#tint">tint</a></li>
+            
+                <li data-name="PIXI.Graphics#visible"><a href="PIXI.Graphics.html#visible">visible</a></li>
+            
+                <li data-name="PIXI.Graphics#width"><a href="PIXI.Graphics.html#width">width</a></li>
+            
+                <li data-name="PIXI.Graphics#worldAlpha"><a href="PIXI.Graphics.html#worldAlpha">worldAlpha</a></li>
+            
+                <li data-name="PIXI.Graphics#worldTransform"><a href="PIXI.Graphics.html#worldTransform">worldTransform</a></li>
+            
+                <li data-name="PIXI.Graphics#worldVisible"><a href="PIXI.Graphics.html#worldVisible">worldVisible</a></li>
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="PIXI.Graphics#addChild"><a href="PIXI.Graphics.html#addChild">addChild</a></li>
+            
+                <li data-name="PIXI.Graphics#addChildAt"><a href="PIXI.Graphics.html#addChildAt">addChildAt</a></li>
+            
+                <li data-name="PIXI.Graphics#arc"><a href="PIXI.Graphics.html#arc">arc</a></li>
+            
+                <li data-name="PIXI.Graphics#arcTo"><a href="PIXI.Graphics.html#arcTo">arcTo</a></li>
+            
+                <li data-name="PIXI.Graphics#beginFill"><a href="PIXI.Graphics.html#beginFill">beginFill</a></li>
+            
+                <li data-name="PIXI.Graphics#bezierCurveTo"><a href="PIXI.Graphics.html#bezierCurveTo">bezierCurveTo</a></li>
+            
+                <li data-name="PIXI.Graphics#clear"><a href="PIXI.Graphics.html#clear">clear</a></li>
+            
+                <li data-name="PIXI.Graphics#clone"><a href="PIXI.Graphics.html#clone">clone</a></li>
+            
+                <li data-name="PIXI.Graphics#containsPoint"><a href="PIXI.Graphics.html#containsPoint">containsPoint</a></li>
+            
+                <li data-name="PIXI.Graphics#destroy"><a href="PIXI.Graphics.html#destroy">destroy</a></li>
+            
+                <li data-name="PIXI.Graphics#drawCircle"><a href="PIXI.Graphics.html#drawCircle">drawCircle</a></li>
+            
+                <li data-name="PIXI.Graphics#drawEllipse"><a href="PIXI.Graphics.html#drawEllipse">drawEllipse</a></li>
+            
+                <li data-name="PIXI.Graphics#drawPolygon"><a href="PIXI.Graphics.html#drawPolygon">drawPolygon</a></li>
+            
+                <li data-name="PIXI.Graphics#drawRect"><a href="PIXI.Graphics.html#drawRect">drawRect</a></li>
+            
+                <li data-name="PIXI.Graphics#drawRoundedRect"><a href="PIXI.Graphics.html#drawRoundedRect">drawRoundedRect</a></li>
+            
+                <li data-name="PIXI.Graphics#drawShape"><a href="PIXI.Graphics.html#drawShape">drawShape</a></li>
+            
+                <li data-name="PIXI.Graphics#endFill"><a href="PIXI.Graphics.html#endFill">endFill</a></li>
+            
+                <li data-name="PIXI.Graphics#generateTexture"><a href="PIXI.Graphics.html#generateTexture">generateTexture</a></li>
+            
+                <li data-name="PIXI.Graphics#getBounds"><a href="PIXI.Graphics.html#getBounds">getBounds</a></li>
+            
+                <li data-name="PIXI.Graphics#getChildAt"><a href="PIXI.Graphics.html#getChildAt">getChildAt</a></li>
+            
+                <li data-name="PIXI.Graphics#getChildIndex"><a href="PIXI.Graphics.html#getChildIndex">getChildIndex</a></li>
+            
+                <li data-name="PIXI.Graphics#getLocalBounds"><a href="PIXI.Graphics.html#getLocalBounds">getLocalBounds</a></li>
+            
+                <li data-name="PIXI.Graphics#lineStyle"><a href="PIXI.Graphics.html#lineStyle">lineStyle</a></li>
+            
+                <li data-name="PIXI.Graphics#lineTo"><a href="PIXI.Graphics.html#lineTo">lineTo</a></li>
+            
+                <li data-name="PIXI.Graphics#moveTo"><a href="PIXI.Graphics.html#moveTo">moveTo</a></li>
+            
+                <li data-name="PIXI.Graphics#quadraticCurveTo"><a href="PIXI.Graphics.html#quadraticCurveTo">quadraticCurveTo</a></li>
+            
+                <li data-name="PIXI.Graphics#removeChild"><a href="PIXI.Graphics.html#removeChild">removeChild</a></li>
+            
+                <li data-name="PIXI.Graphics#removeChildAt"><a href="PIXI.Graphics.html#removeChildAt">removeChildAt</a></li>
+            
+                <li data-name="PIXI.Graphics#removeChildren"><a href="PIXI.Graphics.html#removeChildren">removeChildren</a></li>
+            
+                <li data-name="PIXI.Graphics#renderCanvas"><a href="PIXI.Graphics.html#renderCanvas">renderCanvas</a></li>
+            
+                <li data-name="PIXI.Graphics#renderWebGL"><a href="PIXI.Graphics.html#renderWebGL">renderWebGL</a></li>
+            
+                <li data-name="PIXI.Graphics#setChildIndex"><a href="PIXI.Graphics.html#setChildIndex">setChildIndex</a></li>
+            
+                <li data-name="PIXI.Graphics#swapChildren"><a href="PIXI.Graphics.html#swapChildren">swapChildren</a></li>
+            
+                <li data-name="PIXI.Graphics#toGlobal"><a href="PIXI.Graphics.html#toGlobal">toGlobal</a></li>
+            
+                <li data-name="PIXI.Graphics#toLocal"><a href="PIXI.Graphics.html#toLocal">toLocal</a></li>
+            
+                <li data-name="PIXI.Graphics#updateLocalBounds"><a href="PIXI.Graphics.html#updateLocalBounds">updateLocalBounds</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="PIXI.GraphicsData">
+            <span class="title">
+                <a href="PIXI.GraphicsData.html">PIXI.GraphicsData</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="PIXI.GraphicsData#clone"><a href="PIXI.GraphicsData.html#clone">clone</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="PIXI.interaction.InteractionData">
+            <span class="title">
+                <a href="PIXI.interaction.InteractionData.html">PIXI.interaction.InteractionData</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            <span class="subtitle">Members</span>
+            
+                <li data-name="PIXI.interaction.InteractionData#global"><a href="PIXI.interaction.InteractionData.html#global">global</a></li>
+            
+                <li data-name="PIXI.interaction.InteractionData#originalEvent"><a href="PIXI.interaction.InteractionData.html#originalEvent">originalEvent</a></li>
+            
+                <li data-name="PIXI.interaction.InteractionData#target"><a href="PIXI.interaction.InteractionData.html#target">target</a></li>
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="PIXI.interaction.InteractionData#getLocalPosition"><a href="PIXI.interaction.InteractionData.html#getLocalPosition">getLocalPosition</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="PIXI.interaction.InteractionManager">
+            <span class="title">
+                <a href="PIXI.interaction.InteractionManager.html">PIXI.interaction.InteractionManager</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            <span class="subtitle">Members</span>
+            
+                <li data-name="PIXI.interaction.InteractionManager#autoPreventDefault"><a href="PIXI.interaction.InteractionManager.html#autoPreventDefault">autoPreventDefault</a></li>
+            
+                <li data-name="PIXI.interaction.InteractionManager#currentCursorStyle"><a href="PIXI.interaction.InteractionManager.html#currentCursorStyle">currentCursorStyle</a></li>
+            
+                <li data-name="PIXI.interaction.InteractionManager#eventData"><a href="PIXI.interaction.InteractionManager.html#eventData">eventData</a></li>
+            
+                <li data-name="PIXI.interaction.InteractionManager#interactionFrequency"><a href="PIXI.interaction.InteractionManager.html#interactionFrequency">interactionFrequency</a></li>
+            
+                <li data-name="PIXI.interaction.InteractionManager#interactiveDataPool"><a href="PIXI.interaction.InteractionManager.html#interactiveDataPool">interactiveDataPool</a></li>
+            
+                <li data-name="PIXI.interaction.InteractionManager#last"><a href="PIXI.interaction.InteractionManager.html#last">last</a></li>
+            
+                <li data-name="PIXI.interaction.InteractionManager#mouse"><a href="PIXI.interaction.InteractionManager.html#mouse">mouse</a></li>
+            
+                <li data-name="PIXI.interaction.InteractionManager#onMouseDown"><a href="PIXI.interaction.InteractionManager.html#onMouseDown">onMouseDown</a></li>
+            
+                <li data-name="PIXI.interaction.InteractionManager#onMouseMove"><a href="PIXI.interaction.InteractionManager.html#onMouseMove">onMouseMove</a></li>
+            
+                <li data-name="PIXI.interaction.InteractionManager#onMouseOut"><a href="PIXI.interaction.InteractionManager.html#onMouseOut">onMouseOut</a></li>
+            
+                <li data-name="PIXI.interaction.InteractionManager#onMouseUp"><a href="PIXI.interaction.InteractionManager.html#onMouseUp">onMouseUp</a></li>
+            
+                <li data-name="PIXI.interaction.InteractionManager#onTouchEnd"><a href="PIXI.interaction.InteractionManager.html#onTouchEnd">onTouchEnd</a></li>
+            
+                <li data-name="PIXI.interaction.InteractionManager#onTouchMove"><a href="PIXI.interaction.InteractionManager.html#onTouchMove">onTouchMove</a></li>
+            
+                <li data-name="PIXI.interaction.InteractionManager#onTouchStart"><a href="PIXI.interaction.InteractionManager.html#onTouchStart">onTouchStart</a></li>
+            
+                <li data-name="PIXI.interaction.InteractionManager#renderer"><a href="PIXI.interaction.InteractionManager.html#renderer">renderer</a></li>
+            
+                <li data-name="PIXI.interaction.InteractionManager#resolution"><a href="PIXI.interaction.InteractionManager.html#resolution">resolution</a></li>
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="PIXI.interaction.InteractionManager#destroy"><a href="PIXI.interaction.InteractionManager.html#destroy">destroy</a></li>
+            
+                <li data-name="PIXI.interaction.InteractionManager#mapPositionToPoint"><a href="PIXI.interaction.InteractionManager.html#mapPositionToPoint">mapPositionToPoint</a></li>
+            
+                <li data-name="PIXI.interaction.InteractionManager#onTouchEnd"><a href="PIXI.interaction.InteractionManager.html#onTouchEnd">onTouchEnd</a></li>
+            
+                <li data-name="PIXI.interaction.InteractionManager#processInteractive"><a href="PIXI.interaction.InteractionManager.html#processInteractive">processInteractive</a></li>
+            
+                <li data-name="PIXI.interaction.InteractionManager#update"><a href="PIXI.interaction.InteractionManager.html#update">update</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="PIXI.loaders.Loader">
+            <span class="title">
+                <a href="PIXI.loaders.Loader.html">PIXI.loaders.Loader</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="PIXI.MaskManager">
+            <span class="title">
+                <a href="PIXI.MaskManager.html">PIXI.MaskManager</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="PIXI.MaskManager#popMask"><a href="PIXI.MaskManager.html#popMask">popMask</a></li>
+            
+                <li data-name="PIXI.MaskManager#popSpriteMask"><a href="PIXI.MaskManager.html#popSpriteMask">popSpriteMask</a></li>
+            
+                <li data-name="PIXI.MaskManager#popStencilMask"><a href="PIXI.MaskManager.html#popStencilMask">popStencilMask</a></li>
+            
+                <li data-name="PIXI.MaskManager#pushMask"><a href="PIXI.MaskManager.html#pushMask">pushMask</a></li>
+            
+                <li data-name="PIXI.MaskManager#pushSpriteMask"><a href="PIXI.MaskManager.html#pushSpriteMask">pushSpriteMask</a></li>
+            
+                <li data-name="PIXI.MaskManager#pushStencilMask"><a href="PIXI.MaskManager.html#pushStencilMask">pushStencilMask</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="PIXI.Matrix">
+            <span class="title">
+                <a href="PIXI.Matrix.html">PIXI.Matrix</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            <span class="subtitle">Members</span>
+            
+                <li data-name="PIXI.Matrix.IDENTITY"><a href="PIXI.Matrix.html#.IDENTITY">IDENTITY</a></li>
+            
+                <li data-name="PIXI.Matrix.TEMP_MATRIX"><a href="PIXI.Matrix.html#.TEMP_MATRIX">TEMP_MATRIX</a></li>
+            
+                <li data-name="PIXI.Matrix#a"><a href="PIXI.Matrix.html#a">a</a></li>
+            
+                <li data-name="PIXI.Matrix#b"><a href="PIXI.Matrix.html#b">b</a></li>
+            
+                <li data-name="PIXI.Matrix#c"><a href="PIXI.Matrix.html#c">c</a></li>
+            
+                <li data-name="PIXI.Matrix#d"><a href="PIXI.Matrix.html#d">d</a></li>
+            
+                <li data-name="PIXI.Matrix#tx"><a href="PIXI.Matrix.html#tx">tx</a></li>
+            
+                <li data-name="PIXI.Matrix#ty"><a href="PIXI.Matrix.html#ty">ty</a></li>
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="PIXI.Matrix#append"><a href="PIXI.Matrix.html#append">append</a></li>
+            
+                <li data-name="PIXI.Matrix#apply"><a href="PIXI.Matrix.html#apply">apply</a></li>
+            
+                <li data-name="PIXI.Matrix#applyInverse"><a href="PIXI.Matrix.html#applyInverse">applyInverse</a></li>
+            
+                <li data-name="PIXI.Matrix#clone"><a href="PIXI.Matrix.html#clone">clone</a></li>
+            
+                <li data-name="PIXI.Matrix#copy"><a href="PIXI.Matrix.html#copy">copy</a></li>
+            
+                <li data-name="PIXI.Matrix#fromArray"><a href="PIXI.Matrix.html#fromArray">fromArray</a></li>
+            
+                <li data-name="PIXI.Matrix#identity"><a href="PIXI.Matrix.html#identity">identity</a></li>
+            
+                <li data-name="PIXI.Matrix#invert"><a href="PIXI.Matrix.html#invert">invert</a></li>
+            
+                <li data-name="PIXI.Matrix#prepend"><a href="PIXI.Matrix.html#prepend">prepend</a></li>
+            
+                <li data-name="PIXI.Matrix#rotate"><a href="PIXI.Matrix.html#rotate">rotate</a></li>
+            
+                <li data-name="PIXI.Matrix#scale"><a href="PIXI.Matrix.html#scale">scale</a></li>
+            
+                <li data-name="PIXI.Matrix#toArray"><a href="PIXI.Matrix.html#toArray">toArray</a></li>
+            
+                <li data-name="PIXI.Matrix#translate"><a href="PIXI.Matrix.html#translate">translate</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="PIXI.mesh.Mesh">
+            <span class="title">
+                <a href="PIXI.mesh.Mesh.html">PIXI.mesh.Mesh</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            <span class="subtitle">Members</span>
+            
+                <li data-name="PIXI.mesh.Mesh.DRAW_MODES"><a href="PIXI.mesh.Mesh.html#.DRAW_MODES">DRAW_MODES</a></li>
+            
+                <li data-name="PIXI.mesh.Mesh#alpha"><a href="PIXI.mesh.Mesh.html#alpha">alpha</a></li>
+            
+                <li data-name="PIXI.mesh.Mesh#blendMode"><a href="PIXI.mesh.Mesh.html#blendMode">blendMode</a></li>
+            
+                <li data-name="PIXI.mesh.Mesh#canvasPadding"><a href="PIXI.mesh.Mesh.html#canvasPadding">canvasPadding</a></li>
+            
+                <li data-name="PIXI.mesh.Mesh#children"><a href="PIXI.mesh.Mesh.html#children">children</a></li>
+            
+                <li data-name="PIXI.mesh.Mesh#dirty"><a href="PIXI.mesh.Mesh.html#dirty">dirty</a></li>
+            
+                <li data-name="PIXI.mesh.Mesh#drawMode"><a href="PIXI.mesh.Mesh.html#drawMode">drawMode</a></li>
+            
+                <li data-name="PIXI.mesh.Mesh#filterArea"><a href="PIXI.mesh.Mesh.html#filterArea">filterArea</a></li>
+            
+                <li data-name="PIXI.mesh.Mesh#filters"><a href="PIXI.mesh.Mesh.html#filters">filters</a></li>
+            
+                <li data-name="PIXI.mesh.Mesh#height"><a href="PIXI.mesh.Mesh.html#height">height</a></li>
+            
+                <li data-name="PIXI.mesh.Mesh#mask"><a href="PIXI.mesh.Mesh.html#mask">mask</a></li>
+            
+                <li data-name="PIXI.mesh.Mesh#parent"><a href="PIXI.mesh.Mesh.html#parent">parent</a></li>
+            
+                <li data-name="PIXI.mesh.Mesh#pivot"><a href="PIXI.mesh.Mesh.html#pivot">pivot</a></li>
+            
+                <li data-name="PIXI.mesh.Mesh#position"><a href="PIXI.mesh.Mesh.html#position">position</a></li>
+            
+                <li data-name="PIXI.mesh.Mesh#renderable"><a href="PIXI.mesh.Mesh.html#renderable">renderable</a></li>
+            
+                <li data-name="PIXI.mesh.Mesh#rotation"><a href="PIXI.mesh.Mesh.html#rotation">rotation</a></li>
+            
+                <li data-name="PIXI.mesh.Mesh#scale"><a href="PIXI.mesh.Mesh.html#scale">scale</a></li>
+            
+                <li data-name="PIXI.mesh.Mesh#texture"><a href="PIXI.mesh.Mesh.html#texture">texture</a></li>
+            
+                <li data-name="PIXI.mesh.Mesh#uvs"><a href="PIXI.mesh.Mesh.html#uvs">uvs</a></li>
+            
+                <li data-name="PIXI.mesh.Mesh#vertices"><a href="PIXI.mesh.Mesh.html#vertices">vertices</a></li>
+            
+                <li data-name="PIXI.mesh.Mesh#visible"><a href="PIXI.mesh.Mesh.html#visible">visible</a></li>
+            
+                <li data-name="PIXI.mesh.Mesh#width"><a href="PIXI.mesh.Mesh.html#width">width</a></li>
+            
+                <li data-name="PIXI.mesh.Mesh#worldAlpha"><a href="PIXI.mesh.Mesh.html#worldAlpha">worldAlpha</a></li>
+            
+                <li data-name="PIXI.mesh.Mesh#worldTransform"><a href="PIXI.mesh.Mesh.html#worldTransform">worldTransform</a></li>
+            
+                <li data-name="PIXI.mesh.Mesh#worldVisible"><a href="PIXI.mesh.Mesh.html#worldVisible">worldVisible</a></li>
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="PIXI.mesh.Mesh#addChild"><a href="PIXI.mesh.Mesh.html#addChild">addChild</a></li>
+            
+                <li data-name="PIXI.mesh.Mesh#addChildAt"><a href="PIXI.mesh.Mesh.html#addChildAt">addChildAt</a></li>
+            
+                <li data-name="PIXI.mesh.Mesh#destroy"><a href="PIXI.mesh.Mesh.html#destroy">destroy</a></li>
+            
+                <li data-name="PIXI.mesh.Mesh#generateTexture"><a href="PIXI.mesh.Mesh.html#generateTexture">generateTexture</a></li>
+            
+                <li data-name="PIXI.mesh.Mesh#getBounds"><a href="PIXI.mesh.Mesh.html#getBounds">getBounds</a></li>
+            
+                <li data-name="PIXI.mesh.Mesh#getChildAt"><a href="PIXI.mesh.Mesh.html#getChildAt">getChildAt</a></li>
+            
+                <li data-name="PIXI.mesh.Mesh#getChildIndex"><a href="PIXI.mesh.Mesh.html#getChildIndex">getChildIndex</a></li>
+            
+                <li data-name="PIXI.mesh.Mesh#getLocalBounds"><a href="PIXI.mesh.Mesh.html#getLocalBounds">getLocalBounds</a></li>
+            
+                <li data-name="PIXI.mesh.Mesh#removeChild"><a href="PIXI.mesh.Mesh.html#removeChild">removeChild</a></li>
+            
+                <li data-name="PIXI.mesh.Mesh#removeChildAt"><a href="PIXI.mesh.Mesh.html#removeChildAt">removeChildAt</a></li>
+            
+                <li data-name="PIXI.mesh.Mesh#removeChildren"><a href="PIXI.mesh.Mesh.html#removeChildren">removeChildren</a></li>
+            
+                <li data-name="PIXI.mesh.Mesh#renderCanvas"><a href="PIXI.mesh.Mesh.html#renderCanvas">renderCanvas</a></li>
+            
+                <li data-name="PIXI.mesh.Mesh#renderWebGL"><a href="PIXI.mesh.Mesh.html#renderWebGL">renderWebGL</a></li>
+            
+                <li data-name="PIXI.mesh.Mesh#setChildIndex"><a href="PIXI.mesh.Mesh.html#setChildIndex">setChildIndex</a></li>
+            
+                <li data-name="PIXI.mesh.Mesh#swapChildren"><a href="PIXI.mesh.Mesh.html#swapChildren">swapChildren</a></li>
+            
+                <li data-name="PIXI.mesh.Mesh#toGlobal"><a href="PIXI.mesh.Mesh.html#toGlobal">toGlobal</a></li>
+            
+                <li data-name="PIXI.mesh.Mesh#toLocal"><a href="PIXI.mesh.Mesh.html#toLocal">toLocal</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="PIXI.mesh.Rope">
+            <span class="title">
+                <a href="PIXI.mesh.Rope.html">PIXI.mesh.Rope</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="PIXI.mesh.Rope#refresh"><a href="PIXI.mesh.Rope.html#refresh">refresh</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="PIXI.mesh.StripShader">
+            <span class="title">
+                <a href="PIXI.mesh.StripShader.html">PIXI.mesh.StripShader</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            <span class="subtitle">Members</span>
+            
+                <li data-name="PIXI.mesh.StripShader#fragmentSrc"><a href="PIXI.mesh.StripShader.html#fragmentSrc">fragmentSrc</a></li>
+            
+                <li data-name="PIXI.mesh.StripShader#gl"><a href="PIXI.mesh.StripShader.html#gl">gl</a></li>
+            
+                <li data-name="PIXI.mesh.StripShader#program"><a href="PIXI.mesh.StripShader.html#program">program</a></li>
+            
+                <li data-name="PIXI.mesh.StripShader#uuid"><a href="PIXI.mesh.StripShader.html#uuid">uuid</a></li>
+            
+                <li data-name="PIXI.mesh.StripShader#vertexSrc"><a href="PIXI.mesh.StripShader.html#vertexSrc">vertexSrc</a></li>
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="PIXI.mesh.StripShader#destroy"><a href="PIXI.mesh.StripShader.html#destroy">destroy</a></li>
+            
+                <li data-name="PIXI.mesh.StripShader#initSampler2D"><a href="PIXI.mesh.StripShader.html#initSampler2D">initSampler2D</a></li>
+            
+                <li data-name="PIXI.mesh.StripShader#syncUniform"><a href="PIXI.mesh.StripShader.html#syncUniform">syncUniform</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="PIXI.ObjectRenderer">
+            <span class="title">
+                <a href="PIXI.ObjectRenderer.html">PIXI.ObjectRenderer</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            <span class="subtitle">Members</span>
+            
+                <li data-name="PIXI.ObjectRenderer#renderer"><a href="PIXI.ObjectRenderer.html#renderer">renderer</a></li>
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="PIXI.ObjectRenderer#destroy"><a href="PIXI.ObjectRenderer.html#destroy">destroy</a></li>
+            
+                <li data-name="PIXI.ObjectRenderer#flush"><a href="PIXI.ObjectRenderer.html#flush">flush</a></li>
+            
+                <li data-name="PIXI.ObjectRenderer#onContextChange"><a href="PIXI.ObjectRenderer.html#onContextChange">onContextChange</a></li>
+            
+                <li data-name="PIXI.ObjectRenderer#render"><a href="PIXI.ObjectRenderer.html#render">render</a></li>
+            
+                <li data-name="PIXI.ObjectRenderer#start"><a href="PIXI.ObjectRenderer.html#start">start</a></li>
+            
+                <li data-name="PIXI.ObjectRenderer#stop"><a href="PIXI.ObjectRenderer.html#stop">stop</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="PIXI.ParticleContainer">
+            <span class="title">
+                <a href="PIXI.ParticleContainer.html">PIXI.ParticleContainer</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            <span class="subtitle">Members</span>
+            
+                <li data-name="PIXI.ParticleContainer#alpha"><a href="PIXI.ParticleContainer.html#alpha">alpha</a></li>
+            
+                <li data-name="PIXI.ParticleContainer#blendMode"><a href="PIXI.ParticleContainer.html#blendMode">blendMode</a></li>
+            
+                <li data-name="PIXI.ParticleContainer#children"><a href="PIXI.ParticleContainer.html#children">children</a></li>
+            
+                <li data-name="PIXI.ParticleContainer#filterArea"><a href="PIXI.ParticleContainer.html#filterArea">filterArea</a></li>
+            
+                <li data-name="PIXI.ParticleContainer#filters"><a href="PIXI.ParticleContainer.html#filters">filters</a></li>
+            
+                <li data-name="PIXI.ParticleContainer#height"><a href="PIXI.ParticleContainer.html#height">height</a></li>
+            
+                <li data-name="PIXI.ParticleContainer#interactiveChildren"><a href="PIXI.ParticleContainer.html#interactiveChildren">interactiveChildren</a></li>
+            
+                <li data-name="PIXI.ParticleContainer#mask"><a href="PIXI.ParticleContainer.html#mask">mask</a></li>
+            
+                <li data-name="PIXI.ParticleContainer#parent"><a href="PIXI.ParticleContainer.html#parent">parent</a></li>
+            
+                <li data-name="PIXI.ParticleContainer#pivot"><a href="PIXI.ParticleContainer.html#pivot">pivot</a></li>
+            
+                <li data-name="PIXI.ParticleContainer#position"><a href="PIXI.ParticleContainer.html#position">position</a></li>
+            
+                <li data-name="PIXI.ParticleContainer#renderable"><a href="PIXI.ParticleContainer.html#renderable">renderable</a></li>
+            
+                <li data-name="PIXI.ParticleContainer#rotation"><a href="PIXI.ParticleContainer.html#rotation">rotation</a></li>
+            
+                <li data-name="PIXI.ParticleContainer#roundPixels"><a href="PIXI.ParticleContainer.html#roundPixels">roundPixels</a></li>
+            
+                <li data-name="PIXI.ParticleContainer#scale"><a href="PIXI.ParticleContainer.html#scale">scale</a></li>
+            
+                <li data-name="PIXI.ParticleContainer#visible"><a href="PIXI.ParticleContainer.html#visible">visible</a></li>
+            
+                <li data-name="PIXI.ParticleContainer#width"><a href="PIXI.ParticleContainer.html#width">width</a></li>
+            
+                <li data-name="PIXI.ParticleContainer#worldAlpha"><a href="PIXI.ParticleContainer.html#worldAlpha">worldAlpha</a></li>
+            
+                <li data-name="PIXI.ParticleContainer#worldTransform"><a href="PIXI.ParticleContainer.html#worldTransform">worldTransform</a></li>
+            
+                <li data-name="PIXI.ParticleContainer#worldVisible"><a href="PIXI.ParticleContainer.html#worldVisible">worldVisible</a></li>
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="PIXI.ParticleContainer#addChild"><a href="PIXI.ParticleContainer.html#addChild">addChild</a></li>
+            
+                <li data-name="PIXI.ParticleContainer#addChildAt"><a href="PIXI.ParticleContainer.html#addChildAt">addChildAt</a></li>
+            
+                <li data-name="PIXI.ParticleContainer#destroy"><a href="PIXI.ParticleContainer.html#destroy">destroy</a></li>
+            
+                <li data-name="PIXI.ParticleContainer#generateTexture"><a href="PIXI.ParticleContainer.html#generateTexture">generateTexture</a></li>
+            
+                <li data-name="PIXI.ParticleContainer#getBounds"><a href="PIXI.ParticleContainer.html#getBounds">getBounds</a></li>
+            
+                <li data-name="PIXI.ParticleContainer#getChildAt"><a href="PIXI.ParticleContainer.html#getChildAt">getChildAt</a></li>
+            
+                <li data-name="PIXI.ParticleContainer#getChildIndex"><a href="PIXI.ParticleContainer.html#getChildIndex">getChildIndex</a></li>
+            
+                <li data-name="PIXI.ParticleContainer#getLocalBounds"><a href="PIXI.ParticleContainer.html#getLocalBounds">getLocalBounds</a></li>
+            
+                <li data-name="PIXI.ParticleContainer#removeChild"><a href="PIXI.ParticleContainer.html#removeChild">removeChild</a></li>
+            
+                <li data-name="PIXI.ParticleContainer#removeChildAt"><a href="PIXI.ParticleContainer.html#removeChildAt">removeChildAt</a></li>
+            
+                <li data-name="PIXI.ParticleContainer#removeChildren"><a href="PIXI.ParticleContainer.html#removeChildren">removeChildren</a></li>
+            
+                <li data-name="PIXI.ParticleContainer#setChildIndex"><a href="PIXI.ParticleContainer.html#setChildIndex">setChildIndex</a></li>
+            
+                <li data-name="PIXI.ParticleContainer#setProperties"><a href="PIXI.ParticleContainer.html#setProperties">setProperties</a></li>
+            
+                <li data-name="PIXI.ParticleContainer#swapChildren"><a href="PIXI.ParticleContainer.html#swapChildren">swapChildren</a></li>
+            
+                <li data-name="PIXI.ParticleContainer#toGlobal"><a href="PIXI.ParticleContainer.html#toGlobal">toGlobal</a></li>
+            
+                <li data-name="PIXI.ParticleContainer#toLocal"><a href="PIXI.ParticleContainer.html#toLocal">toLocal</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="PIXI.ParticleShader">
+            <span class="title">
+                <a href="PIXI.ParticleShader.html">PIXI.ParticleShader</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            <span class="subtitle">Members</span>
+            
+                <li data-name="PIXI.ParticleShader#fragmentSrc"><a href="PIXI.ParticleShader.html#fragmentSrc">fragmentSrc</a></li>
+            
+                <li data-name="PIXI.ParticleShader#gl"><a href="PIXI.ParticleShader.html#gl">gl</a></li>
+            
+                <li data-name="PIXI.ParticleShader#program"><a href="PIXI.ParticleShader.html#program">program</a></li>
+            
+                <li data-name="PIXI.ParticleShader#uuid"><a href="PIXI.ParticleShader.html#uuid">uuid</a></li>
+            
+                <li data-name="PIXI.ParticleShader#vertexSrc"><a href="PIXI.ParticleShader.html#vertexSrc">vertexSrc</a></li>
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="PIXI.ParticleShader#destroy"><a href="PIXI.ParticleShader.html#destroy">destroy</a></li>
+            
+                <li data-name="PIXI.ParticleShader#initSampler2D"><a href="PIXI.ParticleShader.html#initSampler2D">initSampler2D</a></li>
+            
+                <li data-name="PIXI.ParticleShader#syncUniform"><a href="PIXI.ParticleShader.html#syncUniform">syncUniform</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="PIXI.Point">
+            <span class="title">
+                <a href="PIXI.Point.html">PIXI.Point</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            <span class="subtitle">Members</span>
+            
+                <li data-name="PIXI.Point#x"><a href="PIXI.Point.html#x">x</a></li>
+            
+                <li data-name="PIXI.Point#y"><a href="PIXI.Point.html#y">y</a></li>
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="PIXI.Point#clone"><a href="PIXI.Point.html#clone">clone</a></li>
+            
+                <li data-name="PIXI.Point#copy"><a href="PIXI.Point.html#copy">copy</a></li>
+            
+                <li data-name="PIXI.Point#equals"><a href="PIXI.Point.html#equals">equals</a></li>
+            
+                <li data-name="PIXI.Point#set"><a href="PIXI.Point.html#set">set</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="PIXI.Polygon">
+            <span class="title">
+                <a href="PIXI.Polygon.html">PIXI.Polygon</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            <span class="subtitle">Members</span>
+            
+                <li data-name="PIXI.Polygon#points"><a href="PIXI.Polygon.html#points">points</a></li>
+            
+                <li data-name="PIXI.Polygon#type"><a href="PIXI.Polygon.html#type">type</a></li>
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="PIXI.Polygon#clone"><a href="PIXI.Polygon.html#clone">clone</a></li>
+            
+                <li data-name="PIXI.Polygon#contains"><a href="PIXI.Polygon.html#contains">contains</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="PIXI.PrimitiveShader">
+            <span class="title">
+                <a href="PIXI.PrimitiveShader.html">PIXI.PrimitiveShader</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            <span class="subtitle">Members</span>
+            
+                <li data-name="PIXI.PrimitiveShader#fragmentSrc"><a href="PIXI.PrimitiveShader.html#fragmentSrc">fragmentSrc</a></li>
+            
+                <li data-name="PIXI.PrimitiveShader#gl"><a href="PIXI.PrimitiveShader.html#gl">gl</a></li>
+            
+                <li data-name="PIXI.PrimitiveShader#program"><a href="PIXI.PrimitiveShader.html#program">program</a></li>
+            
+                <li data-name="PIXI.PrimitiveShader#uuid"><a href="PIXI.PrimitiveShader.html#uuid">uuid</a></li>
+            
+                <li data-name="PIXI.PrimitiveShader#vertexSrc"><a href="PIXI.PrimitiveShader.html#vertexSrc">vertexSrc</a></li>
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="PIXI.PrimitiveShader#destroy"><a href="PIXI.PrimitiveShader.html#destroy">destroy</a></li>
+            
+                <li data-name="PIXI.PrimitiveShader#initSampler2D"><a href="PIXI.PrimitiveShader.html#initSampler2D">initSampler2D</a></li>
+            
+                <li data-name="PIXI.PrimitiveShader#syncUniform"><a href="PIXI.PrimitiveShader.html#syncUniform">syncUniform</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="PIXI.Quad">
+            <span class="title">
+                <a href="PIXI.Quad.html">PIXI.Quad</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            <span class="subtitle">Members</span>
+            
+                <li data-name="PIXI.Quad#colors"><a href="PIXI.Quad.html#colors">colors</a></li>
+            
+                <li data-name="PIXI.Quad#uvs"><a href="PIXI.Quad.html#uvs">uvs</a></li>
+            
+                <li data-name="PIXI.Quad#vertices"><a href="PIXI.Quad.html#vertices">vertices</a></li>
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="PIXI.Quad#map"><a href="PIXI.Quad.html#map">map</a></li>
+            
+                <li data-name="PIXI.Quad#upload"><a href="PIXI.Quad.html#upload">upload</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="PIXI.Rectangle">
+            <span class="title">
+                <a href="PIXI.Rectangle.html">PIXI.Rectangle</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            <span class="subtitle">Members</span>
+            
+                <li data-name="PIXI.Rectangle.EMPTY"><a href="PIXI.Rectangle.html#.EMPTY">EMPTY</a></li>
+            
+                <li data-name="PIXI.Rectangle#height"><a href="PIXI.Rectangle.html#height">height</a></li>
+            
+                <li data-name="PIXI.Rectangle#type"><a href="PIXI.Rectangle.html#type">type</a></li>
+            
+                <li data-name="PIXI.Rectangle#width"><a href="PIXI.Rectangle.html#width">width</a></li>
+            
+                <li data-name="PIXI.Rectangle#x"><a href="PIXI.Rectangle.html#x">x</a></li>
+            
+                <li data-name="PIXI.Rectangle#y"><a href="PIXI.Rectangle.html#y">y</a></li>
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="PIXI.Rectangle#clone"><a href="PIXI.Rectangle.html#clone">clone</a></li>
+            
+                <li data-name="PIXI.Rectangle#contains"><a href="PIXI.Rectangle.html#contains">contains</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="PIXI.RenderTarget">
+            <span class="title">
+                <a href="PIXI.RenderTarget.html">PIXI.RenderTarget</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            <span class="subtitle">Members</span>
+            
+                <li data-name="PIXI.RenderTarget#filterStack"><a href="PIXI.RenderTarget.html#filterStack">filterStack</a></li>
+            
+                <li data-name="PIXI.RenderTarget#frame"><a href="PIXI.RenderTarget.html#frame">frame</a></li>
+            
+                <li data-name="PIXI.RenderTarget#frameBuffer"><a href="PIXI.RenderTarget.html#frameBuffer">frameBuffer</a></li>
+            
+                <li data-name="PIXI.RenderTarget#gl"><a href="PIXI.RenderTarget.html#gl">gl</a></li>
+            
+                <li data-name="PIXI.RenderTarget#projectionMatrix"><a href="PIXI.RenderTarget.html#projectionMatrix">projectionMatrix</a></li>
+            
+                <li data-name="PIXI.RenderTarget#resolution"><a href="PIXI.RenderTarget.html#resolution">resolution</a></li>
+            
+                <li data-name="PIXI.RenderTarget#root"><a href="PIXI.RenderTarget.html#root">root</a></li>
+            
+                <li data-name="PIXI.RenderTarget#scaleMode"><a href="PIXI.RenderTarget.html#scaleMode">scaleMode</a></li>
+            
+                <li data-name="PIXI.RenderTarget#size"><a href="PIXI.RenderTarget.html#size">size</a></li>
+            
+                <li data-name="PIXI.RenderTarget#stencilBuffer"><a href="PIXI.RenderTarget.html#stencilBuffer">stencilBuffer</a></li>
+            
+                <li data-name="PIXI.RenderTarget#stencilMaskStack"><a href="PIXI.RenderTarget.html#stencilMaskStack">stencilMaskStack</a></li>
+            
+                <li data-name="PIXI.RenderTarget#texture"><a href="PIXI.RenderTarget.html#texture">texture</a></li>
+            
+                <li data-name="PIXI.RenderTarget#transform"><a href="PIXI.RenderTarget.html#transform">transform</a></li>
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="PIXI.RenderTarget#activate"><a href="PIXI.RenderTarget.html#activate">activate</a></li>
+            
+                <li data-name="PIXI.RenderTarget#attachStencilBuffer"><a href="PIXI.RenderTarget.html#attachStencilBuffer">attachStencilBuffer</a></li>
+            
+                <li data-name="PIXI.RenderTarget#calculateProjection"><a href="PIXI.RenderTarget.html#calculateProjection">calculateProjection</a></li>
+            
+                <li data-name="PIXI.RenderTarget#clear"><a href="PIXI.RenderTarget.html#clear">clear</a></li>
+            
+                <li data-name="PIXI.RenderTarget#destroy"><a href="PIXI.RenderTarget.html#destroy">destroy</a></li>
+            
+                <li data-name="PIXI.RenderTarget#resize"><a href="PIXI.RenderTarget.html#resize">resize</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="PIXI.RenderTexture">
+            <span class="title">
+                <a href="PIXI.RenderTexture.html">PIXI.RenderTexture</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            <span class="subtitle">Members</span>
+            
+                <li data-name="PIXI.RenderTexture#baseTexture"><a href="PIXI.RenderTexture.html#baseTexture">baseTexture</a></li>
+            
+                <li data-name="PIXI.RenderTexture#crop"><a href="PIXI.RenderTexture.html#crop">crop</a></li>
+            
+                <li data-name="PIXI.RenderTexture#height"><a href="PIXI.RenderTexture.html#height">height</a></li>
+            
+                <li data-name="PIXI.RenderTexture#noFrame"><a href="PIXI.RenderTexture.html#noFrame">noFrame</a></li>
+            
+                <li data-name="PIXI.RenderTexture#renderer"><a href="PIXI.RenderTexture.html#renderer">renderer</a></li>
+            
+                <li data-name="PIXI.RenderTexture#requiresUpdate"><a href="PIXI.RenderTexture.html#requiresUpdate">requiresUpdate</a></li>
+            
+                <li data-name="PIXI.RenderTexture#resolution"><a href="PIXI.RenderTexture.html#resolution">resolution</a></li>
+            
+                <li data-name="PIXI.RenderTexture#trim"><a href="PIXI.RenderTexture.html#trim">trim</a></li>
+            
+                <li data-name="PIXI.RenderTexture#valid"><a href="PIXI.RenderTexture.html#valid">valid</a></li>
+            
+                <li data-name="PIXI.RenderTexture#width"><a href="PIXI.RenderTexture.html#width">width</a></li>
+            
+                <li data-name="PIXI.RenderTexture~baseTexture"><a href="PIXI.RenderTexture.html#~baseTexture">baseTexture</a></li>
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="PIXI.RenderTexture#clear"><a href="PIXI.RenderTexture.html#clear">clear</a></li>
+            
+                <li data-name="PIXI.RenderTexture#destroy"><a href="PIXI.RenderTexture.html#destroy">destroy</a></li>
+            
+                <li data-name="PIXI.RenderTexture#getBase64"><a href="PIXI.RenderTexture.html#getBase64">getBase64</a></li>
+            
+                <li data-name="PIXI.RenderTexture#getCanvas"><a href="PIXI.RenderTexture.html#getCanvas">getCanvas</a></li>
+            
+                <li data-name="PIXI.RenderTexture#getImage"><a href="PIXI.RenderTexture.html#getImage">getImage</a></li>
+            
+                <li data-name="PIXI.RenderTexture#getPixel"><a href="PIXI.RenderTexture.html#getPixel">getPixel</a></li>
+            
+                <li data-name="PIXI.RenderTexture#getPixels"><a href="PIXI.RenderTexture.html#getPixels">getPixels</a></li>
+            
+                <li data-name="PIXI.RenderTexture#render"><a href="PIXI.RenderTexture.html#render">render</a></li>
+            
+                <li data-name="PIXI.RenderTexture#resize"><a href="PIXI.RenderTexture.html#resize">resize</a></li>
+            
+                <li data-name="PIXI.RenderTexture#setFrame"><a href="PIXI.RenderTexture.html#setFrame">setFrame</a></li>
+            
+                <li data-name="PIXI.RenderTexture#update"><a href="PIXI.RenderTexture.html#update">update</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            <span class="subtitle">Events</span>
+            
+                <li data-name="PIXI.RenderTexture#event:update"><a href="PIXI.RenderTexture.html#event:update">update</a></li>
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="PIXI.RoundedRectangle">
+            <span class="title">
+                <a href="PIXI.RoundedRectangle.html">PIXI.RoundedRectangle</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            <span class="subtitle">Members</span>
+            
+                <li data-name="PIXI.RoundedRectangle#height"><a href="PIXI.RoundedRectangle.html#height">height</a></li>
+            
+                <li data-name="PIXI.RoundedRectangle#radius"><a href="PIXI.RoundedRectangle.html#radius">radius</a></li>
+            
+                <li data-name="PIXI.RoundedRectangle#type"><a href="PIXI.RoundedRectangle.html#type">type</a></li>
+            
+                <li data-name="PIXI.RoundedRectangle#width"><a href="PIXI.RoundedRectangle.html#width">width</a></li>
+            
+                <li data-name="PIXI.RoundedRectangle#x"><a href="PIXI.RoundedRectangle.html#x">x</a></li>
+            
+                <li data-name="PIXI.RoundedRectangle#y"><a href="PIXI.RoundedRectangle.html#y">y</a></li>
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="PIXI.RoundedRectangle#clone"><a href="PIXI.RoundedRectangle.html#clone">clone</a></li>
+            
+                <li data-name="PIXI.RoundedRectangle#contains"><a href="PIXI.RoundedRectangle.html#contains">contains</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="PIXI.Shader">
+            <span class="title">
+                <a href="PIXI.Shader.html">PIXI.Shader</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            <span class="subtitle">Members</span>
+            
+                <li data-name="PIXI.Shader#fragmentSrc"><a href="PIXI.Shader.html#fragmentSrc">fragmentSrc</a></li>
+            
+                <li data-name="PIXI.Shader#gl"><a href="PIXI.Shader.html#gl">gl</a></li>
+            
+                <li data-name="PIXI.Shader#program"><a href="PIXI.Shader.html#program">program</a></li>
+            
+                <li data-name="PIXI.Shader#uuid"><a href="PIXI.Shader.html#uuid">uuid</a></li>
+            
+                <li data-name="PIXI.Shader#vertexSrc"><a href="PIXI.Shader.html#vertexSrc">vertexSrc</a></li>
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="PIXI.Shader#destroy"><a href="PIXI.Shader.html#destroy">destroy</a></li>
+            
+                <li data-name="PIXI.Shader#initSampler2D"><a href="PIXI.Shader.html#initSampler2D">initSampler2D</a></li>
+            
+                <li data-name="PIXI.Shader#syncUniform"><a href="PIXI.Shader.html#syncUniform">syncUniform</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="PIXI.ShaderManager">
+            <span class="title">
+                <a href="PIXI.ShaderManager.html">PIXI.ShaderManager</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            <span class="subtitle">Members</span>
+            
+                <li data-name="PIXI.ShaderManager#attribState"><a href="PIXI.ShaderManager.html#attribState">attribState</a></li>
+            
+                <li data-name="PIXI.ShaderManager#maxAttibs"><a href="PIXI.ShaderManager.html#maxAttibs">maxAttibs</a></li>
+            
+                <li data-name="PIXI.ShaderManager#renderer"><a href="PIXI.ShaderManager.html#renderer">renderer</a></li>
+            
+                <li data-name="PIXI.ShaderManager#stack"><a href="PIXI.ShaderManager.html#stack">stack</a></li>
+            
+                <li data-name="PIXI.ShaderManager#tempAttribState"><a href="PIXI.ShaderManager.html#tempAttribState">tempAttribState</a></li>
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="PIXI.ShaderManager#destroy"><a href="PIXI.ShaderManager.html#destroy">destroy</a></li>
+            
+                <li data-name="PIXI.ShaderManager#onContextChange"><a href="PIXI.ShaderManager.html#onContextChange">onContextChange</a></li>
+            
+                <li data-name="PIXI.ShaderManager#setAttribs"><a href="PIXI.ShaderManager.html#setAttribs">setAttribs</a></li>
+            
+                <li data-name="PIXI.ShaderManager#setShader"><a href="PIXI.ShaderManager.html#setShader">setShader</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="PIXI.Sprite">
+            <span class="title">
+                <a href="PIXI.Sprite.html">PIXI.Sprite</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            <span class="subtitle">Members</span>
+            
+                <li data-name="PIXI.Sprite#alpha"><a href="PIXI.Sprite.html#alpha">alpha</a></li>
+            
+                <li data-name="PIXI.Sprite#anchor"><a href="PIXI.Sprite.html#anchor">anchor</a></li>
+            
+                <li data-name="PIXI.Sprite#blendMode"><a href="PIXI.Sprite.html#blendMode">blendMode</a></li>
+            
+                <li data-name="PIXI.Sprite#cachedTint"><a href="PIXI.Sprite.html#cachedTint">cachedTint</a></li>
+            
+                <li data-name="PIXI.Sprite#children"><a href="PIXI.Sprite.html#children">children</a></li>
+            
+                <li data-name="PIXI.Sprite#filterArea"><a href="PIXI.Sprite.html#filterArea">filterArea</a></li>
+            
+                <li data-name="PIXI.Sprite#filters"><a href="PIXI.Sprite.html#filters">filters</a></li>
+            
+                <li data-name="PIXI.Sprite#height"><a href="PIXI.Sprite.html#height">height</a></li>
+            
+                <li data-name="PIXI.Sprite#mask"><a href="PIXI.Sprite.html#mask">mask</a></li>
+            
+                <li data-name="PIXI.Sprite#parent"><a href="PIXI.Sprite.html#parent">parent</a></li>
+            
+                <li data-name="PIXI.Sprite#pivot"><a href="PIXI.Sprite.html#pivot">pivot</a></li>
+            
+                <li data-name="PIXI.Sprite#position"><a href="PIXI.Sprite.html#position">position</a></li>
+            
+                <li data-name="PIXI.Sprite#renderable"><a href="PIXI.Sprite.html#renderable">renderable</a></li>
+            
+                <li data-name="PIXI.Sprite#rotation"><a href="PIXI.Sprite.html#rotation">rotation</a></li>
+            
+                <li data-name="PIXI.Sprite#scale"><a href="PIXI.Sprite.html#scale">scale</a></li>
+            
+                <li data-name="PIXI.Sprite#shader"><a href="PIXI.Sprite.html#shader">shader</a></li>
+            
+                <li data-name="PIXI.Sprite#texture"><a href="PIXI.Sprite.html#texture">texture</a></li>
+            
+                <li data-name="PIXI.Sprite#tint"><a href="PIXI.Sprite.html#tint">tint</a></li>
+            
+                <li data-name="PIXI.Sprite#visible"><a href="PIXI.Sprite.html#visible">visible</a></li>
+            
+                <li data-name="PIXI.Sprite#width"><a href="PIXI.Sprite.html#width">width</a></li>
+            
+                <li data-name="PIXI.Sprite#worldAlpha"><a href="PIXI.Sprite.html#worldAlpha">worldAlpha</a></li>
+            
+                <li data-name="PIXI.Sprite#worldTransform"><a href="PIXI.Sprite.html#worldTransform">worldTransform</a></li>
+            
+                <li data-name="PIXI.Sprite#worldVisible"><a href="PIXI.Sprite.html#worldVisible">worldVisible</a></li>
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="PIXI.Sprite.fromFrame"><a href="PIXI.Sprite.html#.fromFrame">fromFrame</a></li>
+            
+                <li data-name="PIXI.Sprite.fromImage"><a href="PIXI.Sprite.html#.fromImage">fromImage</a></li>
+            
+                <li data-name="PIXI.Sprite#addChild"><a href="PIXI.Sprite.html#addChild">addChild</a></li>
+            
+                <li data-name="PIXI.Sprite#addChildAt"><a href="PIXI.Sprite.html#addChildAt">addChildAt</a></li>
+            
+                <li data-name="PIXI.Sprite#containsPoint"><a href="PIXI.Sprite.html#containsPoint">containsPoint</a></li>
+            
+                <li data-name="PIXI.Sprite#destroy"><a href="PIXI.Sprite.html#destroy">destroy</a></li>
+            
+                <li data-name="PIXI.Sprite#generateTexture"><a href="PIXI.Sprite.html#generateTexture">generateTexture</a></li>
+            
+                <li data-name="PIXI.Sprite#getBounds"><a href="PIXI.Sprite.html#getBounds">getBounds</a></li>
+            
+                <li data-name="PIXI.Sprite#getChildAt"><a href="PIXI.Sprite.html#getChildAt">getChildAt</a></li>
+            
+                <li data-name="PIXI.Sprite#getChildIndex"><a href="PIXI.Sprite.html#getChildIndex">getChildIndex</a></li>
+            
+                <li data-name="PIXI.Sprite#getLocalBounds"><a href="PIXI.Sprite.html#getLocalBounds">getLocalBounds</a></li>
+            
+                <li data-name="PIXI.Sprite#removeChild"><a href="PIXI.Sprite.html#removeChild">removeChild</a></li>
+            
+                <li data-name="PIXI.Sprite#removeChildAt"><a href="PIXI.Sprite.html#removeChildAt">removeChildAt</a></li>
+            
+                <li data-name="PIXI.Sprite#removeChildren"><a href="PIXI.Sprite.html#removeChildren">removeChildren</a></li>
+            
+                <li data-name="PIXI.Sprite#renderCanvas"><a href="PIXI.Sprite.html#renderCanvas">renderCanvas</a></li>
+            
+                <li data-name="PIXI.Sprite#renderWebGL"><a href="PIXI.Sprite.html#renderWebGL">renderWebGL</a></li>
+            
+                <li data-name="PIXI.Sprite#setChildIndex"><a href="PIXI.Sprite.html#setChildIndex">setChildIndex</a></li>
+            
+                <li data-name="PIXI.Sprite#swapChildren"><a href="PIXI.Sprite.html#swapChildren">swapChildren</a></li>
+            
+                <li data-name="PIXI.Sprite#toGlobal"><a href="PIXI.Sprite.html#toGlobal">toGlobal</a></li>
+            
+                <li data-name="PIXI.Sprite#toLocal"><a href="PIXI.Sprite.html#toLocal">toLocal</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="PIXI.SpriteMaskFilter">
+            <span class="title">
+                <a href="PIXI.SpriteMaskFilter.html">PIXI.SpriteMaskFilter</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            <span class="subtitle">Members</span>
+            
+                <li data-name="PIXI.SpriteMaskFilter#padding"><a href="PIXI.SpriteMaskFilter.html#padding">padding</a></li>
+            
+                <li data-name="PIXI.SpriteMaskFilter#uniforms"><a href="PIXI.SpriteMaskFilter.html#uniforms">uniforms</a></li>
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="PIXI.SpriteMaskFilter#applyFilter"><a href="PIXI.SpriteMaskFilter.html#applyFilter">applyFilter</a></li>
+            
+                <li data-name="PIXI.SpriteMaskFilter#syncUniform"><a href="PIXI.SpriteMaskFilter.html#syncUniform">syncUniform</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="PIXI.StencilMaskStack">
+            <span class="title">
+                <a href="PIXI.StencilMaskStack.html">PIXI.StencilMaskStack</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            <span class="subtitle">Members</span>
+            
+                <li data-name="PIXI.StencilMaskStack#count"><a href="PIXI.StencilMaskStack.html#count">count</a></li>
+            
+                <li data-name="PIXI.StencilMaskStack#reverse"><a href="PIXI.StencilMaskStack.html#reverse">reverse</a></li>
+            
+                <li data-name="PIXI.StencilMaskStack#stencilStack"><a href="PIXI.StencilMaskStack.html#stencilStack">stencilStack</a></li>
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="PIXI.SystemRenderer">
+            <span class="title">
+                <a href="PIXI.SystemRenderer.html">PIXI.SystemRenderer</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            <span class="subtitle">Members</span>
+            
+                <li data-name="PIXI.SystemRenderer#autoResize"><a href="PIXI.SystemRenderer.html#autoResize">autoResize</a></li>
+            
+                <li data-name="PIXI.SystemRenderer#blendModes"><a href="PIXI.SystemRenderer.html#blendModes">blendModes</a></li>
+            
+                <li data-name="PIXI.SystemRenderer#clearBeforeRender"><a href="PIXI.SystemRenderer.html#clearBeforeRender">clearBeforeRender</a></li>
+            
+                <li data-name="PIXI.SystemRenderer#height"><a href="PIXI.SystemRenderer.html#height">height</a></li>
+            
+                <li data-name="PIXI.SystemRenderer#preserveDrawingBuffer"><a href="PIXI.SystemRenderer.html#preserveDrawingBuffer">preserveDrawingBuffer</a></li>
+            
+                <li data-name="PIXI.SystemRenderer#resolution"><a href="PIXI.SystemRenderer.html#resolution">resolution</a></li>
+            
+                <li data-name="PIXI.SystemRenderer#transparent"><a href="PIXI.SystemRenderer.html#transparent">transparent</a></li>
+            
+                <li data-name="PIXI.SystemRenderer#type"><a href="PIXI.SystemRenderer.html#type">type</a></li>
+            
+                <li data-name="PIXI.SystemRenderer#view"><a href="PIXI.SystemRenderer.html#view">view</a></li>
+            
+                <li data-name="PIXI.SystemRenderer#width"><a href="PIXI.SystemRenderer.html#width">width</a></li>
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="PIXI.SystemRenderer#destroy"><a href="PIXI.SystemRenderer.html#destroy">destroy</a></li>
+            
+                <li data-name="PIXI.SystemRenderer#resize"><a href="PIXI.SystemRenderer.html#resize">resize</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="PIXI.Text">
+            <span class="title">
+                <a href="PIXI.Text.html">PIXI.Text</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            <span class="subtitle">Members</span>
+            
+                <li data-name="PIXI.Text#alpha"><a href="PIXI.Text.html#alpha">alpha</a></li>
+            
+                <li data-name="PIXI.Text#anchor"><a href="PIXI.Text.html#anchor">anchor</a></li>
+            
+                <li data-name="PIXI.Text#blendMode"><a href="PIXI.Text.html#blendMode">blendMode</a></li>
+            
+                <li data-name="PIXI.Text#cachedTint"><a href="PIXI.Text.html#cachedTint">cachedTint</a></li>
+            
+                <li data-name="PIXI.Text#canvas"><a href="PIXI.Text.html#canvas">canvas</a></li>
+            
+                <li data-name="PIXI.Text#children"><a href="PIXI.Text.html#children">children</a></li>
+            
+                <li data-name="PIXI.Text#context"><a href="PIXI.Text.html#context">context</a></li>
+            
+                <li data-name="PIXI.Text#filterArea"><a href="PIXI.Text.html#filterArea">filterArea</a></li>
+            
+                <li data-name="PIXI.Text#filters"><a href="PIXI.Text.html#filters">filters</a></li>
+            
+                <li data-name="PIXI.Text#height"><a href="PIXI.Text.html#height">height</a></li>
+            
+                <li data-name="PIXI.Text#mask"><a href="PIXI.Text.html#mask">mask</a></li>
+            
+                <li data-name="PIXI.Text#parent"><a href="PIXI.Text.html#parent">parent</a></li>
+            
+                <li data-name="PIXI.Text#pivot"><a href="PIXI.Text.html#pivot">pivot</a></li>
+            
+                <li data-name="PIXI.Text#position"><a href="PIXI.Text.html#position">position</a></li>
+            
+                <li data-name="PIXI.Text#renderable"><a href="PIXI.Text.html#renderable">renderable</a></li>
+            
+                <li data-name="PIXI.Text#resolution"><a href="PIXI.Text.html#resolution">resolution</a></li>
+            
+                <li data-name="PIXI.Text#rotation"><a href="PIXI.Text.html#rotation">rotation</a></li>
+            
+                <li data-name="PIXI.Text#scale"><a href="PIXI.Text.html#scale">scale</a></li>
+            
+                <li data-name="PIXI.Text#shader"><a href="PIXI.Text.html#shader">shader</a></li>
+            
+                <li data-name="PIXI.Text#texture"><a href="PIXI.Text.html#texture">texture</a></li>
+            
+                <li data-name="PIXI.Text#tint"><a href="PIXI.Text.html#tint">tint</a></li>
+            
+                <li data-name="PIXI.Text#visible"><a href="PIXI.Text.html#visible">visible</a></li>
+            
+                <li data-name="PIXI.Text#width"><a href="PIXI.Text.html#width">width</a></li>
+            
+                <li data-name="PIXI.Text#worldAlpha"><a href="PIXI.Text.html#worldAlpha">worldAlpha</a></li>
+            
+                <li data-name="PIXI.Text#worldTransform"><a href="PIXI.Text.html#worldTransform">worldTransform</a></li>
+            
+                <li data-name="PIXI.Text#worldVisible"><a href="PIXI.Text.html#worldVisible">worldVisible</a></li>
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="PIXI.Text#addChild"><a href="PIXI.Text.html#addChild">addChild</a></li>
+            
+                <li data-name="PIXI.Text#addChildAt"><a href="PIXI.Text.html#addChildAt">addChildAt</a></li>
+            
+                <li data-name="PIXI.Text#containsPoint"><a href="PIXI.Text.html#containsPoint">containsPoint</a></li>
+            
+                <li data-name="PIXI.Text#destroy"><a href="PIXI.Text.html#destroy">destroy</a></li>
+            
+                <li data-name="PIXI.Text#generateTexture"><a href="PIXI.Text.html#generateTexture">generateTexture</a></li>
+            
+                <li data-name="PIXI.Text#getBounds"><a href="PIXI.Text.html#getBounds">getBounds</a></li>
+            
+                <li data-name="PIXI.Text#getChildAt"><a href="PIXI.Text.html#getChildAt">getChildAt</a></li>
+            
+                <li data-name="PIXI.Text#getChildIndex"><a href="PIXI.Text.html#getChildIndex">getChildIndex</a></li>
+            
+                <li data-name="PIXI.Text#getLocalBounds"><a href="PIXI.Text.html#getLocalBounds">getLocalBounds</a></li>
+            
+                <li data-name="PIXI.Text#removeChild"><a href="PIXI.Text.html#removeChild">removeChild</a></li>
+            
+                <li data-name="PIXI.Text#removeChildAt"><a href="PIXI.Text.html#removeChildAt">removeChildAt</a></li>
+            
+                <li data-name="PIXI.Text#removeChildren"><a href="PIXI.Text.html#removeChildren">removeChildren</a></li>
+            
+                <li data-name="PIXI.Text#renderCanvas"><a href="PIXI.Text.html#renderCanvas">renderCanvas</a></li>
+            
+                <li data-name="PIXI.Text#renderWebGL"><a href="PIXI.Text.html#renderWebGL">renderWebGL</a></li>
+            
+                <li data-name="PIXI.Text#setChildIndex"><a href="PIXI.Text.html#setChildIndex">setChildIndex</a></li>
+            
+                <li data-name="PIXI.Text#setStyle"><a href="PIXI.Text.html#setStyle">setStyle</a></li>
+            
+                <li data-name="PIXI.Text#setText"><a href="PIXI.Text.html#setText">setText</a></li>
+            
+                <li data-name="PIXI.Text#swapChildren"><a href="PIXI.Text.html#swapChildren">swapChildren</a></li>
+            
+                <li data-name="PIXI.Text#toGlobal"><a href="PIXI.Text.html#toGlobal">toGlobal</a></li>
+            
+                <li data-name="PIXI.Text#toLocal"><a href="PIXI.Text.html#toLocal">toLocal</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="PIXI.Texture">
+            <span class="title">
+                <a href="PIXI.Texture.html">PIXI.Texture</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            <span class="subtitle">Members</span>
+            
+                <li data-name="PIXI.Texture#baseTexture"><a href="PIXI.Texture.html#baseTexture">baseTexture</a></li>
+            
+                <li data-name="PIXI.Texture#crop"><a href="PIXI.Texture.html#crop">crop</a></li>
+            
+                <li data-name="PIXI.Texture#height"><a href="PIXI.Texture.html#height">height</a></li>
+            
+                <li data-name="PIXI.Texture#noFrame"><a href="PIXI.Texture.html#noFrame">noFrame</a></li>
+            
+                <li data-name="PIXI.Texture#requiresUpdate"><a href="PIXI.Texture.html#requiresUpdate">requiresUpdate</a></li>
+            
+                <li data-name="PIXI.Texture#trim"><a href="PIXI.Texture.html#trim">trim</a></li>
+            
+                <li data-name="PIXI.Texture#valid"><a href="PIXI.Texture.html#valid">valid</a></li>
+            
+                <li data-name="PIXI.Texture#width"><a href="PIXI.Texture.html#width">width</a></li>
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="PIXI.Texture.addTextureToCache"><a href="PIXI.Texture.html#.addTextureToCache">addTextureToCache</a></li>
+            
+                <li data-name="PIXI.Texture.fromCanvas"><a href="PIXI.Texture.html#.fromCanvas">fromCanvas</a></li>
+            
+                <li data-name="PIXI.Texture.fromFrame"><a href="PIXI.Texture.html#.fromFrame">fromFrame</a></li>
+            
+                <li data-name="PIXI.Texture.fromImage"><a href="PIXI.Texture.html#.fromImage">fromImage</a></li>
+            
+                <li data-name="PIXI.Texture.fromVideo"><a href="PIXI.Texture.html#.fromVideo">fromVideo</a></li>
+            
+                <li data-name="PIXI.Texture.fromVideoUrl"><a href="PIXI.Texture.html#.fromVideoUrl">fromVideoUrl</a></li>
+            
+                <li data-name="PIXI.Texture.removeTextureFromCache"><a href="PIXI.Texture.html#.removeTextureFromCache">removeTextureFromCache</a></li>
+            
+                <li data-name="PIXI.Texture#destroy"><a href="PIXI.Texture.html#destroy">destroy</a></li>
+            
+                <li data-name="PIXI.Texture#setFrame"><a href="PIXI.Texture.html#setFrame">setFrame</a></li>
+            
+                <li data-name="PIXI.Texture#update"><a href="PIXI.Texture.html#update">update</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            <span class="subtitle">Events</span>
+            
+                <li data-name="PIXI.Texture#event:update"><a href="PIXI.Texture.html#event:update">update</a></li>
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="PIXI.TextureShader">
+            <span class="title">
+                <a href="PIXI.TextureShader.html">PIXI.TextureShader</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            <span class="subtitle">Members</span>
+            
+                <li data-name="PIXI.TextureShader#fragmentSrc"><a href="PIXI.TextureShader.html#fragmentSrc">fragmentSrc</a></li>
+            
+                <li data-name="PIXI.TextureShader#gl"><a href="PIXI.TextureShader.html#gl">gl</a></li>
+            
+                <li data-name="PIXI.TextureShader#program"><a href="PIXI.TextureShader.html#program">program</a></li>
+            
+                <li data-name="PIXI.TextureShader#uuid"><a href="PIXI.TextureShader.html#uuid">uuid</a></li>
+            
+                <li data-name="PIXI.TextureShader#vertexSrc"><a href="PIXI.TextureShader.html#vertexSrc">vertexSrc</a></li>
+            
+                <li data-name="PIXI.TextureShader~fragmentSrc"><a href="PIXI.TextureShader.html#~fragmentSrc">fragmentSrc</a></li>
+            
+                <li data-name="PIXI.TextureShader~vertexSrc"><a href="PIXI.TextureShader.html#~vertexSrc">vertexSrc</a></li>
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="PIXI.TextureShader#destroy"><a href="PIXI.TextureShader.html#destroy">destroy</a></li>
+            
+                <li data-name="PIXI.TextureShader#initSampler2D"><a href="PIXI.TextureShader.html#initSampler2D">initSampler2D</a></li>
+            
+                <li data-name="PIXI.TextureShader#syncUniform"><a href="PIXI.TextureShader.html#syncUniform">syncUniform</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="PIXI.ticker.Ticker">
+            <span class="title">
+                <a href="PIXI.ticker.Ticker.html">PIXI.ticker.Ticker</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            <span class="subtitle">Members</span>
+            
+                <li data-name="PIXI.ticker.Ticker#autoStart"><a href="PIXI.ticker.Ticker.html#autoStart">autoStart</a></li>
+            
+                <li data-name="PIXI.ticker.Ticker#deltaTime"><a href="PIXI.ticker.Ticker.html#deltaTime">deltaTime</a></li>
+            
+                <li data-name="PIXI.ticker.Ticker#elapsedMS"><a href="PIXI.ticker.Ticker.html#elapsedMS">elapsedMS</a></li>
+            
+                <li data-name="PIXI.ticker.Ticker#FPS"><a href="PIXI.ticker.Ticker.html#FPS">FPS</a></li>
+            
+                <li data-name="PIXI.ticker.Ticker#lastTime"><a href="PIXI.ticker.Ticker.html#lastTime">lastTime</a></li>
+            
+                <li data-name="PIXI.ticker.Ticker#minFPS"><a href="PIXI.ticker.Ticker.html#minFPS">minFPS</a></li>
+            
+                <li data-name="PIXI.ticker.Ticker#speed"><a href="PIXI.ticker.Ticker.html#speed">speed</a></li>
+            
+                <li data-name="PIXI.ticker.Ticker#started"><a href="PIXI.ticker.Ticker.html#started">started</a></li>
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="PIXI.ticker.Ticker#add"><a href="PIXI.ticker.Ticker.html#add">add</a></li>
+            
+                <li data-name="PIXI.ticker.Ticker#addOnce"><a href="PIXI.ticker.Ticker.html#addOnce">addOnce</a></li>
+            
+                <li data-name="PIXI.ticker.Ticker#remove"><a href="PIXI.ticker.Ticker.html#remove">remove</a></li>
+            
+                <li data-name="PIXI.ticker.Ticker#start"><a href="PIXI.ticker.Ticker.html#start">start</a></li>
+            
+                <li data-name="PIXI.ticker.Ticker#stop"><a href="PIXI.ticker.Ticker.html#stop">stop</a></li>
+            
+                <li data-name="PIXI.ticker.Ticker#update"><a href="PIXI.ticker.Ticker.html#update">update</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="PIXI.VideoBaseTexture">
+            <span class="title">
+                <a href="PIXI.VideoBaseTexture.html">PIXI.VideoBaseTexture</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            <span class="subtitle">Members</span>
+            
+                <li data-name="PIXI.VideoBaseTexture#autoUpdate"><a href="PIXI.VideoBaseTexture.html#autoUpdate">autoUpdate</a></li>
+            
+                <li data-name="PIXI.VideoBaseTexture#hasLoaded"><a href="PIXI.VideoBaseTexture.html#hasLoaded">hasLoaded</a></li>
+            
+                <li data-name="PIXI.VideoBaseTexture#height"><a href="PIXI.VideoBaseTexture.html#height">height</a></li>
+            
+                <li data-name="PIXI.VideoBaseTexture#imageUrl"><a href="PIXI.VideoBaseTexture.html#imageUrl">imageUrl</a></li>
+            
+                <li data-name="PIXI.VideoBaseTexture#isLoading"><a href="PIXI.VideoBaseTexture.html#isLoading">isLoading</a></li>
+            
+                <li data-name="PIXI.VideoBaseTexture#mipmap"><a href="PIXI.VideoBaseTexture.html#mipmap">mipmap</a></li>
+            
+                <li data-name="PIXI.VideoBaseTexture#premultipliedAlpha"><a href="PIXI.VideoBaseTexture.html#premultipliedAlpha">premultipliedAlpha</a></li>
+            
+                <li data-name="PIXI.VideoBaseTexture#realHeight"><a href="PIXI.VideoBaseTexture.html#realHeight">realHeight</a></li>
+            
+                <li data-name="PIXI.VideoBaseTexture#realWidth"><a href="PIXI.VideoBaseTexture.html#realWidth">realWidth</a></li>
+            
+                <li data-name="PIXI.VideoBaseTexture#resolution"><a href="PIXI.VideoBaseTexture.html#resolution">resolution</a></li>
+            
+                <li data-name="PIXI.VideoBaseTexture#scaleMode"><a href="PIXI.VideoBaseTexture.html#scaleMode">scaleMode</a></li>
+            
+                <li data-name="PIXI.VideoBaseTexture#source"><a href="PIXI.VideoBaseTexture.html#source">source</a></li>
+            
+                <li data-name="PIXI.VideoBaseTexture#width"><a href="PIXI.VideoBaseTexture.html#width">width</a></li>
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="PIXI.VideoBaseTexture.fromUrl"><a href="PIXI.VideoBaseTexture.html#.fromUrl">fromUrl</a></li>
+            
+                <li data-name="PIXI.VideoBaseTexture.fromVideo"><a href="PIXI.VideoBaseTexture.html#.fromVideo">fromVideo</a></li>
+            
+                <li data-name="PIXI.VideoBaseTexture#destroy"><a href="PIXI.VideoBaseTexture.html#destroy">destroy</a></li>
+            
+                <li data-name="PIXI.VideoBaseTexture#dispose"><a href="PIXI.VideoBaseTexture.html#dispose">dispose</a></li>
+            
+                <li data-name="PIXI.VideoBaseTexture#loadSource"><a href="PIXI.VideoBaseTexture.html#loadSource">loadSource</a></li>
+            
+                <li data-name="PIXI.VideoBaseTexture#update"><a href="PIXI.VideoBaseTexture.html#update">update</a></li>
+            
+                <li data-name="PIXI.VideoBaseTexture#updateSourceImage"><a href="PIXI.VideoBaseTexture.html#updateSourceImage">updateSourceImage</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            <span class="subtitle">Events</span>
+            
+                <li data-name="PIXI.VideoBaseTexture#event:error"><a href="PIXI.VideoBaseTexture.html#event:error">error</a></li>
+            
+                <li data-name="PIXI.VideoBaseTexture#event:loaded"><a href="PIXI.VideoBaseTexture.html#event:loaded">loaded</a></li>
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="PIXI.WebGLManager">
+            <span class="title">
+                <a href="PIXI.WebGLManager.html">PIXI.WebGLManager</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            <span class="subtitle">Members</span>
+            
+                <li data-name="PIXI.WebGLManager#renderer"><a href="PIXI.WebGLManager.html#renderer">renderer</a></li>
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="PIXI.WebGLManager#destroy"><a href="PIXI.WebGLManager.html#destroy">destroy</a></li>
+            
+                <li data-name="PIXI.WebGLManager#onContextChange"><a href="PIXI.WebGLManager.html#onContextChange">onContextChange</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="PIXI.WebGLMaskManager">
+            <span class="title">
+                <a href="PIXI.WebGLMaskManager.html">PIXI.WebGLMaskManager</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="PIXI.WebGLMaskManager#bindGraphics"><a href="PIXI.WebGLMaskManager.html#bindGraphics">bindGraphics</a></li>
+            
+                <li data-name="PIXI.WebGLMaskManager#destroy"><a href="PIXI.WebGLMaskManager.html#destroy">destroy</a></li>
+            
+                <li data-name="PIXI.WebGLMaskManager#popMask"><a href="PIXI.WebGLMaskManager.html#popMask">popMask</a></li>
+            
+                <li data-name="PIXI.WebGLMaskManager#popStencil"><a href="PIXI.WebGLMaskManager.html#popStencil">popStencil</a></li>
+            
+                <li data-name="PIXI.WebGLMaskManager#pushMask"><a href="PIXI.WebGLMaskManager.html#pushMask">pushMask</a></li>
+            
+                <li data-name="PIXI.WebGLMaskManager#pushStencil"><a href="PIXI.WebGLMaskManager.html#pushStencil">pushStencil</a></li>
+            
+                <li data-name="PIXI.WebGLMaskManager#setMaskStack"><a href="PIXI.WebGLMaskManager.html#setMaskStack">setMaskStack</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="PIXI.WebGLRenderer">
+            <span class="title">
+                <a href="PIXI.WebGLRenderer.html">PIXI.WebGLRenderer</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            <span class="subtitle">Members</span>
+            
+                <li data-name="PIXI.WebGLRenderer#autoResize"><a href="PIXI.WebGLRenderer.html#autoResize">autoResize</a></li>
+            
+                <li data-name="PIXI.WebGLRenderer#blendModeManager"><a href="PIXI.WebGLRenderer.html#blendModeManager">blendModeManager</a></li>
+            
+                <li data-name="PIXI.WebGLRenderer#blendModes"><a href="PIXI.WebGLRenderer.html#blendModes">blendModes</a></li>
+            
+                <li data-name="PIXI.WebGLRenderer#clearBeforeRender"><a href="PIXI.WebGLRenderer.html#clearBeforeRender">clearBeforeRender</a></li>
+            
+                <li data-name="PIXI.WebGLRenderer#currentRenderer"><a href="PIXI.WebGLRenderer.html#currentRenderer">currentRenderer</a></li>
+            
+                <li data-name="PIXI.WebGLRenderer#currentRenderTarget"><a href="PIXI.WebGLRenderer.html#currentRenderTarget">currentRenderTarget</a></li>
+            
+                <li data-name="PIXI.WebGLRenderer#drawCount"><a href="PIXI.WebGLRenderer.html#drawCount">drawCount</a></li>
+            
+                <li data-name="PIXI.WebGLRenderer#filterManager"><a href="PIXI.WebGLRenderer.html#filterManager">filterManager</a></li>
+            
+                <li data-name="PIXI.WebGLRenderer#height"><a href="PIXI.WebGLRenderer.html#height">height</a></li>
+            
+                <li data-name="PIXI.WebGLRenderer#maskManager"><a href="PIXI.WebGLRenderer.html#maskManager">maskManager</a></li>
+            
+                <li data-name="PIXI.WebGLRenderer#preserveDrawingBuffer"><a href="PIXI.WebGLRenderer.html#preserveDrawingBuffer">preserveDrawingBuffer</a></li>
+            
+                <li data-name="PIXI.WebGLRenderer#resolution"><a href="PIXI.WebGLRenderer.html#resolution">resolution</a></li>
+            
+                <li data-name="PIXI.WebGLRenderer#shaderManager"><a href="PIXI.WebGLRenderer.html#shaderManager">shaderManager</a></li>
+            
+                <li data-name="PIXI.WebGLRenderer#stencilManager"><a href="PIXI.WebGLRenderer.html#stencilManager">stencilManager</a></li>
+            
+                <li data-name="PIXI.WebGLRenderer#transparent"><a href="PIXI.WebGLRenderer.html#transparent">transparent</a></li>
+            
+                <li data-name="PIXI.WebGLRenderer#type"><a href="PIXI.WebGLRenderer.html#type">type</a></li>
+            
+                <li data-name="PIXI.WebGLRenderer#view"><a href="PIXI.WebGLRenderer.html#view">view</a></li>
+            
+                <li data-name="PIXI.WebGLRenderer#width"><a href="PIXI.WebGLRenderer.html#width">width</a></li>
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="PIXI.WebGLRenderer#destroy"><a href="PIXI.WebGLRenderer.html#destroy">destroy</a></li>
+            
+                <li data-name="PIXI.WebGLRenderer#destroyTexture"><a href="PIXI.WebGLRenderer.html#destroyTexture">destroyTexture</a></li>
+            
+                <li data-name="PIXI.WebGLRenderer#render"><a href="PIXI.WebGLRenderer.html#render">render</a></li>
+            
+                <li data-name="PIXI.WebGLRenderer#renderDisplayObject"><a href="PIXI.WebGLRenderer.html#renderDisplayObject">renderDisplayObject</a></li>
+            
+                <li data-name="PIXI.WebGLRenderer#resize"><a href="PIXI.WebGLRenderer.html#resize">resize</a></li>
+            
+                <li data-name="PIXI.WebGLRenderer#setObjectRenderer"><a href="PIXI.WebGLRenderer.html#setObjectRenderer">setObjectRenderer</a></li>
+            
+                <li data-name="PIXI.WebGLRenderer#setRenderTarget"><a href="PIXI.WebGLRenderer.html#setRenderTarget">setRenderTarget</a></li>
+            
+                <li data-name="PIXI.WebGLRenderer#updateTexture"><a href="PIXI.WebGLRenderer.html#updateTexture">updateTexture</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+    </ul>
+</div>
+    <div class="main">
+        <h1 class="page-title" data-filename="core_math_Point.js.html">Source: core/math/Point.js</h1>
+        
 
 
     
@@ -101,19 +3968,17 @@ Point.prototype.set = function (x, y)
 
 
 
+
+
+        
+
+        <footer>
+            Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0</a> on Sun May 17 2015 13:15:33 GMT+0200 (Romance Daylight Time)
+        </footer>
+    </div>
 </div>
-
-<nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="PIXI.AbstractFilter.html">AbstractFilter</a></li><li><a href="PIXI.BaseTexture.html">BaseTexture</a></li><li><a href="PIXI.BlendModeManager.html">BlendModeManager</a></li><li><a href="PIXI.CanvasBuffer.html">CanvasBuffer</a></li><li><a href="PIXI.CanvasGraphics.html">CanvasGraphics</a></li><li><a href="PIXI.CanvasMaskManager.html">CanvasMaskManager</a></li><li><a href="PIXI.CanvasRenderer.html">CanvasRenderer</a></li><li><a href="PIXI.CanvasTinter.html">CanvasTinter</a></li><li><a href="PIXI.Circle.html">Circle</a></li><li><a href="PIXI.ComplexPrimitiveShader.html">ComplexPrimitiveShader</a></li><li><a href="PIXI.CONST.html">CONST</a></li><li><a href="PIXI.Container.html">Container</a></li><li><a href="PIXI.DisplayObject.html">DisplayObject</a></li><li><a href="PIXI.Ellipse.html">Ellipse</a></li><li><a href="PIXI.extras.BitmapText.html">BitmapText</a></li><li><a href="PIXI.extras.MovieClip.html">MovieClip</a></li><li><a href="PIXI.extras.TilingSprite.html">TilingSprite</a></li><li><a href="PIXI.FilterManager.html">FilterManager</a></li><li><a href="PIXI.filters.AsciiFilter.html">AsciiFilter</a></li><li><a href="PIXI.filters.BloomFilter.html">BloomFilter</a></li><li><a href="PIXI.filters.BlurDirFilter.html">BlurDirFilter</a></li><li><a href="PIXI.filters.BlurFilter.html">BlurFilter</a></li><li><a href="PIXI.filters.BlurXFilter.html">BlurXFilter</a></li><li><a href="PIXI.filters.BlurYFilter.html">BlurYFilter</a></li><li><a href="PIXI.filters.BlurYTintFilter.html">BlurYTintFilter</a></li><li><a href="PIXI.filters.ColorMatrixFilter.html">ColorMatrixFilter</a></li><li><a href="PIXI.filters.ColorStepFilter.html">ColorStepFilter</a></li><li><a href="PIXI.filters.ConvolutionFilter.html">ConvolutionFilter</a></li><li><a href="PIXI.filters.CrossHatchFilter.html">CrossHatchFilter</a></li><li><a href="PIXI.filters.DisplacementFilter.html">DisplacementFilter</a></li><li><a href="PIXI.filters.DotScreenFilter.html">DotScreenFilter</a></li><li><a href="PIXI.filters.DropShadowFilter.html">DropShadowFilter</a></li><li><a href="PIXI.filters.GrayFilter.html">GrayFilter</a></li><li><a href="PIXI.filters.InvertFilter.html">InvertFilter</a></li><li><a href="PIXI.filters.NoiseFilter.html">NoiseFilter</a></li><li><a href="PIXI.filters.NormalMapFilter.html">NormalMapFilter</a></li><li><a href="PIXI.filters.PixelateFilter.html">PixelateFilter</a></li><li><a href="PIXI.filters.RGBSplitFilter.html">RGBSplitFilter</a></li><li><a href="PIXI.filters.SepiaFilter.html">SepiaFilter</a></li><li><a href="PIXI.filters.ShockwaveFilter.html">ShockwaveFilter</a></li><li><a href="PIXI.filters.SmartBlurFilter.html">SmartBlurFilter</a></li><li><a href="PIXI.filters.TiltShiftAxisFilter.html">TiltShiftAxisFilter</a></li><li><a href="PIXI.filters.TiltShiftFilter.html">TiltShiftFilter</a></li><li><a href="PIXI.filters.TiltShiftXFilter.html">TiltShiftXFilter</a></li><li><a href="PIXI.filters.TiltShiftYFilter.html">TiltShiftYFilter</a></li><li><a href="PIXI.filters.TwistFilter.html">TwistFilter</a></li><li><a href="PIXI.FXAAFilter.html">FXAAFilter</a></li><li><a href="PIXI.Graphics.html">Graphics</a></li><li><a href="PIXI.GraphicsData.html">GraphicsData</a></li><li><a href="PIXI.interaction.InteractionData.html">InteractionData</a></li><li><a href="PIXI.interaction.InteractionManager.html">InteractionManager</a></li><li><a href="PIXI.loaders.Loader.html">Loader</a></li><li><a href="PIXI.MaskManager.html">MaskManager</a></li><li><a href="PIXI.Matrix.html">Matrix</a></li><li><a href="PIXI.mesh.Mesh.html">Mesh</a></li><li><a href="PIXI.mesh.Rope.html">Rope</a></li><li><a href="PIXI.mesh.StripShader.html">StripShader</a></li><li><a href="PIXI.ObjectRenderer.html">ObjectRenderer</a></li><li><a href="PIXI.ParticleContainer.html">ParticleContainer</a></li><li><a href="PIXI.ParticleShader.html">ParticleShader</a></li><li><a href="PIXI.Point.html">Point</a></li><li><a href="PIXI.Polygon.html">Polygon</a></li><li><a href="PIXI.PrimitiveShader.html">PrimitiveShader</a></li><li><a href="PIXI.Quad.html">Quad</a></li><li><a href="PIXI.Rectangle.html">Rectangle</a></li><li><a href="PIXI.RenderTarget.html">RenderTarget</a></li><li><a href="PIXI.RenderTexture.html">RenderTexture</a></li><li><a href="PIXI.RoundedRectangle.html">RoundedRectangle</a></li><li><a href="PIXI.Shader.html">Shader</a></li><li><a href="PIXI.ShaderManager.html">ShaderManager</a></li><li><a href="PIXI.Sprite.html">Sprite</a></li><li><a href="PIXI.SpriteMaskFilter.html">SpriteMaskFilter</a></li><li><a href="PIXI.StencilMaskStack.html">StencilMaskStack</a></li><li><a href="PIXI.SystemRenderer.html">SystemRenderer</a></li><li><a href="PIXI.Text.html">Text</a></li><li><a href="PIXI.Texture.html">Texture</a></li><li><a href="PIXI.TextureShader.html">TextureShader</a></li><li><a href="PIXI.ticker.Ticker.html">Ticker</a></li><li><a href="PIXI.VideoBaseTexture.html">VideoBaseTexture</a></li><li><a href="PIXI.WebGLManager.html">WebGLManager</a></li><li><a href="PIXI.WebGLMaskManager.html">WebGLMaskManager</a></li><li><a href="PIXI.WebGLRenderer.html">WebGLRenderer</a></li></ul><h3>Events</h3><ul><li><a href="BaseTexture.html#event:error">error</a></li><li><a href="BaseTexture.html#event:loaded">loaded</a></li></ul><h3>Namespaces</h3><ul><li><a href="PIXI.html">PIXI</a></li><li><a href="PIXI.extras.html">extras</a></li><li><a href="PIXI.filters.html">filters</a></li><li><a href="PIXI.interaction.html">interaction</a></li><li><a href="PIXI.loaders.html">loaders</a></li><li><a href="PIXI.mesh.html">mesh</a></li><li><a href="PIXI.utils.html">utils</a></li></ul><h3>Mixins</h3><ul><li><a href="PIXI.interaction.module.exports.html">module.exports</a></li><li><a href="PIXI.utils.pluginTarget.html">pluginTarget</a></li></ul><h3>Global</h3><ul><li><a href="global.html#currentFrame">currentFrame</a></li></ul>
-</nav>
-
-<br class="clear">
-
-<footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-beta3</a> on Sun May 10 2015 18:32:51 GMT+0100 (BST)
-</footer>
-
-<script> prettyPrint(); </script>
-<script src="scripts/linenumber.js"> </script>
+<script>prettyPrint();</script>
+<script src="scripts/linenumber.js"></script>
+<script src="scripts/main.js"></script>
 </body>
 </html>
