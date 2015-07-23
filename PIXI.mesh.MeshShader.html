@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Source: core/textures/BaseTexture.js</title>
+    <title>Class: MeshShader</title>
     
     
     
@@ -26,7 +26,7 @@
     
     
     <script>
-    var config = {"monospaceLinks":false,"cleverLinks":false,"default":{"outputSourceFiles":true},"applicationName":"PIXI","footer":"Made with ♥ by <a href='http://goodboydigital.com'>Goodboy Digital</a>","copyright":"PIXI Copyright © 2013-2015 Mat Groves.","disqus":"","googleAnalytics":"","openGraph":{"title":"","type":"website","image":"","site_name":"","url":""},"meta":{"title":"","description":"","keyword":""},"linenums":true};
+    var config = {"monospaceLinks":false,"cleverLinks":false,"default":{"outputSourceFiles":true},"applicationName":"PIXI","footer":"Made with ♥ by <a target="_blank" href='http://goodboydigital.com'>Goodboy Digital</a>","copyright":"PIXI Copyright © 2013-2015 Mat Groves.","disqus":"","googleAnalytics":"","openGraph":{"title":"","type":"website","image":"","site_name":"","url":""},"meta":{"title":"","description":"","keyword":""},"linenums":true};
     </script>
     
 
@@ -4310,449 +4310,737 @@
     </ul>
 </div>
     <div class="main">
-        <h1 class="page-title" data-filename="core_textures_BaseTexture.js.html">Source: core/textures/BaseTexture.js</h1>
+        <h1 class="page-title" data-filename="PIXI.mesh.MeshShader.html">Class: MeshShader</h1>
         
 
 
+
+<section>
     
-    <section>
-        <article>
-            <pre class="prettyprint source linenums"><code>var utils = require('../utils'),
-    CONST = require('../const'),
-    EventEmitter = require('eventemitter3');
-
-/**
- * A texture stores the information that represents an image. All textures have a base texture.
- *
- * @class
- * @memberof PIXI
- * @param source {Image|Canvas} the source object of the texture.
- * @param [scaleMode=PIXI.SCALE_MODES.DEFAULT] {number} See {@link PIXI.SCALE_MODES} for possible values
- * @param resolution {number} the resolution of the texture for devices with different pixel ratios
- */
-function BaseTexture(source, scaleMode, resolution)
-{
-    EventEmitter.call(this);
-
-    this.uid = utils.uid();
-
-    /**
-     * The Resolution of the texture.
-     *
-     * @member {number}
-     */
-    this.resolution = resolution || 1;
-
-    /**
-     * The width of the base texture set when the image has loaded
-     *
-     * @member {number}
-     * @readOnly
-     */
-    this.width = 100;
-
-    /**
-     * The height of the base texture set when the image has loaded
-     *
-     * @member {number}
-     * @readOnly
-     */
-    this.height = 100;
-
-    // TODO docs
-    // used to store the actual dimensions of the source
-    /**
-     * Used to store the actual width of the source of this texture
-     *
-     * @member {number}
-     * @readOnly
-     */
-    this.realWidth = 100;
-    /**
-     * Used to store the actual height of the source of this texture
-     *
-     * @member {number}
-     * @readOnly
-     */
-    this.realHeight = 100;
-
-    /**
-     * The scale mode to apply when scaling this texture
-     *
-     * @member {number}
-     * @default PIXI.SCALE_MODES.LINEAR
-     * @see PIXI.SCALE_MODES
-     */
-    this.scaleMode = scaleMode || CONST.SCALE_MODES.DEFAULT;
-
-    /**
-     * Set to true once the base texture has successfully loaded.
-     *
-     * This is never true if the underlying source fails to load or has no texture data.
-     *
-     * @member {boolean}
-     * @readOnly
-     */
-    this.hasLoaded = false;
-
-    /**
-     * Set to true if the source is currently loading.
-     *
-     * If an Image source is loading the 'loaded' or 'error' event will be
-     * dispatched when the operation ends. An underyling source that is
-     * immediately-available bypasses loading entirely.
-     *
-     * @member {boolean}
-     * @readonly
-     */
-    this.isLoading = false;
-
-    /**
-     * The image source that is used to create the texture.
-     *
-     * TODO: Make this a setter that calls loadSource();
-     *
-     * @member {Image|Canvas}
-     * @readonly
-     */
-    this.source = null; // set in loadSource, if at all
-
-    /**
-     * Controls if RGB channels should be pre-multiplied by Alpha  (WebGL only)
-     *
-     * @member {boolean}
-     * @default true
-     */
-    this.premultipliedAlpha = true;
-
-    /**
-     * @member {string}
-     */
-    this.imageUrl = null;
-
-    /**
-     * Wether or not the texture is a power of two, try to use power of two textures as much as you can
-     * @member {boolean}
-     * @private
-     */
-    this.isPowerOfTwo = false;
-
-    // used for webGL
-
-    /**
-     *
-     * Set this to true if a mipmap of this texture needs to be generated. This value needs to be set before the texture is used
-     * Also the texture must be a power of two size to work
-     *
-     * @member {boolean}
-     */
-    this.mipmap = false;
-
-    /**
-     * A map of renderer IDs to webgl textures
-     *
-     * @member {object&lt;number, WebGLTexture>}
-     * @private
-     */
-    this._glTextures = [];
-
-    // if no source passed don't try to load
-    if (source)
-    {
-        this.loadSource(source);
-    }
-
-    /**
-     * Fired when a not-immediately-available source finishes loading.
-     *
-     * @event loaded
-     * @memberof PIXI.BaseTexture#
-     * @protected
-     */
-
-    /**
-     * Fired when a not-immediately-available source fails to load.
-     *
-     * @event error
-     * @memberof PIXI.BaseTexture#
-     * @protected
-     */
-}
-
-BaseTexture.prototype = Object.create(EventEmitter.prototype);
-BaseTexture.prototype.constructor = BaseTexture;
-module.exports = BaseTexture;
-
-/**
- * Updates the texture on all the webgl renderers, this also assumes the src has changed.
- *
- * @fires update
- */
-BaseTexture.prototype.update = function ()
-{
-    this.realWidth = this.source.naturalWidth || this.source.width;
-    this.realHeight = this.source.naturalHeight || this.source.height;
-
-    this.width = this.realWidth / this.resolution;
-    this.height = this.realHeight / this.resolution;
-
-    this.isPowerOfTwo = utils.isPowerOfTwo(this.realWidth, this.realHeight);
-
-    this.emit('update', this);
-};
-
-/**
- * Load a source.
- *
- * If the source is not-immediately-available, such as an image that needs to be
- * downloaded, then the 'loaded' or 'error' event will be dispatched in the future
- * and `hasLoaded` will remain false after this call.
- *
- * The logic state after calling `loadSource` directly or indirectly (eg. `fromImage`, `new BaseTexture`) is:
- *
- *     if (texture.hasLoaded)
- {
- *        // texture ready for use
- *     } else if (texture.isLoading)
- {
- *        // listen to 'loaded' and/or 'error' events on texture
- *     } else {
- *        // not loading, not going to load UNLESS the source is reloaded
- *        // (it may still make sense to listen to the events)
- *     }
- *
- * @protected
- * @param source {Image|Canvas} the source object of the texture.
- */
-BaseTexture.prototype.loadSource = function (source)
-{
-    var wasLoading = this.isLoading;
-    this.hasLoaded = false;
-    this.isLoading = false;
-
-    if (wasLoading &amp;&amp; this.source)
-    {
-        this.source.onload = null;
-        this.source.onerror = null;
-    }
-
-    this.source = source;
-
-    // Apply source if loaded. Otherwise setup appropriate loading monitors.
-    if ((this.source.complete || this.source.getContext) &amp;&amp; this.source.width &amp;&amp; this.source.height)
-    {
-        this._sourceLoaded();
-    }
-    else if (!source.getContext)
-    {
-
-        // Image fail / not ready
-        this.isLoading = true;
-
-        var scope = this;
-
-        source.onload = function ()
-        {
-            source.onload = null;
-            source.onerror = null;
-
-            if (!scope.isLoading)
-            {
-                return;
-            }
-
-            scope.isLoading = false;
-            scope._sourceLoaded();
-
-            scope.emit('loaded', scope);
-        };
-
-        source.onerror = function ()
-        {
-            source.onload = null;
-            source.onerror = null;
-
-            if (!scope.isLoading)
-            {
-                return;
-            }
-
-            scope.isLoading = false;
-            scope.emit('error', scope);
-        };
-
-        // Per http://www.w3.org/TR/html5/embedded-content-0.html#the-img-element
-        //   "The value of `complete` can thus change while a script is executing."
-        // So complete needs to be re-checked after the callbacks have been added..
-        // NOTE: complete will be true if the image has no src so best to check if the src is set.
-        if (source.complete &amp;&amp; source.src)
-        {
-            this.isLoading = false;
-
-            // ..and if we're complete now, no need for callbacks
-            source.onload = null;
-            source.onerror = null;
-
-            if (source.width &amp;&amp; source.height)
-            {
-                this._sourceLoaded();
-
-                // If any previous subscribers possible
-                if (wasLoading)
-                {
-                    this.emit('loaded', this);
-                }
-            }
-            else
-            {
-                // If any previous subscribers possible
-                if (wasLoading)
-                {
-                    this.emit('error', this);
-                }
-            }
-        }
-    }
-};
-
-/**
- * Used internally to update the width, height, and some other tracking vars once
- * a source has successfully loaded.
- *
- * @private
- */
-BaseTexture.prototype._sourceLoaded = function ()
-{
-    this.hasLoaded = true;
-    this.update();
-};
-
-/**
- * Destroys this base texture
- *
- */
-BaseTexture.prototype.destroy = function ()
-{
-    if (this.imageUrl)
-    {
-        delete utils.BaseTextureCache[this.imageUrl];
-        delete utils.TextureCache[this.imageUrl];
-
-        this.imageUrl = null;
-
-        if (!navigator.isCocoonJS)
-        {
-            this.source.src = '';
-        }
-    }
-    else if (this.source &amp;&amp; this.source._pixiId)
-    {
-        delete utils.BaseTextureCache[this.source._pixiId];
-    }
-
-    this.source = null;
-
-    this.dispose();
-};
-
-/**
- * Frees the texture from WebGL memory without destroying this texture object.
- * This means you can still use the texture later which will upload it to GPU
- * memory again.
- *
- */
-BaseTexture.prototype.dispose = function ()
-{
-    this.emit('dispose', this);
-
-    this._glTextures.length = 0;
-};
-
-/**
- * Changes the source image of the texture.
- * The original source must be an Image element.
- *
- * @param newSrc {string} the path of the image
- */
-BaseTexture.prototype.updateSourceImage = function (newSrc)
-{
-    this.source.src = newSrc;
-
-    this.loadSource(this.source);
-};
-
-/**
- * Helper function that creates a base texture from the given image url.
- * If the image is not in the base texture cache it will be created and loaded.
- *
- * @static
- * @param imageUrl {string} The image url of the texture
- * @param [crossorigin=(auto)] {boolean} Should use anonymous CORS? Defaults to true if the URL is not a data-URI.
- * @param [scaleMode=PIXI.SCALE_MODES.DEFAULT] {number} See {@link PIXI.SCALE_MODES} for possible values
- * @return PIXI.BaseTexture
- */
-BaseTexture.fromImage = function (imageUrl, crossorigin, scaleMode)
-{
-    var baseTexture = utils.BaseTextureCache[imageUrl];
-
-    if (crossorigin === undefined &amp;&amp; imageUrl.indexOf('data:') !== 0)
-    {
-        crossorigin = true;
-    }
-
-    if (!baseTexture)
-    {
-        // new Image() breaks tex loading in some versions of Chrome.
-        // See https://code.google.com/p/chromium/issues/detail?id=238071
-        var image = new Image();//document.createElement('img');
-        if (crossorigin)
-        {
-            image.crossOrigin = '';
-        }
-
-        baseTexture = new BaseTexture(image, scaleMode);
-        baseTexture.imageUrl = imageUrl;
-
-        image.src = imageUrl;
-
-        utils.BaseTextureCache[imageUrl] = baseTexture;
-
-        // if there is an @2x at the end of the url we are going to assume its a highres image
-        baseTexture.resolution = utils.getResolutionOfUrl(imageUrl);
-    }
-
-    return baseTexture;
-};
-
-/**
- * Helper function that creates a base texture from the given canvas element.
- *
- * @static
- * @param canvas {Canvas} The canvas element source of the texture
- * @param scaleMode {number} See {@link PIXI.SCALE_MODES} for possible values
- * @return PIXI.BaseTexture
- */
-BaseTexture.fromCanvas = function (canvas, scaleMode)
-{
-    if (!canvas._pixiId)
-    {
-        canvas._pixiId = 'canvas_' + utils.uid();
-    }
-
-    var baseTexture = utils.BaseTextureCache[canvas._pixiId];
-
-    if (!baseTexture)
-    {
-        baseTexture = new BaseTexture(canvas, scaleMode);
-        utils.BaseTextureCache[canvas._pixiId] = baseTexture;
-    }
-
-    return baseTexture;
-};
-</code></pre>
-        </article>
-    </section>
-
+<header>
+    <h2>
+        <span class="ancestors"><a href="PIXI.html">PIXI</a><a href="PIXI.mesh.html">.mesh</a>.</span>
+    
+    MeshShader
+    </h2>
+    
+</header>  
+
+<article>
+    <div class="container-overview">
+    
+    
+    
+        
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="MeshShader">
+            
+            new PIXI.mesh.MeshShader<span class="signature">(shaderManager)</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="mesh_webgl_MeshShader.js.html">mesh/webgl/MeshShader.js</a>, <a href="mesh_webgl_MeshShader.js.html#line9">line 9</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>shaderManager</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type"><a href="PIXI.ShaderManager.html">PIXI.ShaderManager</a></span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                <p>The WebGL shader manager this shader works for.</p></td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+    
+    </div>
+    
+    
+        <h3 class="subsection-title">Extends</h3>
+        
+        <ul>
+            <li><a href="PIXI.Shader.html">PIXI.Shader</a></li>
+        </ul>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+        <h3 class="subsection-title">Members</h3>
+        
+        <dl>
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="fragmentSrc">fragmentSrc<span class="type-signature type string">string</span> </h4>
+    </div>
+    
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        <p>The fragment shader as an array of strings</p>
+    </div>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="gl"><span class="type-signature ">readonly</span>gl<span class="type-signature type webglrenderingcontext">WebGLRenderingContext</span> </h4>
+    </div>
+    
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        <p>The current WebGL drawing context</p>
+    </div>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="program"><span class="type-signature ">readonly</span>program<span class="type-signature type webglprogram">WebGLProgram</span> </h4>
+    </div>
+    
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        <p>The WebGL program.</p>
+    </div>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="uid"><span class="type-signature ">readonly</span>uid<span class="type-signature type number">number</span> </h4>
+    </div>
+    
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        <p>A unique id</p>
+    </div>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="vertexSrc">vertexSrc<span class="type-signature type string">string</span> </h4>
+    </div>
+    
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        <p>The vertex shader as an array of strings</p>
+    </div>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+</dd>
+
+        </dl>
+    
+    
+    
+        <h3 class="subsection-title">Methods</h3>
+        
+        <dl>
+            
+<dt>
+    <div class="nameContainer inherited">
+        <h4 class="name" id="destroy">
+            
+                <span class="inherited"><a href="PIXI.Shader.html#destroy">inherited</a></span>
+            
+            destroy<span class="signature">()</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="core_renderers_webgl_shaders_Shader.js.html">core/renderers/webgl/shaders/Shader.js</a>, <a href="core_renderers_webgl_shaders_Shader.js.html#line536">line 536</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Destroys the shader.</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer inherited">
+        <h4 class="name" id="initSampler2D">
+            
+                <span class="inherited"><a href="PIXI.Shader.html#initSampler2D">inherited</a></span>
+            
+            initSampler2D<span class="signature">()</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="core_renderers_webgl_shaders_Shader.js.html">core/renderers/webgl/shaders/Shader.js</a>, <a href="core_renderers_webgl_shaders_Shader.js.html#line484">line 484</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Initialises a Sampler2D uniform (which may only be available later on after initUniforms once the texture has loaded)</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer inherited">
+        <h4 class="name" id="syncUniform">
+            
+                <span class="inherited"><a href="PIXI.Shader.html#syncUniform">inherited</a></span>
+            
+            syncUniform<span class="signature">(uniform)</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="core_renderers_webgl_shaders_Shader.js.html">core/renderers/webgl/shaders/Shader.js</a>, <a href="core_renderers_webgl_shaders_Shader.js.html#line225">line 225</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Adds a new uniform</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>uniform</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                <p>the new uniform to attach</p></td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer inherited">
+        <h4 class="name" id="syncUniforms">
+            
+                <span class="inherited"><a href="PIXI.Shader.html#syncUniforms">inherited</a></span>
+            
+            syncUniforms<span class="signature">()</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="core_renderers_webgl_shaders_Shader.js.html">core/renderers/webgl/shaders/Shader.js</a>, <a href="core_renderers_webgl_shaders_Shader.js.html#line469">line 469</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Updates the shader uniform values.</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        </dl>
+    
+    
+    
+    
+    
+</article>
+
+</section>  
 
 
 
@@ -4761,7 +5049,7 @@ BaseTexture.fromCanvas = function (canvas, scaleMode)
         
 
         <footer>
-            Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-beta3</a> on Thu Jul 23 2015 08:00:58 GMT-0700 (Pacific Daylight Time)
+            Documentation generated by <a target="_blank" href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-beta3</a> on Thu Jul 23 2015 08:01:01 GMT-0700 (Pacific Daylight Time)
         </footer>
     </div>
 </div>
