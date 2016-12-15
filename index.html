@@ -6,7 +6,7 @@
     <body>
         <script>
             var request = location.href.split('pixijs.github.io/docs')[1];
-            if (!request) request = '/index.html';
+            if (!request || request === '/' ) request = '/index.html';
             location.href = 'http://pixijs.download/release/docs' + request;
         </script>
     </body>
