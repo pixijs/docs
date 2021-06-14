@@ -5,7 +5,8 @@
     </head>
     <body>
         <script>
-            location.href = 'https://pixijs.download/release/docs/index.html';
+            var parts = location.href.split(/\/docs\/?/);
+            location.href = 'https://pixijs.download/release/docs/' + (parts[1] || 'index.html');
         </script>
     </body>
 </html>
